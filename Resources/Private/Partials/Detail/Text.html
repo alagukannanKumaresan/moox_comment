@@ -1,0 +1,30 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace m=DCNGmbH\MooxComment\ViewHelpers}
+<v:variable.set name="label" value="list.{field.key}" />	
+<f:if condition="{field.config.extkeyUCC}!=''">
+	<f:then>
+		<v:variable.set name="label" value="{f:translate(key: label, extensionName:field.config.extkeyUCC)}" />			
+	</f:then>
+	<f:else>
+		<v:variable.set name="label" value="{f:translate(key: label)}" />
+	</f:else>
+</f:if>
+<f:if condition="{label}==''">
+	<f:if condition="{field.config.extkeyUCC}!=''">
+		<f:then>
+			<v:variable.set name="label" value="{f:translate(key: field.label, extensionName:field.config.extkeyUCC)}" />	
+		</f:then>
+		<f:else>
+			<v:variable.set name="label" value="{f:translate(key: field.label)}" />
+		</f:else>
+	</f:if>		
+</f:if>
+<f:if condition="{label}==''">
+	<v:variable.set name="label" value="{field.key}" />
+</f:if>
+<div class="panel panel-default">
+	<div class="panel-heading">{label}</div>
+	<div class="panel-body">
+		{m:getValue(item:item,field:field.key)}
+	</div>
+</div>

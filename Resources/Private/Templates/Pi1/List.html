@@ -1,0 +1,12 @@
+<f:layout name="Pi1" />
+
+<f:section name="main">	
+	<div class="tx-moox-comment-list">
+		<f:render partial="Pi1/List/Content" arguments="{_all}" />			
+		<f:if condition="{isCreateable}">
+			<f:render partial="Pi1/List/Form" arguments="{_all}" />
+		</f:if>
+		<f:render partial="Pi1/List/Filter" arguments="{_all}" />
+		<f:render partial="Pi1/List/Body" arguments="{_all}" />
+	</div>
+</f:section>

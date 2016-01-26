@@ -1,0 +1,25 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace m=DCNGmbH\MooxComment\ViewHelpers}			
+<v:variable.set name="image" value="{v:iterator.first(haystack:item.images)}" />
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">{item.title}</h3>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-sm-2">
+				<f:if condition="{image}">
+					<v:media.image src="{image.uid}" alt="{image.title}" treatIdAsReference="1" class="img-responsive img-thumbnail" width="140c" height="140c" />	
+				</f:if>
+			</div>
+			<div class="col-sm-10">
+				<p>{item.description -> f:format.crop(maxCharacters:200)}</p>													
+				<f:link.action action="detail" arguments="{item:item.uid,returnUrl:returnUrl}">
+					<button type="button" class="btn btn-default pull-right">
+						mehr Informationen
+					</button>
+				</f:link.action>
+			</div>			
+		</div>
+	</div>
+</div>

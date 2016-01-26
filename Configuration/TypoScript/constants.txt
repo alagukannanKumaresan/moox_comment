@@ -1,0 +1,32 @@
+plugin.tx_mooxcomment {
+	view {
+		# cat=plugin.tx_mooxcomment/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:moox_comment/Resources/Private/Templates/
+		# cat=plugin.tx_mooxcomment/file; type=string; label=Path to template root (FE, Ajax)
+		templateRootPathAjax = EXT:moox_comment/Resources/Private/Templates/Ajax/
+		# cat=plugin.tx_mooxcomment/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:moox_comment/Resources/Private/Partials/
+		# cat=plugin.tx_mooxcomment/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:moox_comment/Resources/Private/Layouts/		
+	}
+	persistence {
+		# cat=plugin.tx_mooxcomment/storage/01/; type=int+; label=Default storage PID
+		storagePid =
+	}
+	settings {
+		cssfiles {
+			# cat=plugin.tx_mooxcomment/file/01; type=string; label=[Plugin 1] Path to local css file (leave blank for default css)
+			pi1 =
+			# cat=plugin.tx_mooxcomment/file/02; type=string; label=[Plugin 2] Path to local css file (leave blank for default css)
+			pi2 =
+			# cat=plugin.tx_mooxcomment/file/02; type=string; label=[Plugin 3] Path to local css file (leave blank for default css)
+			pi3 =
+		}				
+	}
+}
+module.tx_mooxcomment {
+	persistence {
+		# cat=plugin.tx_mooxcomment/storage/01/; type=int+; label=Default storage PID
+		storagePid =
+	}
+}

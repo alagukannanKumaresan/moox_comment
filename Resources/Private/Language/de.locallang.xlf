@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2014-02-20T12:22:09Z" product-name="moox_comment">
+		<header/>
+		<body>	
+			<trans-unit id="pi1.action_list">
+				<source>list items</source>
+				<target>Liste anzeigen</target>
+			</trans-unit>	
+			<trans-unit id="pi1.action_list.comment_form_header">
+				<source>send comment</source>
+				<target>Kommentar abgeben</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_list.add_comment">
+				<source>send</source>
+				<target>abschicken</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_list.comment_by">
+				<source>comment by</source>
+				<target>Kommentar von</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_list.limit.show_all">
+				<source>show all comments</source>
+				<target>Alle Kommentare anzeigen</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_list.limit.show">
+				<source>show %1$s comments</source>
+				<target>%1$s Kommentare anzeigen</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_list.filter.show_all">
+				<source>all comments</source>
+				<target>Alle Kommentare </target>
+			</trans-unit>
+			<trans-unit id="pi1.action_list.filter.show_own">
+				<source>own comments only</source>
+				<target>Eigene Kommentare</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_list.order.newest_first">
+				<source>newest first</source>
+				<target>Neueste zuerst</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_list.order.oldest_first">
+				<source>oldest first</source>
+				<target>Älteste zuerst</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_list.public_user">
+				<source>public user</source>
+				<target>öffentlicher Benutzer</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_list.registered_user">
+				<source>registered user</source>
+				<target>angemeldeter Benutzer</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_list.own_comment">
+				<source>own comment</source>
+				<target>eigener Kommentar</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_list.confirm">
+				<source>confirm</source>
+				<target>bestätigen</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_list.confirm.modal.title">
+				<source>confirm comment</source>
+				<target>Kommentar bestätigen</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_list.confirm.modal.body">
+				<source><![CDATA[Do you really want to confirm the comment <strong>%2$s</strong> by  <strong>%1$s</strong>?]]></source>
+				<target><![CDATA[Wollen Sie den Kommentar <strong>%2$s</strong> von  <strong>%1$s</strong> wirklich bestätigen?]]></target>
+			</trans-unit>
+			<trans-unit id="pi1.action_list.confirm.modal.button">
+				<source>really confirm comment</source>
+				<target>Kommentar wirklich bestätigen</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_list.confirm.modal.close">
+				<source>abort</source>
+				<target>abbrechen</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_list.delete">
+				<source>delete</source>
+				<target>löschen</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_list.delete.modal.title">
+				<source>delete comment</source>
+				<target>Kommentar löschen</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_list.delete.modal.body">
+				<source><![CDATA[Do you really want to delete the comment <strong>%2$s</strong> by  <strong>%1$s</strong>?]]></source>
+				<target><![CDATA[Wollen Sie den Kommentar <strong>%2$s</strong> von  <strong>%1$s</strong> wirklich löschen?]]></target>
+			</trans-unit>
+			<trans-unit id="pi1.action_list.delete.modal.button">
+				<source>really delete comment</source>
+				<target>Kommentar wirklich löschen</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_list.delete.modal.close">
+				<source>abort</source>
+				<target>abbrechen</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_list.append">
+				<source>show more</source>
+				<target>mehr anzeigen</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_list.no_items">
+				<source>no comments found</source>
+				<target>Es wurden noch keine Kommentare abgegeben</target>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.error.no_access">
+				<source>no access</source>
+				<target>Keine Berechtigung</target>
+			</trans-unit>	
+			<trans-unit id="pi1.action_add">
+				<source>add comment</source>
+				<target>Kommentar hinzufügen</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_add.success">
+				<source>your comment was added successfully</source>
+				<target>Ihr Kommentar wurde hinzugefügt</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_add.success_moderated">
+				<source>comment added successfully</source>
+				<target>Ihr Kommentar wurde hinzugefügt, muss aber noch vom Moderator bestätigt werden. Haben Sie bitte etwas Geduld.</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_confirm">
+				<source>confirm comment</source>
+				<target>Kommentar bestätigen</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_confirm.success">
+				<source>comment confirmed successfully</source>
+				<target>Kommentar erfolgreich bestätigt</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_delete">
+				<source>delete comment</source>
+				<target>Kommentar löschen</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_delete.tooltip">
+				<source>delete comment</source>
+				<target>Kommentar löschen</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_delete.success">
+				<source>comment deleted successfully</source>
+				<target>Kommentar wurde erfolgreich gelöscht</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_delete.error.no_access">
+				<source>no access</source>
+				<target>Keine Berechtigung</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_visibility">
+				<source>change visibility of comment</source>
+				<target>Sichtbarkeit des Kommentars ändern</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_visibility.tooltip">
+				<source>change visibility of comment</source>
+				<target>Sichtbarkeit des Kommentars ändern</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_visibility.success">
+				<source>comment visibility changed successfully</source>
+				<target>Sichtbarkeit des Kommentars wurde erfolgreich geändert</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_visibility.error.no_access">
+				<source>no access</source>
+				<target>Keine Berechtigung</target>
+			</trans-unit>
+			
+			<trans-unit id="pi1.action_all.add">
+				<source>add</source>
+				<target>hinzufügen</target>
+			</trans-unit>						
+			
+			<trans-unit id="form.hidden">
+				<source>hidden</source>
+				<target>Versteckt</target>
+			</trans-unit>
+			<trans-unit id="form.hidden.select">
+				<source>visibility</source>
+				<target>Sichtbarkeit</target>
+			</trans-unit>
+			<trans-unit id="form.hidden.select.0">
+				<source>visible</source>
+				<target>sichtbar</target>
+			</trans-unit>
+			<trans-unit id="form.hidden.select.1">
+				<source>invisible</source>
+				<target>versteckt</target>
+			</trans-unit>
+			<trans-unit id="form.fe_user">
+				<source>user</source>
+				<target>Benutzer</target>
+			</trans-unit>			
+			<trans-unit id="form.title">
+				<source>subject</source>
+				<target>Betreff</target>
+			</trans-unit>
+			<trans-unit id="form.name">
+				<source>name</source>
+				<target>Name</target>
+			</trans-unit>
+			<trans-unit id="form.email">
+				<source>email</source>
+				<target>Email</target>
+			</trans-unit>
+			<trans-unit id="form.email.error.invalid">
+				<source>the entered email address is invalid</source>
+				<target>Die eingegebene Adresse ist nicht korrekt</target>
+			</trans-unit>
+			<trans-unit id="form.comment">
+				<source>comment</source>
+				<target>Kommentar</target>
+			</trans-unit>
+			<trans-unit id="form.rating">
+				<source>rating</source>
+				<target>Bewertung</target>
+			</trans-unit>
+			<trans-unit id="form.confirmed">
+				<source>confirmed</source>
+				<target>Bestätigt am</target>
+			</trans-unit>	
+			<trans-unit id="form.template">
+				<source>template</source>
+				<target>Vorlage</target>
+			</trans-unit>
+			<trans-unit id="form.template.title">
+				<source>title</source>
+				<target>Titel der Vorlage</target>
+			</trans-unit>
+			<trans-unit id="form.template.category">
+				<source>category</source>
+				<target>Kategorie</target>
+			</trans-unit>
+			<trans-unit id="form.template.subject">
+				<source>mail subject</source>
+				<target>Mail-Betreff</target>
+			</trans-unit>
+			<trans-unit id="form.template.template">
+				<source>HTML/FLUID-Template</source>
+				<target>HTML/FLUID-Code der Vorlage</target>
+			</trans-unit>
+			
+			<trans-unit id="form.activated">
+				<source>activated</source>
+				<target>aktiviert</target>
+			</trans-unit>
+			<trans-unit id="form.deactivated">
+				<source>deactivated</source>
+				<target>deaktiviert</target>
+			</trans-unit>
+			<trans-unit id="form.required">
+				<source>required</source>
+				<target>Pflichtfeld</target>
+			</trans-unit>
+			<trans-unit id="form.error.empty">
+				<source>you have to enter a value for this field</source>
+				<target>Sie müssen einen Wert für das Feld eingeben</target>
+			</trans-unit>	
+			<trans-unit id="form.error.invalid">
+				<source>this value "%1$s" is not allowed (allowed: %2$s)</source>
+				<target>Dieser Wert "%1$s" ist nicht erlaubt (erlaubt: %2$s)</target>
+			</trans-unit>
+			<trans-unit id="form.error.too_small">
+				<source>the entered value is too small (minimum value: %1$d)</source>
+				<target>Der eingegebene Wert ist zu klein (minimaler Wert: %1$d)</target>
+			</trans-unit>
+			<trans-unit id="form.error.too_large">
+				<source>the entered value is too large (maximum value: %1$d)</source>
+				<target>Der eingegebene Wert ist zu groß (maximaler Wert: %1$d)</target>
+			</trans-unit>
+			<trans-unit id="form.error.too_short">
+				<source>the entered value is too short (minimum length: %1$d characters)</source>
+				<target>Die eingegeben Postleitzahl ist zu klein (Mindestlänge: %1$d Zeichen)</target>
+			</trans-unit>
+			<trans-unit id="form.error.too_long">
+				<source>the entered value is too long (maximum length: %1$d characters)</source>
+				<target>Der eingegebene Wert ist zu lang (maximale Länge: %1$d Zeichen)</target>
+			</trans-unit>
+			<trans-unit id="form.error.too_few">
+				<source>you need to upload at least %1$d file(s)</source>
+				<target>Sie müssen mindestens %1$d Datei(en) hochladen</target>
+			</trans-unit>
+			<trans-unit id="form.error.too_many">
+				<source>you are not allowed to upload more than %1$d file(s)</source>
+				<target>Sie dürfen nicht mehr als %1$d Datei(en) hochladen</target>
+			</trans-unit>
+			<trans-unit id="form.error.password_not_equal">
+				<source>the entered passwords are not equal</source>
+				<target>Die eingegebenen Passwörter sind nicht gleich</target>
+			</trans-unit>
+			<trans-unit id="form.error.invalid_email">
+				<source>the entered email is not valid</source>
+				<target>Die eingegebene Email-Adresse ist ungültig</target>
+			</trans-unit>
+						
+			<trans-unit id="widget.paginate.previous">
+				<source>previous</source>
+				<target>zurück</target>
+			</trans-unit>
+			<trans-unit id="widget.paginate.next">
+				<source>next</source>
+				<target>vor</target>
+			</trans-unit>
+			<trans-unit id="widget.paginate.overall" xml:space="preserve">
+				<source>Page %s of %s.</source>
+				<target>Seite %s von %s.</target>
+			</trans-unit>			
+		</body>
+	</file>
+</xliff>

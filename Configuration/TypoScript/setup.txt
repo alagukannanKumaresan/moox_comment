@@ -1,0 +1,33 @@
+plugin.tx_mooxcomment {	
+	view {		
+		partialRootPath = {$plugin.tx_mooxcomment.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_mooxcomment.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_mooxcomment.persistence.storagePid}		
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		rewrittenPropertyMapper = 1
+	}
+	settings {	
+		cssfiles {
+			pi1 = {$plugin.tx_mooxcomment.settings.cssfiles.pi1}
+			pi2 = {$plugin.tx_mooxcomment.settings.cssfiles.pi2}
+			pi3 = {$plugin.tx_mooxcomment.settings.cssfiles.pi3}
+		}
+		autoDetectionOrder = tx_mooxnews_domain_model_news,pages
+	}
+}
+[globalVar = GP:type = 985491]
+	plugin.tx_mooxcomment.view.templateRootPath = {$plugin.tx_mooxcomment.view.templateRootPathAjax}
+[else]
+	plugin.tx_mooxcomment.view.templateRootPath = {$plugin.tx_mooxcomment.view.templateRootPath}
+[global]
+
+module.tx_mooxcomment {
+	persistence {
+		storagePid = {$module.tx_mooxcomment.persistence.storagePid}		
+	}
+}
+

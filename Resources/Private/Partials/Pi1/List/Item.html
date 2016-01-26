@@ -1,0 +1,55 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<div class="panel panel-default moox-ajax-item">
+	<div class="panel-heading clearfix">
+		<div class="pull-left">						
+			{f:translate(key: 'pi1.action_list.comment_by')} {item.name}: {item.title}
+			<f:if condition="{item.feUser}">
+				<f:then>
+					<f:if condition="{item.feUser.uid}=={feUser.uid}">
+						<f:then>
+							<br /><small>({f:translate(key: 'pi1.action_list.own_comment')})</small>				
+						</f:then>
+						<f:else>
+							<br /><small>({f:translate(key: 'pi1.action_list.registered_user')}: {item.feUser.username})</small>				
+						</f:else>
+					</f:if>								
+				</f:then>
+				<f:else>
+					<br /><small>({f:translate(key: 'pi1.action_list.public_user')})</small>				
+				</f:else>
+			</f:if>					
+		</div>
+		<div class="pull-right text-right">
+			{f:format.date(date:item.crdate,format:'d.m.Y H:i')}<br />
+			<f:if condition="{isConfirmable}">				
+				<f:if condition="{item.confirmed}>0">
+					<f:then>
+						<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>				
+					</f:then>
+					<f:else>
+						<a href="{f:uri.action(action:'confirm',noCache:1,pageType:985491,arguments:{uid:item.uid,hash:item.hash})}" id="moox-ajax-confirm-{item.uid}" title="{f:translate(key: 'pi1.action_list.confirm')}" data-css="btn-confirm ajax" data-title="{f:translate(key: 'pi1.action_list.confirm.modal.title')}" data-body="{f:translate(key: 'pi1.action_list.confirm.modal.body', arguments: {0: item.name,1: item.title})}" data-button="{f:translate(key: 'pi1.action_list.confirm.modal.button')}" data-close="{f:translate(key: 'pi1.action_list.confirm.modal.close')}" class="btn-modal"><span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span></a>				
+					</f:else>
+				</f:if>
+			</f:if>
+			<v:variable.set name="deleteable" value="0" />			
+			<f:if condition="{isDeleteable}">				
+				<f:if condition="{isModerator}">
+					<f:then>
+						<v:variable.set name="deleteable" value="1" />				
+					</f:then>
+					<f:else>
+						<f:if condition="{item.feUser.uid}=={feUser.uid}">
+							<v:variable.set name="deleteable" value="1" />
+						</f:if>
+					</f:else>
+				</f:if>
+			</f:if>
+			<f:if condition="{deleteable}">
+				<a href="{f:uri.action(action:'delete',noCache:1,pageType:985491,arguments:{uid:item.uid,hash:item.hash})}" id="moox-ajax-delete-{item.uid}" title="{f:translate(key: 'pi1.action_list.delete')}" data-css="btn-delete ajax" data-title="{f:translate(key: 'pi1.action_list.delete.modal.title')}" data-body="{f:translate(key: 'pi1.action_list.delete.modal.body', arguments: {0: item.name,1: item.title})}" data-button="{f:translate(key: 'pi1.action_list.delete.modal.button')}" data-close="{f:translate(key: 'pi1.action_list.delete.modal.close')}" class="btn-modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>	
+			</f:if>			
+		</div>
+	</div>
+	<div class="panel-body">
+		{item.comment}
+	</div>
+</div>

@@ -1,0 +1,19 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:if condition="{settings.foreignType}=='self'">
+	<f:if condition="{settings.content}!=''">
+		<div class="tx-moox-comment-content">
+			<f:for each="{v:iterator.explode(content:settings.content,glue: ',')}" as="content">
+				<v:content.render contentUids="{0: content}" render="1" />
+			</f:for>
+		</div>
+	</f:if>
+</f:if>
+<f:if condition="{settings.foreignType}=='tt_content'">
+	<f:if condition="{settings.showContentElement}">
+		<f:if condition="{settings.contentElement}>0">
+			<div class="tx-moox-comment-content">
+				<v:content.render contentUids="{0: settings.contentElement}" render="1" />
+			</div>
+		</f:if>
+	</f:if>
+</f:if>

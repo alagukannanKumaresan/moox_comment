@@ -1,0 +1,55 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace m=DCNGmbH\MooxComment\ViewHelpers}
+<v:variable.set name="files" value="{m:getValue(item:item,field:field.key)}" />				
+<v:variable.set name="label" value="list.{field.key}" />	
+<f:if condition="{field.config.extkeyUCC}!=''">
+	<f:then>
+		<v:variable.set name="label" value="{f:translate(key: label, extensionName:field.config.extkeyUCC)}" />			
+	</f:then>
+	<f:else>
+		<v:variable.set name="label" value="{f:translate(key: label)}" />
+	</f:else>
+</f:if>
+<f:if condition="{label}==''">
+	<f:if condition="{field.config.extkeyUCC}!=''">
+		<f:then>
+			<v:variable.set name="label" value="{f:translate(key: field.label, extensionName:field.config.extkeyUCC)}" />	
+		</f:then>
+		<f:else>
+			<v:variable.set name="label" value="{f:translate(key: field.label)}" />
+		</f:else>
+	</f:if>		
+</f:if>
+<f:if condition="{label}==''">
+	<v:variable.set name="label" value="{field.key}" />
+</f:if>
+<f:if condition="{files->f:count()}>0">
+	<div class="panel panel-default">
+		<div class="panel-heading">{label}</div>
+		<div class="panel-body lightbox-gallery">
+			<f:for each="{files}" as="file" iteration="iteration">
+				<div class="well well-file center-block">
+					<div class="row row-file">
+						<f:if condition="{file.file.extension}=='pdf'">
+							<f:then>
+								<div class="col-md-2">
+									<a class="image-lightbox" rel="lightbox[{field.key}_{iteration.cycle}]" title="{mediaElement.caption}" href="{v:uri.image(src:file.uid,treatIdAsReference:1,width:800)}">
+										<v:media.image src="{file.uid}" alt="{file.title}" treatIdAsReference="1" class="img-responsive img-thumbnail" width="100c" height="100c" />	
+									</a>
+								</div>
+								<div class="col-md-10">
+									{file.file.name}
+								</div>	
+							</f:then>
+							<f:else>
+								<div class="col-md-12">
+									{file.file.name}
+								</div>
+							</f:else>
+						</f:if>
+					</div>
+				</div>
+			</f:for>
+		</div>
+	</div>
+</f:if>

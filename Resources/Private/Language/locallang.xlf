@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-02-20T12:22:09Z" product-name="moox_comment">
+		<header/>
+		<body>	
+			<trans-unit id="pi1.action_list">
+				<source>list items</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.add_comment">
+				<source>send</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.comment_by">
+				<source>comment by</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.comment_form_header">
+				<source>send comment</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.limit.show_all">
+				<source>show all comments</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.limit.show">
+				<source>show %1$s</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.filter.show_all">
+				<source>all comments</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.filter.show_own">
+				<source>own comments only</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.order.newest_first">
+				<source>newest first</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.order.oldest_first">
+				<source>oldest first</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.public_user">
+				<source>public user</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.registered_user">
+				<source>registered user</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.own_comment">
+				<source>own comment</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.confirm">
+				<source>confirm</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.confirm.modal.title">
+				<source>confirm comment</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.confirm.modal.body">
+				<source><![CDATA[Do you really want to confirm the comment <strong>%2$s</strong> by  <strong>%1$s</strong>?]]></source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.confirm.modal.button">
+				<source>really confirm comment</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.confirm.modal.close">
+				<source>abort</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.delete">
+				<source>delete</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.delete.modal.title">
+				<source>delete comment</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.delete.modal.body">
+				<source><![CDATA[Do you really want to delete the comment <strong>%2$s</strong> by  <strong>%1$s</strong>?]]></source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.delete.modal.button">
+				<source>really delete comment</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.delete.modal.close">
+				<source>abort</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.append">
+				<source>show more</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.no_items">
+				<source>no comments found</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.error.no_access">
+				<source>no access</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_add">
+				<source>add comment</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_add.success">
+				<source>your comment was added successfully</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_add.success_moderated">
+				<source>comment added successfully</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_confirm">
+				<source>confirm comment</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_confirm.success">
+				<source>comment confirmed successfully</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_delete">
+				<source>delete comment</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_delete.tooltip">
+				<source>delete comment</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_delete.success">
+				<source>comment deleted successfully</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_delete.error.no_access">
+				<source>no access</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_visibility">
+				<source>change visibility of comment</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_visibility.tooltip">
+				<source>change visibility of comment</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_visibility.success">
+				<source>comment visibility changed successfully</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_visibility.error.no_access">
+				<source>no access</source>				
+			</trans-unit>
+			
+			<trans-unit id="pi1.action_all.add">
+				<source>add</source>				
+			</trans-unit>						
+			
+			<trans-unit id="form.hidden">
+				<source>hidden</source>				
+			</trans-unit>
+			<trans-unit id="form.hidden.select">
+				<source>visibility</source>				
+			</trans-unit>
+			<trans-unit id="form.hidden.select.0">
+				<source>visible</source>				
+			</trans-unit>
+			<trans-unit id="form.hidden.select.1">
+				<source>invisible</source>				
+			</trans-unit>
+			<trans-unit id="form.fe_user">
+				<source>user</source>				
+			</trans-unit>			
+			<trans-unit id="form.title">
+				<source>subject</source>				
+			</trans-unit>
+			<trans-unit id="form.name">
+				<source>name</source>				
+			</trans-unit>
+			<trans-unit id="form.email">
+				<source>email</source>				
+			</trans-unit>		
+			<trans-unit id="form.email.error.invalid">
+				<source>the entered email address is invalid</source>				
+			</trans-unit>
+			<trans-unit id="form.comment">
+				<source>comment</source>				
+			</trans-unit>
+			<trans-unit id="form.rating">
+				<source>rating</source>				
+			</trans-unit>
+			<trans-unit id="form.confirmed">
+				<source>confirmed</source>				
+			</trans-unit>
+			<trans-unit id="form.template">
+				<source>template</source>				
+			</trans-unit>
+			<trans-unit id="form.template.title">
+				<source>title</source>				
+			</trans-unit>
+			<trans-unit id="form.template.category">
+				<source>category</source>				
+			</trans-unit>
+			<trans-unit id="form.template.subject">
+				<source>mail subject</source>				
+			</trans-unit>
+			<trans-unit id="form.template.template">
+				<source>HTML/FLUID-Template</source>				
+			</trans-unit>
+			
+			<trans-unit id="form.activated">
+				<source>activated</source>				
+			</trans-unit>
+			<trans-unit id="form.deactivated">
+				<source>deactivated</source>				
+			</trans-unit>
+			<trans-unit id="form.required">
+				<source>required</source>				
+			</trans-unit>
+			<trans-unit id="form.error.empty">
+				<source>you have to enter a value for this field</source>				
+			</trans-unit>	
+			<trans-unit id="form.error.invalid">
+				<source>this value "%1$s" is not allowed (allowed: %2$s)</source>				
+			</trans-unit>
+			<trans-unit id="form.error.too_small">
+				<source>the entered value is too small (minimum value: %1$d)</source>				
+			</trans-unit>
+			<trans-unit id="form.error.too_large">
+				<source>the entered value is too large (maximum value: %1$d)</source>				
+			</trans-unit>
+			<trans-unit id="form.error.too_short">
+				<source>the entered value is too short (minimum length: %1$d characters)</source>				
+			</trans-unit>
+			<trans-unit id="form.error.too_long">
+				<source>the entered value is too long (maximum length: %1$d characters)</source>				
+			</trans-unit>
+			<trans-unit id="form.error.too_few">
+				<source>you need to upload at least %1$d file(s)</source>				
+			</trans-unit>
+			<trans-unit id="form.error.too_many">
+				<source>you are not allowed to upload more than %1$d file(s)</source>				
+			</trans-unit>
+			<trans-unit id="form.error.password_not_equal">
+				<source>the entered passwords are not equal</source>				
+			</trans-unit>
+			<trans-unit id="form.error.invalid_email">
+				<source>the entered email is not valid</source>				
+			</trans-unit>
+						
+			<trans-unit id="widget.paginate.previous">
+				<source>previous</source>				
+			</trans-unit>
+			<trans-unit id="widget.paginate.next">
+				<source>next</source>				
+			</trans-unit>
+			<trans-unit id="widget.paginate.overall" xml:space="preserve">
+				<source>Page %s of %s.</source>				
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

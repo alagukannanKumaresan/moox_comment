@@ -1,0 +1,17 @@
+# Backend module
+###########################
+# cat=basic/folders/101; type=string; label=Alternate partial root for rendering mail templates
+mailRenderingPartialRoot =
+
+# SMTP
+###########################
+# cat=SMTP/enable/300; type=boolean; label=Use this SMTP-settings for mailing
+useSMTP = 0
+# cat=SMTP/string/301; type=options[none=none,ssl=ssl] label=SMTP encrypt mode
+smtpEncrypt = none
+# cat=SMTP/string/302; type=string; label=SMTP server:[server-url:port]
+smtpServer = 
+# cat=SMTP/string/303; type=string; label=SMTP username
+smtpUsername =
+# cat=SMTP/string/304; type=string; label=SMTP password
+smtpPassword =

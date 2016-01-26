@@ -1,0 +1,102 @@
+{namespace n=Tx_MooxNews_ViewHelpers}
+<f:if condition="{configuration.insertAbove}">
+	<div class="paginator-above">
+		<f:render section="paginator" arguments="{pagination: pagination,configuration:configuration}" />
+	</div>
+</f:if>
+
+<f:renderChildren arguments="{contentArguments}" />
+
+<f:if condition="{configuration.insertBelow}">
+	<div class="paginator-below">
+		<f:render section="paginator" arguments="{pagination: pagination,configuration:configuration}" />
+	</div>
+</f:if>
+
+<f:section name="paginator">
+	<f:if condition="{pagination.numberOfPages} > 1">
+		<f:if condition="{settings.list.paginate}">
+			<f:if condition="{pagination.current} > 1">
+				<n:headerData><link rel="prev" href="<f:widget.uri arguments="{currentPage: pagination.previousPage}" />" /></n:headerData>
+			</f:if>
+			<f:if condition="{pagination.nextPage}">
+				<n:headerData><link rel="next" href="<f:widget.uri arguments="{currentPage: pagination.nextPage}" />" /></n:headerData>
+			</f:if>
+		</f:if>
+		
+		<div class="well well-sm well-paginate">
+			<div class="row">
+				<f:comment>
+					<div class="col-sm-4 col-xs-12">
+						<div class="pages-info">
+							<f:translate key="widget.paginate.overall" arguments="{0:pagination.current,1:pagination.numberOfPages}" />
+						</div>
+					</div>
+				</f:comment>
+				<div class="col-md-12">
+					<ul class="pagination">
+						<f:if condition="{pagination.previousPage}">
+							<li class="previous">
+								<f:if condition="{pagination.previousPage} > 1">
+									<f:then>
+										<f:widget.link arguments="{currentPage: pagination.previousPage}">
+											<f:translate key="widget.paginate.previous" />
+										</f:widget.link>
+									</f:then>
+									<f:else>
+										<f:widget.link>
+											<f:translate key="widget.paginate.previous" />
+										</f:widget.link>
+									</f:else>
+								</f:if>
+							</li>
+						</f:if>
+						<f:if condition="{pagination.displayRangeStart} > 1">
+							<li class="first">
+								<f:widget.link>1</f:widget.link>
+							</li>
+						</f:if>
+						<f:if condition="{pagination.hasLessPages}">
+							<li><span>....</span></li>
+						</f:if>
+						<f:for each="{pagination.pages}" as="page">
+							<f:if condition="{page.isCurrent}">
+								<f:then>
+									<li class="active"><span>{page.number} <span class="sr-only">(current)</span></span></li>
+								</f:then>
+								<f:else>
+									<li>
+										<f:if condition="{page.number} > 1">
+											<f:then>
+												<f:widget.link arguments="{currentPage: page.number}">{page.number}</f:widget.link>
+											</f:then>
+											<f:else>
+												<f:widget.link>{page.number}</f:widget.link>
+											</f:else>
+										</f:if>
+									</li>
+								</f:else>
+							</f:if>
+						</f:for>
+						<f:if condition="{pagination.hasMorePages}">
+							<li><span>...</span></li>
+						</f:if>
+						<f:if condition="{pagination.displayRangeEnd} < {pagination.numberOfPages}">
+							<li class="last">
+								<f:widget.link arguments="{currentPage: pagination.numberOfPages}">{pagination.numberOfPages}</f:widget.link>
+							</li>
+						</f:if>
+						<f:if condition="{pagination.nextPage}">
+							<li class="last next">
+								<f:widget.link arguments="{currentPage: pagination.nextPage}">
+									<f:translate key="widget.paginate.next" />
+								</f:widget.link>
+							</li>
+						</f:if>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</f:if>
+</f:section>

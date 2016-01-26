@@ -1,0 +1,51 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<div class="tx-moox-comment-form">
+	<a name="commentform"></a>
+	<div class="panel panel-default">
+		<div class="panel-heading">{f:translate(key: 'pi1.action_list.comment_form_header')}</div>
+		<div class="panel-body">
+
+	
+			<f:form class="form-vertical ajax" action="add" controller="Pi1" noCache="1" enctype="multipart/form-data" method="POST" name="add" id="{v:system.uniqId(prefix: 'tx-moox-comment-form-')}">
+								
+				<f:if condition="{feUser}">
+					<f:else>
+						<div class="form-group has-feedback has-clear">	
+							<label class="control-label" for="title">{f:translate(key: 'form.name')}<f:if condition="{fields.name.config.required}"> <small>*{f:translate(key: 'form.required')}</small></f:if></label>	
+							<f:form.textfield additionalAttributes="{fields.name.config.data}" type="text" name="add[name]" placeholder="{f:translate(key: 'form.name')}" class="form-control{f:if(condition:fields.name.config.validate,then:' validate')}" />
+							<span class="clearer glyphicon glyphicon-remove form-control-feedback form-control-clear" aria-hidden="true"></span>	
+						</div>
+						<div class="form-group has-feedback has-clear">	
+							<label class="control-label" for="title">{f:translate(key: 'form.email')}<f:if condition="{fields.email.config.required}"> <small>*{f:translate(key: 'form.required')}</small></f:if></label>	
+							<f:form.textfield additionalAttributes="{fields.email.config.data}" type="text" name="add[email]" placeholder="{f:translate(key: 'form.email')}" class="form-control{f:if(condition:fields.email.config.validate,then:' validate')}" />
+							<span class="clearer glyphicon glyphicon-remove form-control-feedback form-control-clear" aria-hidden="true"></span>	
+						</div>
+					</f:else>
+				</f:if>
+				
+				<div class="form-group has-feedback has-clear">	
+					<label class="control-label" for="title">{f:translate(key: 'form.title')}<f:if condition="{fields.title.config.required}"> <small>*{f:translate(key: 'form.required')}</small></f:if></label>	
+					<f:form.textfield additionalAttributes="{fields.title.config.data}" type="text" name="add[title]" placeholder="{f:translate(key: 'form.title')}" class="form-control{f:if(condition:fields.title.config.validate,then:' validate')}" />
+					<span class="clearer glyphicon glyphicon-remove form-control-feedback form-control-clear" aria-hidden="true"></span>	
+				</div>		
+				<div class="form-group has-feedback has-clear">
+					<label class="control-label" for="comment">{f:translate(key: 'form.comment')}<f:if condition="{fields.comment.config.required}"> <small>*{f:translate(key: 'form.required')}</small></f:if></label>		
+					<f:form.textarea additionalAttributes="{fields.comment.config.data}" rows="{fields.comment.config.rows}" name="add[comment]" placeholder="{f:translate(key: 'form.comment')}" class="form-control{f:if(condition:fields.comment.config.validate,then:' validate')}" />
+					<span class="clearer glyphicon glyphicon-remove form-control-feedback form-control-clear" aria-hidden="true"></span>	
+				</div>
+				
+				<f:form.button type="submit" class="btn btn-primary btn-block" title="{f:translate(key: 'pi1.action_list.add_comment')}	">		
+					<span class="glyphicon glyphicon-floppy-saved icon-button"></span>
+					{f:translate(key: 'pi1.action_list.add_comment')}							
+				</f:form.button>																	
+				
+				<f:form.textfield type="hidden" name="add[uid_foreign]" value="{configuration.uid_foreign}" />
+				<f:form.textfield type="hidden" name="add[title_foreign]" value="{configuration.title_foreign}" />
+				<f:form.textfield type="hidden" name="add[url_foreign]" value="{uri}" />
+				<f:form.textfield type="hidden" name="add[tablenames]" value="{configuration.tablenames}" />
+				<f:form.textfield type="hidden" name="ajax" value="1" />
+				
+			</f:form>
+		</div>
+	</div>
+</div>

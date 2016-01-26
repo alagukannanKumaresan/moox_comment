@@ -1,0 +1,20 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<!-- Pi2 -->		
+<f:if condition="{settings.cssfiles.pi2}">
+	<f:then>
+		<v:asset.style name="moox-comment-pi2-css" group="moox-comment" path="{settings.cssfiles.pi2}" standalone="TRUE" allowMoveToFooter="FALSE" external="1" />
+	</f:then>
+	<f:else>
+		<v:asset.style name="moox-comment-pi2-css" group="moox-comment" path="{f:uri.resource(path:'Css/pi2.css')}" standalone="TRUE" allowMoveToFooter="FALSE" external="1" />
+	</f:else>
+</f:if>
+<!-- Helper -->
+<v:asset.script name="moox-comment-helper-js" path="{f:uri.resource(path:'JavaScript/helper.js')}" dependencies="jquery" group="moox-comment" standalone="TRUE" allowMoveToFooter="TRUE" external="1" />
+<!-- Pi2 -->
+<v:asset.script name="moox-comment-pi2-js" path="{f:uri.resource(path:'JavaScript/pi2.js')}" dependencies="jquery" group="moox-comment" standalone="TRUE" allowMoveToFooter="TRUE" external="1" />
+<!-- Lang -->
+<v:asset.script name="moox-comment-lang-js" path="{f:uri.resource(path:'JavaScript/lang.js')}" group="moox-comment" standalone="TRUE" allowMoveToFooter="TRUE" fluid="1" />
+<div class="tx-moox-comment tx-moox-comment-pi2" id="{v:system.uniqId(prefix: 'tx-moox-comment-')}">
+	<f:flashMessages renderMode="div" />
+	<f:render section="main" />
+</div>

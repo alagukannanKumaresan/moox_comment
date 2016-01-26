@@ -1,0 +1,20 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace m=DCNGmbH\MooxComment\ViewHelpers}
+<div class="moox-ajax-body" id="{v:system.uniqId(prefix: 'moox-ajax-body-')}">	
+	<m:widget.paginate objects="{items}" as="paginatedItems" configuration="{itemsPerPage: pagination.itemsPerPage, insertAbove: 1, insertBelow: 1, maximumNumberOfLinks: 10, order: order, orderByFields: orderByFields}">
+		<f:if condition="{items->f:count()}>0">
+			<f:for each="{paginatedItems}" as="item" iteration="iteration">
+				<f:render partial="Pi2/List/Item" arguments="{item:item,returnUrl:returnUrl}" />	
+			</f:for>
+		</f:if>
+	</m:widget.paginate>	
+	<f:if condition="{items->f:count()}>0">
+		<f:else>
+			<div class="well well-list center-block">
+				<div class="alert alert-info" role="alert">
+					{f:translate(key: 'pi2.action_list.no_items')}
+				</div>
+			</div>
+		</f:else>
+	</f:if>
+</div>

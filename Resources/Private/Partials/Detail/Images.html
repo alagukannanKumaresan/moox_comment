@@ -1,0 +1,37 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace m=DCNGmbH\MooxComment\ViewHelpers}
+<v:variable.set name="images" value="{m:getValue(item:item,field:field.key)}" />				
+<v:variable.set name="label" value="list.{field.key}" />	
+<f:if condition="{field.config.extkeyUCC}!=''">
+	<f:then>
+		<v:variable.set name="label" value="{f:translate(key: label, extensionName:field.config.extkeyUCC)}" />			
+	</f:then>
+	<f:else>
+		<v:variable.set name="label" value="{f:translate(key: label)}" />
+	</f:else>
+</f:if>
+<f:if condition="{label}==''">
+	<f:if condition="{field.config.extkeyUCC}!=''">
+		<f:then>
+			<v:variable.set name="label" value="{f:translate(key: field.label, extensionName:field.config.extkeyUCC)}" />	
+		</f:then>
+		<f:else>
+			<v:variable.set name="label" value="{f:translate(key: field.label)}" />
+		</f:else>
+	</f:if>		
+</f:if>
+<f:if condition="{label}==''">
+	<v:variable.set name="label" value="{field.key}" />
+</f:if>
+<f:if condition="{images->f:count()}>0">
+	<div class="panel panel-default">
+		<div class="panel-heading">{label}</div>
+		<div class="panel-body lightbox-gallery">
+			<f:for each="{images}" as="image" iteration="iteration">
+				<a class="image-lightbox" rel="lightbox[{field.key}_{iteration.cycle}]" title="{mediaElement.caption}" href="{v:uri.image(src:image.uid,treatIdAsReference:1,width:800)}">
+					<v:media.image src="{image.uid}" alt="{image.title}" treatIdAsReference="1" class="img-responsive img-thumbnail" width="100c" height="100c" />	
+				</a>				
+			</f:for>
+		</div>
+	</div>
+</f:if>

@@ -1,0 +1,209 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:if condition="{configuration.insertAbove}">
+	<div class="paginator-above">
+		<f:render section="paginator" arguments="{pagination: pagination,configuration:configuration,above: 1}" />
+	</div>
+</f:if>
+
+<f:renderChildren arguments="{contentArguments}" />
+
+<f:if condition="{configuration.insertBelow}">
+	<div class="paginator-below">
+		<f:render section="paginator" arguments="{pagination: pagination,configuration:configuration,below: 1}" />
+	</div>
+</f:if>
+
+<f:section name="paginator">
+	<v:variable.set name="show" value="0" />
+	<f:if condition="{pagination.numberOfPages} > 1">
+		<v:variable.set name="show" value="1" />
+	</f:if>
+	<f:if condition="{above}">
+		<f:if condition="{configuration.orderByFields->f:count()}>1">
+			<v:variable.set name="show" value="1" />
+		</f:if>
+	</f:if>
+	<f:if condition="{configuration.addButton}">
+		<f:if condition="{above}">
+			<v:variable.set name="show" value="1" />
+		</f:if>
+	</f:if>
+	<f:if condition="{show}">
+		<f:then>			
+			<div class="well well-sm well-paginate clearfix">
+				<f:if condition="{configuration.addButton}">
+					<f:if condition="{above}">
+						<f:if condition="{configuration.variants->f:count()}>1">
+							<f:then>									
+								<div class="btn-group">
+									<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<span class="glyphicon glyphicon-plus icon-button"></span>
+										<f:if condition="{configuration.addButton.label}!=''">
+											{f:translate(key: configuration.addButton.label)}
+										</f:if>
+										<span class="caret" style="margin-left:5px"></span>
+									</button>
+									<ul class="dropdown-menu">
+										<f:for each="{configuration.variants}" key="variant" as="extensionName" iteration="iteration">
+											<li>
+												<f:link.action action="add" controller="{configuration.addButton.controller}" arguments="{item:item.uid,variant:variant}">
+													<v:variable.set name="label" value="LLL:EXT:{variant}/Resources/Private/Language/locallang.xml:form.variant.{variant}" />
+													{f:translate(key: label, extensionName:extension, default:variant)}
+												</f:link.action>
+											</li>
+										</f:for>
+									 </ul>
+								</div>
+							</f:then>
+							<f:else>
+								<f:if condition="{configuration.variants->f:count()}>0">
+									<f:then>
+										<f:for each="{configuration.variants}" key="variant" as="extensionName" iteration="iteration">
+											<f:link.action action="add" controller="{configuration.addButton.controller}" arguments="{item:item.uid,variant:variant}" class="pull-left">
+												<f:form.button type="button" class="btn btn-primary">
+													<span class="glyphicon glyphicon-plus icon-button"></span>
+													<f:if condition="{configuration.addButton.label}!=''">
+														{f:translate(key: configuration.addButton.label)}
+													</f:if>
+												</f:form.button>
+											</f:link.action>											
+										</f:for>
+									</f:then>
+									<f:else>
+										<f:link.action action="add" controller="{configuration.addButton.controller}" arguments="{item:item.uid}" class="pull-left">
+											<f:form.button type="button" class="btn btn-primary">
+												<span class="glyphicon glyphicon-plus icon-button"></span>
+												<f:if condition="{configuration.addButton.label}!=''">
+													{f:translate(key: configuration.addButton.label)}
+												</f:if>
+											</f:form.button>
+										</f:link.action>
+									</f:else>
+								</f:if>
+							</f:else>
+						</f:if>										
+					</f:if>
+				</f:if>
+				<f:if condition="{pagination.numberOfPages} > 1">
+					<nav class="pull-right">
+						<ul class="pagination">
+							<f:if condition="{pagination.previousPage}">
+								<li class="previous">
+									<f:if condition="{pagination.previousPage} > 1">
+										<f:then>
+											<f:widget.link arguments="{currentPage: pagination.previousPage,order:{by:pagination.order.by,dir:pagination.order.dir}}">
+												<f:translate key="widget.paginate.previous" />
+											</f:widget.link>
+										</f:then>
+										<f:else>
+											<f:widget.link arguments="{order:{by:pagination.order.by,dir:pagination.order.dir}}">
+												<f:translate key="widget.paginate.previous" />
+											</f:widget.link>
+										</f:else>
+									</f:if>
+								</li>
+							</f:if>
+							<f:if condition="{pagination.displayRangeStart} > 1">
+								<li class="first">
+									<f:widget.link arguments="{order:{by:pagination.order.by,dir:pagination.order.dir}}">1</f:widget.link>
+								</li>
+							</f:if>
+							<f:if condition="{pagination.hasLessPages}">
+								<li><span>....</span></li>
+							</f:if>
+							<f:for each="{pagination.pages}" as="page">
+								<f:if condition="{page.isCurrent}">
+									<f:then>
+										<li class="active"><span>{page.number} <span class="sr-only">(current)</span></span></li>
+									</f:then>
+									<f:else>
+										<li>
+											<f:if condition="{page.number} > 1">
+												<f:then>
+													<f:widget.link arguments="{currentPage: page.number,order:{by:pagination.order.by,dir:pagination.order.dir}}">{page.number}</f:widget.link>
+												</f:then>
+												<f:else>
+													<f:widget.link arguments="{order:{by:pagination.order.by,dir:pagination.order.dir}}">{page.number}</f:widget.link>
+												</f:else>
+											</f:if>
+										</li>
+									</f:else>
+								</f:if>
+							</f:for>
+							<f:if condition="{pagination.hasMorePages}">
+								<li><span>...</span></li>
+							</f:if>
+							<f:if condition="{pagination.displayRangeEnd} < {pagination.numberOfPages}">
+								<li class="last">
+									<f:widget.link arguments="{currentPage: pagination.numberOfPages,order:{by:pagination.order.by,dir:pagination.order.dir}}">{pagination.numberOfPages}</f:widget.link>
+								</li>
+							</f:if>
+							<f:if condition="{pagination.nextPage}">
+								<li class="last next">
+									<f:widget.link arguments="{currentPage: pagination.nextPage,order:{by:pagination.order.by,dir:pagination.order.dir}}">
+										<f:translate key="widget.paginate.next" />
+									</f:widget.link>
+								</li>
+							</f:if>
+						</ul>						
+					</nav>
+				</f:if>
+				<f:if condition="{above}">
+					<f:if condition="{configuration.orderByFields->f:count()}>1">					
+						<div class="btn-group pull-right" style="margin-right: 10px">
+							<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="glyphicon glyphicon-sort-by-attributes icon-button"></span>
+								<v:variable.set name="currentOrderField" value="{v:variable.get(name:'configuration.orderByFields.{pagination.order.by}')}" />
+								<v:variable.set name="label" value="LLL:EXT:{currentOrderField.extkey}/Resources/Private/Language/locallang.xml:list.{currentOrderField.key}" />
+								Sortieren nach: {f:translate(key: label, extensionName:currentOrderField.extkeyUCC, default:currentOrderField.key)}
+								<f:if condition="{pagination.order.dir}=='asc'">
+									<f:then>
+										<span class="glyphicon glyphicon-triangle-top" style="margin-left:5px"></span>
+									</f:then>
+									<f:else>
+										<span class="glyphicon glyphicon-triangle-bottom" style="margin-left:5px"></span>
+									</f:else>
+								</f:if>								
+							</button>
+							<ul class="dropdown-menu" style="min-width: 270px">
+								<f:for each="{configuration.orderByFields}" as="orderByField" iteration="iteration">
+									<li>
+										<f:widget.link arguments="{order:{by:orderByField.key,dir:'asc'}}">
+											<v:variable.set name="label" value="LLL:EXT:{orderByField.extkey}/Resources/Private/Language/locallang.xml:list.{orderByField.key}" />
+											{f:translate(key: label, extensionName:orderByField.extkeyUCC, default:orderByField.key)}
+											<span class="glyphicon glyphicon-triangle-top" style="margin-left:5px;float: right"></span>
+										</f:widget.link>									
+									</li>
+									<li>
+										<f:widget.link arguments="{order:{by:orderByField.key,dir:'desc'}}">
+											<v:variable.set name="label" value="LLL:EXT:{orderByField.extkey}/Resources/Private/Language/locallang.xml:list.{orderByField.key}" />
+											{f:translate(key: label, extensionName:orderByField.extkeyUCC, default:orderByField.key)}
+											<span class="glyphicon glyphicon-triangle-bottom" style="margin-left:5px;float: right"></span>
+										</f:widget.link>									
+									</li>
+								</f:for>
+							 </ul>
+						</div>
+					
+					</f:if>
+				</f:if>
+			</div>			
+		</f:then>
+		<f:else>						
+			<f:if condition="{configuration.addButton}">			
+				<f:if condition="{above}">					
+					<div class="well well-sm well-paginate clearfix">
+						<f:link.action action="add" controller="{configuration.addButton.controller}" arguments="{item:item.uid}" class="pull-left">
+							<f:form.button type="button" class="btn btn-primary">
+								<span class="glyphicon glyphicon-plus icon-button"></span>
+								<f:if condition="{configuration.addButton.label}!=''">
+									{f:translate(key: configuration.addButton.label)}
+								</f:if>
+							</f:form.button>
+						</f:link.action>
+					</div>						
+				</f:if>
+			</f:if>
+		</f:else>		
+	</f:if>
+</f:section>

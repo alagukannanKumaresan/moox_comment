@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2014-02-20T12:22:09Z" product-name="moox_comment">
+		<header/>
+		<body>					
+			<trans-unit id="pi1.title">
+				<source>MOOX Comment (Comments)</source>
+				<target>MOOX Comment (Kommentare)</target>
+			</trans-unit>
+			<trans-unit id="pi1.description">
+				<source>Comment on a supported TYPO3-Object.</source>
+				<target>Kommentarfunktion für unterstützte TYPO3-Objekte (z.B. News)</target>
+			</trans-unit>
+			<trans-unit id="pi1.settings">
+				<source>settings</source>
+				<target>Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="pi1.storage_pid">
+				<source>where should new comments be saved?</source>
+				<target>Wo sollen neue Kommentare gespeichert werden?</target>
+			</trans-unit>
+			<trans-unit id="pi1.foreign_type">
+				<source>element type to comment on</source>
+				<target>Was wollen Sie kommentieren?</target>
+			</trans-unit>
+			<trans-unit id="pi1.foreign_type.auto">
+				<source>auto detection</source>
+				<target>Automatisch erkennen</target>
+			</trans-unit>
+			<trans-unit id="pi1.foreign_type.self">
+				<source>this content element</source>
+				<target>Dieses Inhaltselement</target>
+			</trans-unit>
+			<trans-unit id="pi1.foreign_type.tx_mooxnews_domain_model_news">
+				<source>news</source>
+				<target>News</target>
+			</trans-unit>
+			<trans-unit id="pi1.foreign_type.pages">
+				<source>page</source>
+				<target>Seite</target>
+			</trans-unit>
+			<trans-unit id="pi1.foreign_type.tt_content">
+				<source>content element</source>
+				<target>Inhaltselement</target>
+			</trans-unit>
+			<trans-unit id="pi1.fe_groups_admin">
+				<source>Which frontend user groups should moderate the comments?</source>
+				<target>Welche Frontend-Benutzer-Gruppen sollen die Kommentare moderieren können?</target>
+			</trans-unit>
+			<trans-unit id="pi1.only_logged_in_users_can_comment">
+				<source>only logged in users can comment</source>
+				<target>Nur angemeldete Benutzer können Einträge kommentieren</target>
+			</trans-unit>
+			<trans-unit id="pi1.only_logged_in_users_can_see_comments">
+				<source>only logged in users can see comments</source>
+				<target>Nur angemeldete Benutzer können Einträge sehen</target>
+			</trans-unit>
+			<trans-unit id="pi1.users_can_delete_own_comments">
+				<source>users can delete own_comments</source>
+				<target>Angemeldete Benutzer können eigene Einträge löschen</target>
+			</trans-unit>
+			<trans-unit id="pi1.auto_confirm_logged_in_users">
+				<source>auto confirm logged in user comments</source>
+				<target>Kommentare angemeldeter Benutzer automatisch bestätigen</target>
+			</trans-unit>
+			<trans-unit id="pi1.auto_confirm_public_users">
+				<source>auto confirm public user comments</source>
+				<target>Kommentare öffentlicher Benutzer automatisch bestätigen</target>
+			</trans-unit>
+			<trans-unit id="pi1.name_required">
+				<source>name is required</source>
+				<target>Name ist ein Pflichtfeld?</target>
+			</trans-unit>			
+			<trans-unit id="pi1.email_required">
+				<source>email is required</source>
+				<target>Email-Adresse ist ein Pflichtfeld?</target>
+			</trans-unit>
+			<trans-unit id="pi1.title_required">
+				<source>subject is required</source>
+				<target>Betreff ist ein Pflichtfeld?</target>
+			</trans-unit>
+			<trans-unit id="pi1.comment_required">
+				<source>comment is required</source>
+				<target>Kommentar ist ein Pflichtfeld?</target>
+			</trans-unit>
+			<trans-unit id="pi1.new_entry_email_template">
+				<source>email template for notifications of new comment</source>
+				<target>Email-Vorlage für Benachrichtungen über neue Kommentare</target>
+			</trans-unit>
+			<trans-unit id="pi1.new_entry_email_template.none">
+				<source>no template selected</source>
+				<target>Kein Email-Vorlage gewählt (Keine Benachrichtigung)</target>
+			</trans-unit>
+			<trans-unit id="pi1.notifications_sender_name">
+				<source>notifications sender name</source>
+				<target>Absender-Name für Benachrichtigungs-Mails</target>
+			</trans-unit>
+			<trans-unit id="pi1.notifications_sender_address">
+				<source>notifications sender address</source>
+				<target>Absender-Adresse für Benachrichtigungs-Mails</target>
+			</trans-unit>
+			<trans-unit id="pi1.items_per_page">
+				<source>items per page</source>
+				<target>Wie viele Kommentare sollen pro Seite bzw. pro Klick angezeigt werden?</target>
+			</trans-unit>
+			<trans-unit id="pi1.page">
+				<source>page</source>
+				<target>Seite (leer lassen für aktuelle Seite)</target>
+			</trans-unit>
+			<trans-unit id="pi1.content">
+				<source>content</source>
+				<target>Inhalt</target>
+			</trans-unit>
+			<trans-unit id="pi1.contents">
+				<source>content elements</source>
+				<target>Inhaltselemente</target>
+			</trans-unit>
+			<trans-unit id="pi1.content_element">
+				<source>content element</source>
+				<target>Inhaltselement</target>
+			</trans-unit>
+			<trans-unit id="pi1.show_content_element">
+				<source>show selected content element</source>
+				<target>Gewähltes Inhaltselement anzeigen</target>
+			</trans-unit>
+			
+			<trans-unit id="pi2.title">
+				<source>MOOX Comment (Ratings)</source>	
+				<target>MOOX Comment (Bewertungen)</target>
+			</trans-unit>
+			<trans-unit id="pi2.description">
+				<source>Rate a supported TYPO3-Object.</source>	
+				<target>Bewertungsfunktion für unterstützte TYPO3-Objekte (z.B. News)</target>
+			</trans-unit>
+			
+			<trans-unit id="pi3.title">
+				<source>MOOX Comment (Reviews)</source>
+				<target>MOOX Comment (Rezensionen)</target>
+			</trans-unit>
+			<trans-unit id="pi3.description">				
+				<source>Review a supported TYPO3-Object.</source>
+				<target>Rezensionsfunktion für unterstützte TYPO3-Objekte (z.B. News)</target>				
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,28 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:if condition="{user.gender}">
+	<f:then>
+		<v:variable.set name="gender" value="{user.gender}" />
+	</f:then>
+	<f:else>
+		<v:variable.set name="gender" value="0" />
+	</f:else>
+</f:if>
+<v:switch value="{gender}">
+    <v:case case="1" break="TRUE">
+        <v:variable.set name="salutation" value="Sehr geehrter Herr" />
+    </v:case>
+	<v:case case="2" break="TRUE">
+        <v:variable.set name="salutation" value="Sehr geehrte Frau" />
+    </v:case>
+    <v:case case="default">
+         <v:variable.set name="salutation" value="Guten Tag" />
+    </v:case>
+</v:switch>
+<f:if condition="{user.last_name} != ''">
+	<f:then>
+		<h2>{salutation} <f:if condition="{user.title}!=">{user.title} </f:if><f:if condition="{user.first_name}!=">{user.first_name} </f:if>{user.last_name} ({user.username}),</h2>																	
+	</f:then>
+	<f:else>
+		<h2>Sehr geehrter Herr John Doe (john.doe),</h2>
+	</f:else>
+</f:if>
