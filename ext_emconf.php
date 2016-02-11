@@ -11,8 +11,8 @@
  ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = array(
-	'title' => 'MOOX Comment',
-	'description' => 'Kommentare, Bewertungen und Rezensionen für MOOX-Elemente (z.B. moox_news, moox_comment)',
+	'title' => 'MOOX Comments & Rating',
+	'description' => 'Kommentare, Bewertungen und Rezensionen für TYPO3- und MOOX-Elemente (z.B. pages, tt_content, moox_news, moox_shop)',
 	'category' => 'plugin',
 	'author' => 'MOOX Team',
 	'author_email' => 'moox@dcn.de',
@@ -27,15 +27,16 @@ $EM_CONF[$_EXTKEY] = array(
 	'modify_tables' => '',
 	'clearCacheOnLoad' => 1,
 	'lockType' => '',
-	'version' => '0.9.0',
+	'version' => '7.0.1',
 	'constraints' => array(
 		'depends' => array(
-			'typo3' => '6.2.0-6.2.99',
+			'typo3' => '6.2.0-7.9.99',
 			'moox_core' => '0.9.9-1.9.99'
 		),
 		'conflicts' => array(
 		),
 		'suggests' => array(
+			'moox_news' => ''
 		),
 	),
 );

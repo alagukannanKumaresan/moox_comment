@@ -8,7 +8,7 @@ $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['moox_comme
 // tca configuration array
 $tx_mooxcomment_domain_model_review = array(
 	'ctrl' => array(
-		'title'	=> 'Review',
+		'title'	=> $ll.'tx_mooxcomment_domain_model_review',
 		'label' => 'title',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
@@ -266,7 +266,14 @@ $tx_mooxcomment_domain_model_review = array(
 				'checkbox' => 0,
 				'default' => 0,				
 			),			
-		),		
+		),	
+		'moderator' => array(
+			'exclude' => 1,
+			'label' => $ll.'form.moderator',
+			'config' => array(
+				'type' => 'check',
+			),			
+		),
 	),
 );
 

@@ -21,11 +21,11 @@ if (!defined('TYPO3_MODE')) {
 	'DCNGmbH.' . $_EXTKEY,
 	'Pi2',
 	array(
-		'Pi2' => 'list',
+		'Pi2' => 'show,rate,unrate',
 	),
 	// non-cacheable actions
 	array(
-		'Pi2' => 'list',
+		'Pi2' => 'show,rate,unrate',
 	)
 );
 
@@ -34,11 +34,11 @@ if (!defined('TYPO3_MODE')) {
 	'DCNGmbH.' . $_EXTKEY,
 	'Pi3',
 	array(
-		'Pi3' => 'list',
+		'Pi3' => 'list,add,confirm,delete',
 	),
 	// non-cacheable actions
 	array(
-		'Pi3' => 'list',
+		'Pi3' => 'list,add,confirm,delete',
 	)
 );
 ?>

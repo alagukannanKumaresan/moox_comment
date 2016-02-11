@@ -34,5 +34,82 @@ namespace DCNGmbH\MooxComment\Domain\Model;
  */
 class News extends \Tx_MooxNews_Domain_Model_News {
 	
+	/**
+	 * comment active
+	 *
+	 * @var \int
+	 */
+    protected $commentActive;
+	
+	/**
+	 * rating active
+	 *
+	 * @var \int
+	 */
+    protected $ratingActive;
+	
+	/**
+	 * review active
+	 *
+	 * @var \int
+	 */
+    protected $reviewActive;
+	
+	/**
+     * get commentActive
+	 *
+     * @return \integer $commentActive commentActive
+     */
+    public function getCommentActive() {
+       return $this->commentActive;
+    }
+     
+    /**
+     * set commentActive
+	 *
+     * @param integer $commentActive commentActive
+	 * @return void
+     */
+    public function setCommentActive($commentActive) {
+        $this->commentActive = $commentActive;
+    }
+	
+	/**
+     * get ratingActive
+	 *
+     * @return \integer $ratingActive ratingActive
+     */
+    public function getRatingActive() {
+       return $this->ratingActive;
+    }
+     
+    /**
+     * set ratingActive
+	 *
+     * @param integer $ratingActive ratingActive
+	 * @return void
+     */
+    public function setRatingActive($ratingActive) {
+        $this->ratingActive = $ratingActive;
+    }
+	
+	/**
+     * get reviewActive
+	 *
+     * @return \integer $reviewActive reviewActive
+     */
+    public function getReviewActive() {
+       return $this->reviewActive;
+    }
+     
+    /**
+     * set reviewActive
+	 *
+     * @param integer $reviewActive reviewActive
+	 * @return void
+     */
+    public function setReviewActive($reviewActive) {
+        $this->reviewActive = $reviewActive;
+    }
 }
 ?>

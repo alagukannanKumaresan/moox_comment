@@ -1,0 +1,17 @@
+<f:if condition="{items->f:count()}>0">
+	<f:for each="{items}" as="item" iteration="iteration">							
+		<f:render partial="Pi3/List/Item" arguments="{item:item,feUser:feUser,isModerator:isModerator,isConfirmable:isConfirmable,isDeleteable:isDeleteable}" />						
+	</f:for>							
+</f:if>
+<input type="hidden" id="moox-ajax-body-count" value="{count}" />
+<f:if condition="{offset}==0">
+	<f:if condition="{items->f:count()}>0">
+		<f:else>
+			<div class="well well-list center-block">
+				<div class="alert alert-info" role="alert">
+					{f:translate(key: 'pi3.action_list.no_items')}
+				</div>
+			</div>
+		</f:else>
+	</f:if>
+</f:if>

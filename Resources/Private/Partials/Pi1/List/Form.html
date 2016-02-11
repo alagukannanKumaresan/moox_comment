@@ -4,9 +4,8 @@
 	<div class="panel panel-default">
 		<div class="panel-heading">{f:translate(key: 'pi1.action_list.comment_form_header')}</div>
 		<div class="panel-body">
-
-	
-			<f:form class="form-vertical ajax" action="add" controller="Pi1" noCache="1" enctype="multipart/form-data" method="POST" name="add" id="{v:system.uniqId(prefix: 'tx-moox-comment-form-')}">
+			<v:variable.set name="formAction" value="add" />
+			<f:form class="form-vertical ajax" action="{formAction}" controller="Pi1" noCache="1" enctype="multipart/form-data" method="POST" name="{formAction}" id="{v:system.uniqId(prefix: 'tx-moox-comment-form-')}">
 								
 				<f:if condition="{feUser}">
 					<f:else>

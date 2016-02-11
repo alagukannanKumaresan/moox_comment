@@ -2,9 +2,25 @@
 <xliff version="1.0">
 	<file source-language="en" datatype="plaintext" original="messages" date="2014-02-20T12:22:09Z" product-name="moox_comment">
 		<header/>
-		<body>	
+		<body>
+			<trans-unit id="tx_mooxcomment_domain_model_comment">
+				<source>comment</source>				
+			</trans-unit>
+			<trans-unit id="tx_mooxcomment_domain_model_rating">
+				<source>rating</source>				
+			</trans-unit>
+			<trans-unit id="tx_mooxcomment_domain_model_review">
+				<source>review</source>				
+			</trans-unit>
+			
 			<trans-unit id="pi1.action_list">
 				<source>list items</source>				
+			</trans-unit>	
+			<trans-unit id="pi1.action_list.comment_form_header">
+				<source>post comment</source>				
+			</trans-unit>
+			<trans-unit id="pi1.action_list.comments">
+				<source>comments</source>				
 			</trans-unit>
 			<trans-unit id="pi1.action_list.add_comment">
 				<source>send</source>				
@@ -12,14 +28,11 @@
 			<trans-unit id="pi1.action_list.comment_by">
 				<source>comment by</source>				
 			</trans-unit>
-			<trans-unit id="pi1.action_list.comment_form_header">
-				<source>send comment</source>				
-			</trans-unit>
 			<trans-unit id="pi1.action_list.limit.show_all">
 				<source>show all comments</source>				
 			</trans-unit>
 			<trans-unit id="pi1.action_list.limit.show">
-				<source>show %1$s</source>				
+				<source>show %1$s comments</source>				
 			</trans-unit>
 			<trans-unit id="pi1.action_list.filter.show_all">
 				<source>all comments</source>				
@@ -49,7 +62,7 @@
 				<source>confirm comment</source>				
 			</trans-unit>
 			<trans-unit id="pi1.action_list.confirm.modal.body">
-				<source><![CDATA[Do you really want to confirm the comment <strong>%2$s</strong> by  <strong>%1$s</strong>?]]></source>				
+				<source><![CDATA[Do you really want to confirm the comment <strong>%2$s</strong> by <strong>%1$s</strong>?]]></source>				
 			</trans-unit>
 			<trans-unit id="pi1.action_list.confirm.modal.button">
 				<source>really confirm comment</source>				
@@ -64,7 +77,7 @@
 				<source>delete comment</source>				
 			</trans-unit>
 			<trans-unit id="pi1.action_list.delete.modal.body">
-				<source><![CDATA[Do you really want to delete the comment <strong>%2$s</strong> by  <strong>%1$s</strong>?]]></source>				
+				<source><![CDATA[Do you really want to delete the comment <strong>%2$s</strong> by <strong>%1$s</strong>?]]></source>				
 			</trans-unit>
 			<trans-unit id="pi1.action_list.delete.modal.button">
 				<source>really delete comment</source>				
@@ -76,11 +89,11 @@
 				<source>show more</source>				
 			</trans-unit>
 			<trans-unit id="pi1.action_list.no_items">
-				<source>no comments found</source>				
+				<source>no comments found</source>					
 			</trans-unit>
 			<trans-unit id="pi1.action_list.error.no_access">
 				<source>no access</source>				
-			</trans-unit>
+			</trans-unit>	
 			<trans-unit id="pi1.action_add">
 				<source>add comment</source>				
 			</trans-unit>
@@ -119,11 +132,207 @@
 			</trans-unit>
 			<trans-unit id="pi1.action_visibility.error.no_access">
 				<source>no access</source>				
-			</trans-unit>
-			
+			</trans-unit>			
 			<trans-unit id="pi1.action_all.add">
 				<source>add</source>				
+			</trans-unit>		
+			
+			<trans-unit id="pi2.action_list">
+				<source>list items</source>				
+			</trans-unit>				
+			<trans-unit id="pi2.action_list.ratings">
+				<source>ratings</source>				
+			</trans-unit>
+			<trans-unit id="pi2.action_list.add_rating">
+				<source>rate</source>				
+			</trans-unit>
+			<trans-unit id="pi2.action_list.rating_by">
+				<source>rating by</source>				
+			</trans-unit>			
+			<trans-unit id="pi2.action_list.own_rating">
+				<source>own rating</source>				
+			</trans-unit>
+			<trans-unit id="pi2.action_list.confirm">
+				<source>confirm</source>				
+			</trans-unit>
+			<trans-unit id="pi2.action_list.your_rating">
+				<source>your rating</source>				
+			</trans-unit>			
+			<trans-unit id="pi2.action_list.unrate">
+				<source>delete rating</source>				
+			</trans-unit>
+			<trans-unit id="pi2.action_list.unrate.modal.title">
+				<source>delete rating</source>				
+			</trans-unit>
+			<trans-unit id="pi2.action_list.unrate.modal.body">
+				<source><![CDATA[Do you really want to delete your rating?]]></source>				
+			</trans-unit>
+			<trans-unit id="pi2.action_list.unrate.modal.button">
+				<source>really delete rating</source>				
+			</trans-unit>
+			<trans-unit id="pi2.action_list.unrate.modal.close">
+				<source>abort</source>				
+			</trans-unit>			
+			<trans-unit id="pi2.action_list.no_items">
+				<source>no ratings found</source>						
+			</trans-unit>
+			<trans-unit id="pi2.action_list.error.no_access">
+				<source>no access</source>				
+			</trans-unit>	
+			<trans-unit id="pi2.action_rate">
+				<source>add rating</source>				
+			</trans-unit>
+			<trans-unit id="pi2.action_rate.success">
+				<source>your rating was added successfully</source>				
+			</trans-unit>			
+			<trans-unit id="pi2.action_unrate">
+				<source>delete rating</source>				
+			</trans-unit>
+			<trans-unit id="pi2.action_unrate.tooltip">
+				<source>delete rating</source>				
+			</trans-unit>
+			<trans-unit id="pi2.action_unrate.success">
+				<source>rating deleted successfully</source>				
+			</trans-unit>
+			<trans-unit id="pi2.action_unrate.error.no_access">
+				<source>no access</source>				
 			</trans-unit>						
+			<trans-unit id="pi2.action_all.add">
+				<source>add</source>				
+			</trans-unit>
+			
+			<trans-unit id="pi3.action_list">
+				<source>list items</source>				
+			</trans-unit>	
+			<trans-unit id="pi3.action_list.review_form_header">
+				<source>post comment</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.reviews">
+				<source>reviews</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.add_review">
+				<source>send</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.review_by">
+				<source>review by</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.limit.show_all">
+				<source>show all reviews</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.limit.show">
+				<source>show %1$s reviews</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.filter.show_all">
+				<source>all reviews</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.filter.show_own">
+				<source>own reviews only</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.order.newest_first">
+				<source>newest first</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.order.oldest_first">
+				<source>oldest first</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.order.best_ratings_first">
+				<source>best ratings first</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.order.worst_ratings_first">
+				<source>worst ratings first</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.order.oldest_first">
+				<source>oldest first</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.public_user">
+				<source>public user</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.registered_user">
+				<source>registered user</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.own_review">
+				<source>own review</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.confirm">
+				<source>confirm</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.confirm.modal.title">
+				<source>confirm review</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.confirm.modal.body">
+				<source><![CDATA[Do you really want to confirm the review <strong>%2$s</strong> by  <strong>%1$s</strong>?]]></source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.confirm.modal.button">
+				<source>really confirm review</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.confirm.modal.close">
+				<source>abort</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.delete">
+				<source>delete</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.delete.modal.title">
+				<source>delete review</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.delete.modal.body">
+				<source><![CDATA[Do you really want to delete the review <strong>%2$s</strong> by <strong>%1$s</strong>?]]></source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.delete.modal.button">
+				<source>really delete review</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.delete.modal.close">
+				<source>abort</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.append">
+				<source>show more</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.no_items">
+				<source>no reviews found</source>						
+			</trans-unit>
+			<trans-unit id="pi3.action_list.error.no_access">
+				<source>no access</source>				
+			</trans-unit>	
+			<trans-unit id="pi3.action_add">
+				<source>add review</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_add.success">
+				<source>your review was added successfully</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_add.success_moderated">
+				<source>review added successfully</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_confirm">
+				<source>confirm review</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_confirm.success">
+				<source>review confirmed successfully</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_delete">
+				<source>delete review</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_delete.tooltip">
+				<source>delete review</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_delete.success">
+				<source>review deleted successfully</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_delete.error.no_access">
+				<source>no access</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_visibility">
+				<source>change visibility of review</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_visibility.tooltip">
+				<source>change visibility of review</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_visibility.success">
+				<source>review visibility changed successfully</source>				
+			</trans-unit>
+			<trans-unit id="pi3.action_visibility.error.no_access">
+				<source>no access</source>				
+			</trans-unit>			
+			<trans-unit id="pi3.action_all.add">
+				<source>add</source>				
+			</trans-unit>
 			
 			<trans-unit id="form.hidden">
 				<source>hidden</source>				
@@ -148,7 +357,7 @@
 			</trans-unit>
 			<trans-unit id="form.email">
 				<source>email</source>				
-			</trans-unit>		
+			</trans-unit>
 			<trans-unit id="form.email.error.invalid">
 				<source>the entered email address is invalid</source>				
 			</trans-unit>
@@ -158,8 +367,23 @@
 			<trans-unit id="form.rating">
 				<source>rating</source>				
 			</trans-unit>
+			<trans-unit id="form.rating.none">
+				<source>no rating</source>				
+			</trans-unit>
+			<trans-unit id="form.rating.like">
+				<source>like</source>				
+			</trans-unit>
+			<trans-unit id="form.rating.dislike">
+				<source>dislike</source>				
+			</trans-unit>
+			<trans-unit id="form.review">
+				<source>review</source>				
+			</trans-unit>
 			<trans-unit id="form.confirmed">
 				<source>confirmed</source>				
+			</trans-unit>	
+			<trans-unit id="form.moderator">
+				<source>moderator entry</source>				
 			</trans-unit>
 			<trans-unit id="form.template">
 				<source>template</source>				
@@ -176,7 +400,16 @@
 			<trans-unit id="form.template.template">
 				<source>HTML/FLUID-Template</source>				
 			</trans-unit>
-			
+			<trans-unit id="form.news.comment_active">
+				<source>comments allowed</source>				
+			</trans-unit>
+			<trans-unit id="form.news.rating_active">
+				<source>ratings allowed</source>				
+			</trans-unit>
+			<trans-unit id="form.news.review_active">
+				<source>reviews allowed</source>				
+			</trans-unit>
+						
 			<trans-unit id="form.activated">
 				<source>activated</source>				
 			</trans-unit>

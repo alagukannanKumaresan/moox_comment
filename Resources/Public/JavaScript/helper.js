@@ -26,14 +26,20 @@ function mooxCommentInitClearButtons(){
 }
 
 function mooxCommentInitClientValidation(){	
-	$('.tx-moox-comment form.client-validation').on('submit', function() {        
+	$('.tx-moox-comment form.client-validation,.tx-moox-comment form.ajax').on('submit', function() {        
 		return mooxCommentValidate($(this));				
     });
 }
 
 function mooxCommentClearErrors(plugin){
-	$('#'+plugin+' form.client-validation').find("input.validate,select.validate").each(function(){
-		$(this).parents('.form-group').removeClass('has-error');
+	$('#'+plugin+' form.client-validation,#'+plugin+' form.ajax').find("input.validate,textarea.validate,select.validate,div.radios.validate").each(function(){
+		tagname = $(this).prop("tagName").toLowerCase();
+		if(tagname=="div" && $(this).hasClass("radios")){
+			$(this).removeClass('has-error');				
+		} else {
+			$(this).parents('.form-group').removeClass('has-error');
+		}
+		
 	});
 	if ( $("#"+plugin+" .typo3-messages").length ) {
 		$("#"+plugin+" .typo3-messages").remove();
@@ -72,13 +78,20 @@ function mooxCommentValidate(form){
 		
 		mooxCommentClearErrors(plugin);
 		
-		$('#'+plugin+' form.client-validation,#'+plugin+' form.ajax').find("input.validate,textarea.validate,select.validate").each(function(){
+		$('#'+plugin+' form.client-validation,#'+plugin+' form.ajax').find("input.validate,textarea.validate,select.validate,div.radios.validate").each(function(){
 			
 			error = false;
 			
 			var value = $(this).val();
-			name = $(this).attr("name");
-			type = $(this).attr("type");
+			tagname = $(this).prop("tagName").toLowerCase();
+			
+			if(tagname=="div" && $(this).hasClass("radios")){
+				name = $(this).data("name");
+				type = "radios";				
+			} else {
+				type = $(this).attr("type");
+				name = $(this).attr("name");
+			}
 			id = $(this).data("id");
 			label = $(this).data("label");
 			required = $(this).data("required");
@@ -91,7 +104,6 @@ function mooxCommentValidate(form){
 			accept = $(this).attr("accept");
 			limitlow = $(this).data("limit-low");
 			limithigh = $(this).data("limit-high");
-			tagname = $(this).prop("tagName").toLowerCase();
 			
 			if(type=="checkbox"){
 				value = '';
@@ -102,6 +114,22 @@ function mooxCommentValidate(form){
 						value = $(this).val();
 					}
 				});					
+			}
+			
+			if(type=="radios"){
+				if($('#'+plugin+' input[name="'+name+'"]:checked').length>0){
+					value = $('#'+plugin+' input[name="'+name+'"]:checked').first().val();
+				} else {
+					value = '';
+				}
+			}
+			
+			if(type=="radio"){
+				if($('#'+plugin+' input[name="'+name+'"]:checked').length>0){
+					value = $('#'+plugin+' input[name="'+name+'"]:checked').first().val();
+				} else {
+					value = '';
+				}
 			}
 			
 			if((tagname!='select' && value!='' ) || (tagname=='select' && value!='' && value!='0')){
@@ -219,7 +247,11 @@ function mooxCommentValidate(form){
 				}
 			}
 			if(error){
-				$(this).parents('.form-group').addClass('has-error');
+				if(type=="radios"){					
+					$(this).addClass('has-error');
+				} else {
+					$(this).parents('.form-group').addClass('has-error');
+				}
 				validated = false;
 			}
 			

@@ -1,0 +1,50 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<div class="tx-moox-comment-form">
+	<a name="ratingform"></a>
+	<f:if condition="{isRateable}">
+		<v:variable.set name="formAction" value="rate" />
+		<f:form class="form-vertical ajax" action="{formAction}" controller="Pi2" noCache="1" enctype="multipart/form-data" method="POST" name="{formAction}" id="{v:system.uniqId(prefix: 'tx-moox-comment-form-')}">							
+			<v:tag name="div" additionalAttributes="{fields.rating.config.data}" class="form-group radios {f:if(condition:fields.rating.config.validate,then:'validate ')}has-feedback has-clear">
+				<label class="control-label" for="rating">{f:translate(key: 'form.rating')}<f:if condition="{fields.rating.config.required}"> <small>*{f:translate(key: 'form.required')}</small></f:if></label>	
+				<f:if condition="{settings.ratingMode}=='like_dislike'">
+					<f:render partial="Ratings/LikeDislike" arguments="{fields:fields,action:formAction}" />	
+				</f:if>
+				<f:if condition="{settings.ratingMode}=='stars'">
+					<f:render partial="Ratings/Stars" arguments="{fields:fields,action:formAction}" />	
+				</f:if>
+			</v:tag>
+			
+			<f:form.button type="submit" class="btn btn-primary btn-block" title="{f:translate(key: 'pi2.action_list.add_rating')}	">		
+				<span class="glyphicon glyphicon-floppy-saved icon-button"></span>
+				{f:translate(key: 'pi2.action_list.add_rating')}						
+			</f:form.button>																	
+			
+			<f:form.textfield type="hidden" name="rate[uid_foreign]" value="{configuration.uid_foreign}" />
+			<f:form.textfield type="hidden" name="rate[title_foreign]" value="{configuration.title_foreign}" />
+			<f:form.textfield type="hidden" name="rate[url_foreign]" value="{uri}" />
+			<f:form.textfield type="hidden" name="rate[tablenames]" value="{configuration.tablenames}" />
+			<f:form.textfield type="hidden" name="ajax" value="1" />
+		
+		</f:form>
+	</f:if>
+	<f:if condition="{isUnrateable}">			
+		<div class="well well-sm">
+			{f:translate(key: 'pi2.action_list.your_rating')}:
+			<f:if condition="{settings.ratingMode}=='like_dislike'">
+				<f:if condition="{rating.rating}=='1'">
+					{f:translate(key: 'form.rating.like')}			
+				</f:if>	
+				<f:if condition="{rating.rating}=='-1'">
+					{f:translate(key: 'form.rating.dislike')}			
+				</f:if>
+			</f:if>
+			<f:if condition="{settings.ratingMode}=='stars'">
+				{rating.rating}
+			</f:if>
+		</div>		
+		<a class="btn btn-primary btn-block btn-modal" href="{f:uri.action(action:'unrate',noCache:1,pageType:985492,arguments:{uid:rating.uid,hash:rating.hash})}" id="moox-ajax-unrate-{rating.uid}" title="{f:translate(key: 'pi2.action_list.unrate')}" data-css="btn-unrate ajax" data-title="{f:translate(key: 'pi2.action_list.unrate.modal.title')}" data-body="{f:translate(key: 'pi2.action_list.unrate.modal.body')}" data-button="{f:translate(key: 'pi2.action_list.unrate.modal.button')}" data-close="{f:translate(key: 'pi2.action_list.unrate.modal.close')}">			
+			<span class="glyphicon glyphicon-remove icon-button" aria-hidden="true"></span>
+			{f:translate(key: 'pi2.action_list.unrate')}
+		</a>	
+	</f:if>
+</div>

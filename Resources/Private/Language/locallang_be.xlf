@@ -12,6 +12,9 @@
 			<trans-unit id="pi1.settings">
 				<source>settings</source>				
 			</trans-unit>
+			<trans-unit id="pi1.storage_pid">
+				<source>where should new comments be saved?</source>				
+			</trans-unit>
 			<trans-unit id="pi1.foreign_type">
 				<source>element type to comment on</source>				
 			</trans-unit>
@@ -30,9 +33,6 @@
 			<trans-unit id="pi1.foreign_type.tt_content">
 				<source>content element</source>				
 			</trans-unit>
-			<trans-unit id="pi1.storage_pid">
-				<source>where should new comments be saved?</source>				
-			</trans-unit>
 			<trans-unit id="pi1.fe_groups_admin">
 				<source>Which frontend user groups should moderate the comments?</source>				
 			</trans-unit>
@@ -46,7 +46,7 @@
 				<source>users can delete own_comments</source>				
 			</trans-unit>
 			<trans-unit id="pi1.auto_confirm_logged_in_users">
-				<source>auto confirm logged in user comments</source>				
+				<source>auto confirm logged in user comments</source>			
 			</trans-unit>
 			<trans-unit id="pi1.auto_confirm_public_users">
 				<source>auto confirm public user comments</source>				
@@ -73,10 +73,10 @@
 				<source>notifications sender name</source>				
 			</trans-unit>
 			<trans-unit id="pi1.notifications_sender_address">
-				<source>notifications sender address</source>			
+				<source>notifications sender address</source>				
 			</trans-unit>
-			<trans-unit id="pi1.items_per_page">				
-				<target>Wie viele Kommentare sollen pro Seite bzw. pro Klick angezeigt werden?</target>
+			<trans-unit id="pi1.items_per_page">
+				<source>items per page</source>				
 			</trans-unit>
 			<trans-unit id="pi1.page">
 				<source>page</source>				
@@ -95,17 +95,224 @@
 			</trans-unit>
 			
 			<trans-unit id="pi2.title">
-				<source>MOOX Comment (Ratings)</source>			
+				<source>MOOX Comment (Ratings)</source>					
 			</trans-unit>
 			<trans-unit id="pi2.description">
-				<source>Rate a supported TYPO3-Object.</source>				
+				<source>Rate a supported TYPO3-Object.</source>					
+			</trans-unit>
+			<trans-unit id="pi2.settings">
+				<source>settings</source>				
+			</trans-unit>
+			<trans-unit id="pi2.storage_pid">
+				<source>where should new ratings be saved?</source>				
+			</trans-unit>
+			<trans-unit id="pi2.foreign_type">
+				<source>element type to rate</source>				
+			</trans-unit>
+			<trans-unit id="pi2.foreign_type.auto">
+				<source>auto detection</source>				
+			</trans-unit>
+			<trans-unit id="pi2.foreign_type.self">
+				<source>this content element</source>				
+			</trans-unit>
+			<trans-unit id="pi2.foreign_type.tx_mooxnews_domain_model_news">
+				<source>news</source>				
+			</trans-unit>
+			<trans-unit id="pi2.foreign_type.pages">
+				<source>page</source>				
+			</trans-unit>
+			<trans-unit id="pi2.foreign_type.tt_content">
+				<source>content element</source>				
+			</trans-unit>
+			<trans-unit id="pi2.rating_mode">
+				<source>rating mode</source>				
+			</trans-unit>
+			<trans-unit id="pi2.rating_mode.like_dislike">
+				<source>like or dislike</source>				
+			</trans-unit>
+			<trans-unit id="pi2.rating_mode.stars">
+				<source>star rating</source>				
+			</trans-unit>
+			<trans-unit id="pi2.stars">
+				<source>how many stars should be used for rating</source>				
+			</trans-unit>
+			<trans-unit id="pi2.stars.5">
+				<source>5 stars</source>				
+			</trans-unit>
+			<trans-unit id="pi2.stars.6">
+				<source>6 stars</source>				
+			</trans-unit>
+			<trans-unit id="pi2.stars.7">
+				<source>7 stars</source>				
+			</trans-unit>
+			<trans-unit id="pi2.stars.8">
+				<source>8 stars</source>				
+			</trans-unit>
+			<trans-unit id="pi2.stars.9">
+				<source>9 stars</source>				
+			</trans-unit>
+			<trans-unit id="pi2.stars.10">
+				<source>10 stars</source>				
+			</trans-unit>
+			<trans-unit id="pi2.allow_half_stars">
+				<source>allow half stars</source>				
+			</trans-unit>
+			<trans-unit id="pi2.only_logged_in_users_can_rate">
+				<source>only logged in users can rate</source>				
+			</trans-unit>
+			<trans-unit id="pi2.only_logged_in_users_can_see_ratings">
+				<source>only logged in users can see ratings</source>				
+			</trans-unit>
+			<trans-unit id="pi2.users_can_delete_or_rerate_own_ratings">
+				<source>users can delete or rerate own ratings</source>				
+			</trans-unit>			
+			<trans-unit id="pi2.allow_only_one_rating_per_user_if_possible">
+				<source>allow only one rating per user if possible</source>				
+			</trans-unit>									
+			<trans-unit id="pi2.page">
+				<source>page</source>				
+			</trans-unit>
+			<trans-unit id="pi2.content">
+				<source>content</source>				
+			</trans-unit>
+			<trans-unit id="pi2.contents">
+				<source>content elements</source>				
+			</trans-unit>
+			<trans-unit id="pi2.content_element">
+				<source>content element</source>				
+			</trans-unit>
+			<trans-unit id="pi2.show_content_element">
+				<source>show selected content element</source>				
 			</trans-unit>
 			
 			<trans-unit id="pi3.title">
-				<source>MOOX Comment (Reviews)</source>			
+				<source>MOOX Comment (Reviews)</source>				
 			</trans-unit>
-			<trans-unit id="pi3.description">
-				<source>Review a supported TYPO3-Object.</source>				
+			<trans-unit id="pi3.description">				
+				<source>Review a supported TYPO3-Object.</source>						
+			</trans-unit>
+			<trans-unit id="pi3.settings">
+				<source>settings</source>				
+			</trans-unit>
+			<trans-unit id="pi3.storage_pid">
+				<source>where should new reviews be saved?</source>				
+			</trans-unit>
+			<trans-unit id="pi3.foreign_type">
+				<source>element type to review</source>				
+			</trans-unit>
+			<trans-unit id="pi3.foreign_type.auto">
+				<source>auto detection</source>				
+			</trans-unit>
+			<trans-unit id="pi3.foreign_type.self">
+				<source>this content element</source>				
+			</trans-unit>
+			<trans-unit id="pi3.foreign_type.tx_mooxnews_domain_model_news">
+				<source>news</source>				
+			</trans-unit>
+			<trans-unit id="pi3.foreign_type.pages">
+				<source>page</source>				
+			</trans-unit>
+			<trans-unit id="pi3.foreign_type.tt_content">
+				<source>content element</source>				
+			</trans-unit>
+			<trans-unit id="pi3.rating_mode">
+				<source>rating mode</source>				
+			</trans-unit>
+			<trans-unit id="pi3.rating_mode.like_dislike">
+				<source>like or dislike</source>				
+			</trans-unit>
+			<trans-unit id="pi3.rating_mode.stars">
+				<source>star rating</source>				
+			</trans-unit>
+			<trans-unit id="pi3.stars">
+				<source>how many stars should be used for rating</source>				
+			</trans-unit>
+			<trans-unit id="pi3.stars.5">
+				<source>5 stars</source>				
+			</trans-unit>
+			<trans-unit id="pi3.stars.6">
+				<source>6 stars</source>				
+			</trans-unit>
+			<trans-unit id="pi3.stars.7">
+				<source>7 stars</source>				
+			</trans-unit>
+			<trans-unit id="pi3.stars.8">
+				<source>8 stars</source>				
+			</trans-unit>
+			<trans-unit id="pi3.stars.9">
+				<source>9 stars</source>				
+			</trans-unit>
+			<trans-unit id="pi3.stars.10">
+				<source>10 stars</source>				
+			</trans-unit>
+			<trans-unit id="pi3.allow_half_stars">
+				<source>allow half stars</source>				
+			</trans-unit>
+			<trans-unit id="pi3.fe_groups_admin">
+				<source>Which frontend user groups should moderate the reviews?</source>				
+			</trans-unit>
+			<trans-unit id="pi3.only_logged_in_users_can_review">
+				<source>only logged in users can review</source>				
+			</trans-unit>
+			<trans-unit id="pi3.only_logged_in_users_can_see_reviews">
+				<source>only logged in users can see reviews</source>				
+			</trans-unit>
+			<trans-unit id="pi3.users_can_delete_own_reviews">
+				<source>users can delete own_comments</source>				
+			</trans-unit>
+			<trans-unit id="pi3.auto_confirm_logged_in_users">
+				<source>auto confirm logged in user reviews</source>				
+			</trans-unit>
+			<trans-unit id="pi3.auto_confirm_public_users">
+				<source>auto confirm public user reviews</source>				
+			</trans-unit>
+			<trans-unit id="pi3.allow_only_one_review_per_user_if_possible">
+				<source>allow only one review per user if possible</source>				
+			</trans-unit>			
+			<trans-unit id="pi3.name_required">
+				<source>name is required</source>				
+			</trans-unit>			
+			<trans-unit id="pi3.email_required">
+				<source>email is required</source>				
+			</trans-unit>
+			<trans-unit id="pi3.title_required">
+				<source>subject is required</source>				
+			</trans-unit>
+			<trans-unit id="pi3.comment_required">
+				<source>comment is required</source>				
+			</trans-unit>
+			<trans-unit id="pi3.rating_required">
+				<source>rating is required</source>				
+			</trans-unit>
+			<trans-unit id="pi3.new_entry_email_template">
+				<source>email template for notifications of new review</source>				
+			</trans-unit>
+			<trans-unit id="pi3.new_entry_email_template.none">
+				<source>no template selected</source>				
+			</trans-unit>
+			<trans-unit id="pi3.notifications_sender_name">
+				<source>notifications sender name</source>				
+			</trans-unit>
+			<trans-unit id="pi3.notifications_sender_address">
+				<source>notifications sender address</source>				
+			</trans-unit>
+			<trans-unit id="pi3.items_per_page">
+				<source>items per page</source>				
+			</trans-unit>
+			<trans-unit id="pi3.page">
+				<source>page</source>				
+			</trans-unit>
+			<trans-unit id="pi3.content">
+				<source>content</source>				
+			</trans-unit>
+			<trans-unit id="pi3.contents">
+				<source>content elements</source>				
+			</trans-unit>
+			<trans-unit id="pi3.content_element">
+				<source>content element</source>				
+			</trans-unit>
+			<trans-unit id="pi3.show_content_element">
+				<source>show selected content element</source>				
 			</trans-unit>
 		</body>
 	</file>

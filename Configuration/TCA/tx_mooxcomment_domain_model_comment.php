@@ -8,7 +8,7 @@ $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['moox_comme
 // tca configuration array
 $tx_mooxcomment_domain_model_comment = array(
 	'ctrl' => array(
-		'title'	=> 'Review',
+		'title'	=> $ll.'tx_mooxcomment_domain_model_comment',
 		'label' => 'title',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
@@ -67,8 +67,8 @@ $tx_mooxcomment_domain_model_comment = array(
 				'items' => array(
 					array('', 0),
 				),
-				'foreign_table' => 'tx_mooxcomment_domain_model_review',
-				'foreign_table_where' => 'AND tx_mooxcomment_domain_model_review.pid=###CURRENT_PID### AND tx_mooxcomment_domain_model_review.sys_language_uid IN (-1,0)',
+				'foreign_table' => 'tx_mooxcomment_domain_model_comment',
+				'foreign_table_where' => 'AND tx_mooxcomment_domain_model_comment.pid=###CURRENT_PID### AND tx_mooxcomment_domain_model_comment.sys_language_uid IN (-1,0)',
 			),
 		),
 		'l10n_diffsource' => array(
@@ -254,7 +254,14 @@ $tx_mooxcomment_domain_model_comment = array(
 				'checkbox' => 0,
 				'default' => 0,				
 			),			
-		),		
+		),
+		'moderator' => array(
+			'exclude' => 1,
+			'label' => $ll.'form.moderator',
+			'config' => array(
+				'type' => 'check',
+			),			
+		),
 	),
 );
 

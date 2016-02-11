@@ -1,0 +1,22 @@
+<f:if condition="{fields.rating.config.required}">
+	<f:else>
+		<div class="checkbox">
+			<label>
+				<f:form.radio additionalAttributes="{fields.rating.config.data}" name="{action}[rating]" value="" />
+				{f:translate(key: 'form.rating.none')}
+			</label>
+		</div>
+	</f:else>
+</f:if>
+<div class="checkbox">
+	<label>
+		<f:form.radio additionalAttributes="{fields.rating.config.data}" name="{action}[rating]" value="1" />
+		{f:translate(key: 'form.rating.like')}
+	</label>
+</div>
+<div class="checkbox">
+	<label>
+		<f:form.radio additionalAttributes="{fields.rating.config.data}" name="{action}[rating]" value="-1" />
+		{f:translate(key: 'form.rating.dislike')}
+	</label>
+</div>

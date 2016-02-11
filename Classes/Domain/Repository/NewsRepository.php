@@ -32,7 +32,9 @@ namespace DCNGmbH\MooxComment\Domain\Repository;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class NewsRepository extends \Tx_MooxNews_Domain_Repository_NewsRepository {
-		
+if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('moox_news') && class_exists('Tx_MooxNews_Domain_Repository_NewsRepository')) {
+	class NewsRepository extends \Tx_MooxNews_Domain_Repository_NewsRepository {
+			
+	}
 }
 ?>

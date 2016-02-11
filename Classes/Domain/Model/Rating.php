@@ -36,7 +36,7 @@ use \TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Review extends AbstractEntity {
+class Rating extends AbstractEntity {
 	
 	/**
 	 * uid
@@ -441,7 +441,7 @@ class Review extends AbstractEntity {
 	/**
      * get confirmed
 	 *
-     * @return \integer $confirmed paid
+     * @return \integer $confirmed
      */
     public function getConfirmed() {
        return $this->confirmed;
@@ -460,10 +460,10 @@ class Review extends AbstractEntity {
 	/**
      * get hash
 	 *
-     * @return \integer $confirmed paid
+     * @return \string $hash
      */
     public function getHash() {
-       return md5($this->uid."nNUHEFEXuOyJgvbi".$this->crdate);
+       return md5($this->uid.$GLOBALS['TYPO3_CONF_VARS']['SYS']['encryptionKey'].$this->crdate);
     }
 }
 ?>

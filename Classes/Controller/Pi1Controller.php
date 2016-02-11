@@ -318,7 +318,7 @@ class Pi1Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 				"tablenames" => $filter['tablenames'] 
 			);
 		} else {
-			$configuration = $this->helperService->getConfiguration("auto");
+			$configuration = $this->helperService->getConfiguration("comment");
 		}
 		
 		// check and get logged in user
@@ -603,7 +603,7 @@ class Pi1Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 			}
 		}
 						
-		// unser register object
+		// unset register object
 		unset($add);
 		
 		// end request		

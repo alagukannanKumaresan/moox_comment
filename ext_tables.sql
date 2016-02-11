@@ -17,6 +17,7 @@ CREATE TABLE tx_mooxcomment_domain_model_comment (
 	email varchar(255) DEFAULT '' NOT NULL,
 	comment text NOT NULL,	
 	confirmed int(11) unsigned DEFAULT '0' NOT NULL,
+	moderator int(11) unsigned DEFAULT '0' NOT NULL,
 	
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -62,7 +63,7 @@ CREATE TABLE tx_mooxcomment_domain_model_rating (
 	fe_user int(11) unsigned DEFAULT '0' NOT NULL,
 	title varchar(255) DEFAULT '' NOT NULL,
 	rating varchar(50) DEFAULT NULL,	
-	confirmed int(11) unsigned DEFAULT '0' NOT NULL,
+	confirmed int(11) unsigned DEFAULT '0' NOT NULL,	
 	
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -113,6 +114,7 @@ CREATE TABLE tx_mooxcomment_domain_model_review (
 	comment text NOT NULL,	
 	rating varchar(50) DEFAULT NULL,
 	confirmed int(11) unsigned DEFAULT '0' NOT NULL,
+	moderator tinyint(4) unsigned DEFAULT '0' NOT NULL,
 	
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -183,4 +185,13 @@ CREATE TABLE tx_mooxcomment_domain_model_template (
 	KEY t3ver_oid (t3ver_oid,t3ver_wsid),
 	KEY language (l10n_parent,sys_language_uid)
 
+);
+
+#
+# Extend table structure of table 'tx_mooxnews_domain_model_news'
+#
+CREATE TABLE tx_mooxnews_domain_model_news (
+	comment_active tinyint(4) DEFAULT '1' NOT NULL,
+	rating_active tinyint(4) DEFAULT '1' NOT NULL,
+	review_active tinyint(4) DEFAULT '1' NOT NULL,
 );

@@ -153,7 +153,9 @@ class FlexFormHelper {
 		}
 		$config['items'][] = array($GLOBALS['LANG']->sL(self::LLPATH.'pi1.foreign_type.self'),'self');
 		foreach($types AS $type){
-			$config['items'][] = array($GLOBALS['LANG']->sL(self::LLPATH.'pi1.foreign_type.'.$type),$type);
+			if($type!="tx_mooxnews_domain_model_news" || \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('moox_news')){
+				$config['items'][] = array($GLOBALS['LANG']->sL(self::LLPATH.'pi1.foreign_type.'.$type),$type);
+			}
 		}
 		$config['items'][] = array($GLOBALS['LANG']->sL(self::LLPATH.'pi1.foreign_type.tt_content'),'tt_content');
 		
@@ -264,7 +266,7 @@ class FlexFormHelper {
 		// set empty item
 		$config['items'][] = array($GLOBALS['LANG']->sL(self::LLPATH.'pi1.new_entry_email_template.none'),0);
 		
-		// get items for category "communitynotifications"
+		// get items for category "commentnotifications"
 		foreach($this->getTemplateItems($config,$pObj,"newentry") AS $template){
 			$config['items'][] = array($template[0],$template[1]);
 		}

@@ -1,14 +1,18 @@
 {namespace v=FluidTYPO3\Vhs\ViewHelpers}
-{namespace m=DCNGmbH\MooxComment\ViewHelpers}
-<div class="moox-ajax-body" id="{v:system.uniqId(prefix: 'moox-ajax-body-')}">	
-	<m:widget.paginate objects="{items}" as="paginatedItems" configuration="{itemsPerPage: pagination.itemsPerPage, insertAbove: 1, insertBelow: 1, maximumNumberOfLinks: 10, order: order, orderByFields: orderByFields}">
-		<f:if condition="{items->f:count()}>0">
-			<f:for each="{paginatedItems}" as="item" iteration="iteration">
-				<f:render partial="Pi2/List/Item" arguments="{item:item,returnUrl:returnUrl}" />	
-			</f:for>
-		</f:if>
-	</m:widget.paginate>	
-	<f:if condition="{items->f:count()}>0">
+<div class="moox-ajax-body" id="{v:system.uniqId(prefix: 'moox-ajax-body-')}" data-count="{count}" data-url="{f:uri.action(action:'show',noCache:1,pageType:985492,arguments:{filter:{uid_foreign:configuration.uid_foreign,tablenames:configuration.tablenames}})}">	
+	<f:if condition="{info.rating.count}>0">
+		<f:then>
+			<f:if condition="{settings.ratingMode}=='like_dislike'">
+				<button class="btn btn-primary" type="button" style="cursor: default">			
+					<span class="badge">{info.rating.count}</span> Bewertung(en), Likes: {info.rating.likes} ({info.rating.likes_percent}%), Diskikes: {info.rating.dislikes} ({info.rating.dislikes_percent}%)
+				</button>				
+			</f:if>
+			<f:if condition="{settings.ratingMode}=='stars'">
+				<button class="btn btn-primary" type="button">			
+					<span class="badge">{info.rating.count}</span> Bewertung(en)<f:if condition="{info.rating.average}>0">, Durchschnitt: {info.rating.average}</f:if>
+				</button>
+			</f:if>
+		</f:then>
 		<f:else>
 			<div class="well well-list center-block">
 				<div class="alert alert-info" role="alert">

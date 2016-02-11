@@ -2,24 +2,6 @@
 	
 }
 
-#tx-moox-comment-overlay 
-{
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    width: 100px;
-    height: 50px;
-    text-align: center;
-    line-height: 50px;
-    background-color: rgba(0,0,0,0.4);
-    color: white;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    margin-left: -50px; 
-    margin-top: -50px; 
-}
-
 .tx-moox-comment-pi2 .typo3-messages {
 	padding-bottom: 13px;
 }

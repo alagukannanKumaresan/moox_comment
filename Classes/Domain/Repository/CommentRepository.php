@@ -93,7 +93,7 @@ class CommentRepository extends MooxRepository {
 	 *
 	 * @param \integer $uid id of record
 	 * @param \boolean $respectEnableFields if set to false, hidden records are shown
-	 * @return \DCNGmbH\MooxComment\Domain\Model\Classified
+	 * @return \DCNGmbH\MooxComment\Domain\Model\Comment
 	 */
 	public function findByUid($uid, $respectEnableFields = TRUE) {
 		

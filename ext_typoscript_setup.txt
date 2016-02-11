@@ -42,9 +42,9 @@ config.tx_extbase {
 
 module.tx_mooxcomment {
 	view {
-		templateRootPath = EXT:moox_comment/Resources/Private/Backend/Templates/
-		partialRootPath = EXT:moox_comment/Resources/Private/Backend/Partials/
-		layoutRootPath = EXT:moox_comment/Resources/Private/Backend/Layouts/
+		templateRootPaths.0 = EXT:moox_comment/Resources/Private/Backend/Templates/
+		partialRootPaths.0 = EXT:moox_comment/Resources/Private/Backend/Partials/
+		layoutRootPaths.0 = EXT:moox_comment/Resources/Private/Backend/Layouts/
 	}
 }
 
@@ -62,4 +62,36 @@ mooxCommentAjaxRequestPi1 {
 	}
 	10 = COA
 	10 < tt_content.list.20.mooxcomment_pi1
+}
+
+mooxCommentAjaxRequestPi2 = PAGE
+mooxCommentAjaxRequestPi2 {
+	typeNum = 985492
+	config {
+		disableAllHeaderCode = 1
+		additionalHeaders = Content-type:text/html
+		xhtml_cleaning = 0
+		metaCharset = UTF-8
+		admPanel = 0
+		debug = 0
+        no_cache = 1
+	}
+	10 = COA
+	10 < tt_content.list.20.mooxcomment_pi2
+}
+
+mooxCommentAjaxRequestPi3 = PAGE
+mooxCommentAjaxRequestPi3 {
+	typeNum = 985493
+	config {
+		disableAllHeaderCode = 1
+		additionalHeaders = Content-type:text/html
+		xhtml_cleaning = 0
+		metaCharset = UTF-8
+		admPanel = 0
+		debug = 0
+        no_cache = 1
+	}
+	10 = COA
+	10 < tt_content.list.20.mooxcomment_pi3
 }

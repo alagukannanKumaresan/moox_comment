@@ -1,86 +1,68 @@
-.tx-moox-comment-pi2 {
+.tx-moox-comment-pi3 {
 	
 }
 
-#tx-moox-comment-overlay 
-{
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    width: 100px;
-    height: 50px;
-    text-align: center;
-    line-height: 50px;
-    background-color: rgba(0,0,0,0.4);
-    color: white;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    margin-left: -50px; 
-    margin-top: -50px; 
-}
-
-.tx-moox-comment-pi2 .typo3-messages {
+.tx-moox-comment-pi3 .typo3-messages {
 	padding-bottom: 13px;
 }
 
-.tx-moox-comment-pi2 .typo3-messages .typo3-message {
+.tx-moox-comment-pi3 .typo3-messages .typo3-message {
 	padding: 15px;
 	margin-bottom: 5px;
 	border: 1px solid transparent;
 	border-radius: 4px;
 }
 
-.tx-moox-comment-pi2 .typo3-messages .message-ok {
+.tx-moox-comment-pi3 .typo3-messages .message-ok {
 	background-color: #dff0d8;
 	border-color: #d6e9c6;
 	color: #3c763d;
 }
 
-.tx-moox-comment-pi2 .typo3-messages .message-warning {
+.tx-moox-comment-pi3 .typo3-messages .message-warning {
 	background-color: #fcf8e3;
 	border-color: #faebcc;
 	color: #8a6d3b;
 }
 
-.tx-moox-comment-pi2 .typo3-messages .message-info {
+.tx-moox-comment-pi3 .typo3-messages .message-info {
 	background-color: #d9edf7;
 	border-color: #bce8f1;
 	color: #31708f;
 }
 
-.tx-moox-comment-pi2 .typo3-messages .message-notice {
+.tx-moox-comment-pi3 .typo3-messages .message-notice {
 	background-color: #d9edf7;
 	border-color: #bce8f1;
 	color: #31708f;
 }
 
-.tx-moox-comment-pi2 .typo3-messages .message-error {
+.tx-moox-comment-pi3 .typo3-messages .message-error {
 	background-color: #f2dede;
 	border-color: #ebccd1;
 	color: #a94442;
 }
 
-.tx-moox-comment-pi2 .typo3-messages .message-header {
+.tx-moox-comment-pi3 .typo3-messages .message-header {
 	float: left;
 	font-weight: bold;
 	margin-right: 5px;
 }
 
-.tx-moox-comment-pi2 .typo3-messages .message-body {
+.tx-moox-comment-pi3 .typo3-messages .message-body {
 
 }
 
-.tx-moox-comment-pi2 .icon-list, .tx-moox-comment-pi2 .icon-button, .tx-moox-comment-pi2 .typo3-messages .icon-alert {
+.tx-moox-comment-pi3 .icon-list, .tx-moox-comment-pi3 .icon-button, .tx-moox-comment-pi3 .typo3-messages .icon-alert {
 	margin-right: 5px;
 }
 
 /* Remove Internet Explorer native clear button */
-.tx-moox-comment-pi2 .has-feedback.has-clear  input::-ms-clear  {
+.tx-moox-comment-pi3 .has-feedback.has-clear  input::-ms-clear  {
         display: none;
 }
     
-.tx-moox-comment-pi2 .has-feedback.has-clear .form-control-clear {
+.tx-moox-comment-pi3 .has-feedback.has-clear .form-control-clear {
 		
 	margin-right: 5px;	
 	color: #bbb;
@@ -93,24 +75,24 @@
 	pointer-events: auto;	
 }
 
-.tx-moox-comment-pi2 .has-feedback.has-clear .form-control-clear:hover {
+.tx-moox-comment-pi3 .has-feedback.has-clear .form-control-clear:hover {
 	color: #777;
     color: rgba(0, 0, 0, 0.7);
     cursor: pointer;
 }
 	
-.tx-moox-comment-pi2 .has-feedback.has-clear.has-empty-value .form-control-clear {
+.tx-moox-comment-pi3 .has-feedback.has-clear.has-empty-value .form-control-clear {
     display: none;
 }
 
-.tx-moox-comment-pi2 .pagination {
+.tx-moox-comment-pi3 .pagination {
 	margin-top: 0px;
 	margin-bottom: 0px;
 }
 
-.tx-moox-comment-pi2 input[type=text]::-ms-clear {  display: none; width : 0; height: 0; }
-.tx-moox-comment-pi2 input[type=text]::-ms-reveal {  display: none; width : 0; height: 0; }
-.tx-moox-comment-pi2 input[type="search"]::-webkit-search-decoration,
-.tx-moox-comment-pi2 input[type="search"]::-webkit-search-cancel-button,
-.tx-moox-comment-pi2 input[type="search"]::-webkit-search-results-button,
-.tx-moox-comment-pi2 input[type="search"]::-webkit-search-results-decoration { display: none; }
+.tx-moox-comment-pi3 input[type=text]::-ms-clear {  display: none; width : 0; height: 0; }
+.tx-moox-comment-pi3 input[type=text]::-ms-reveal {  display: none; width : 0; height: 0; }
+.tx-moox-comment-pi3 input[type="search"]::-webkit-search-decoration,
+.tx-moox-comment-pi3 input[type="search"]::-webkit-search-cancel-button,
+.tx-moox-comment-pi3 input[type="search"]::-webkit-search-results-button,
+.tx-moox-comment-pi3 input[type="search"]::-webkit-search-results-decoration { display: none; }

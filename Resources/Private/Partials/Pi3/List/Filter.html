@@ -1,0 +1,47 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<div class="tx-moox-comment-filter">
+	<div class="btn-group clearfix">
+		<div class="btn-group">
+			<button class="btn btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<span class="glyphicon glyphicon-comment icon-button"></span>
+				<strong><span class="moox-ajax-count">{count}</span></strong> {f:translate(key: 'pi3.action_list.reviews')}<f:if condition="{count}>0"> <small>(<span class="moox-ajax-limit"><f:if condition="{count}<{limit}"><f:then>{count}</f:then><f:else>{limit}</f:else></f:if></span> angezeigt)</small></f:if>
+			</button>
+			<f:if condition="{count}>{limit}">
+				<ul class="dropdown-menu limit-selector">
+					<li><a data-limit="all" class="btn-refresh" href="#">{f:translate(key: 'pi3.action_list.limit.show_all')}</a></li>
+					<f:if condition="{pagination.pages->f:count()}>0">
+						<f:for each="{pagination.pages}" as="limit2" iteration="iteration">
+							<f:if condition="{limit2}<{count}">
+								<li><a data-limit="{limit2}" class="btn-refresh" href="#">{f:translate(key: 'pi3.action_list.limit.show', arguments: {0: limit2})}</a></li>
+							</f:if>
+						</f:for>
+					</f:if>
+				</ul>
+			</f:if>
+		</div>
+		<f:if condition="{feUser}">
+			<div class="btn-group">
+				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<span class="glyphicon glyphicon-filter icon-button"></span>		
+					<span class="current-fe-user">{f:translate(key: 'pi3.action_list.filter.show_all')}</span>
+				</button>
+				<ul class="dropdown-menu fe-user-selector">
+					<li><a data-fe-user="all" href="#">{f:translate(key: 'pi3.action_list.filter.show_all')}</a></li>
+					<li><a data-fe-user="{feUser.uid}" href="#">{f:translate(key: 'pi3.action_list.filter.show_own')}</a></li>		
+				</ul>	
+			</div>
+		</f:if>
+		<div class="btn-group">
+			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<span class="glyphicon glyphicon-sort-by-attributes icon-button"></span>		
+				Sortieren nach: <span class="current-order">{f:translate(key: 'pi3.action_list.order.newest_first')}</span>
+			</button>
+			<ul class="dropdown-menu order-selector">
+				<li><a data-order-by="crdate" data-order-direction="DESC" href="#">{f:translate(key: 'pi3.action_list.order.newest_first')}</a></li>
+				<li><a data-order-by="crdate" data-order-direction="ASC" href="#">{f:translate(key: 'pi3.action_list.order.oldest_first')}</a></li>	
+				<li><a data-order-by="rating" data-order-direction="DESC" href="#">{f:translate(key: 'pi3.action_list.order.best_ratings_first')}</a></li>
+				<li><a data-order-by="rating" data-order-direction="ASC" href="#">{f:translate(key: 'pi3.action_list.order.worst_ratings_first')}</a></li>
+			 </ul>
+		</div>
+	</div>	
+</div>

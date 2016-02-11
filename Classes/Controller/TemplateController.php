@@ -38,6 +38,7 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	 * templateRepository
 	 *
 	 * @var \DCNGmbH\MooxComment\Domain\Repository\TemplateRepository
+	 * @inject
 	 */
 	protected $templateRepository;		
 	
@@ -55,8 +56,7 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	 */
 	protected function initializeAction() {
 		parent::initializeAction();					
-		$this->extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['moox_comment']);		
-		$this->templateRepository = $this->objectManager->get('DCNGmbH\\MooxComment\\Domain\\Repository\\TemplateRepository');			
+		$this->extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['moox_comment']);					
 	}
 	
 	/**
@@ -89,7 +89,7 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 			$this->templateRepository->add($item);								
 			$this->objectManager->get('TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface')->persistAll();
 			
-			$this->flashMessageContainer->add(
+			$this->addFlashMessage(
 				'', 
 				'Vorlage wurde erfolgreich gespeichert.', 
 				\TYPO3\CMS\Core\Messaging\FlashMessage::OK);
@@ -138,7 +138,7 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 				$this->templateRepository->update($item);								
 				$this->objectManager->get('TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface')->persistAll();
 				
-				$this->flashMessageContainer->add(
+				$this->addFlashMessage(
 					'', 
 					'Änderungen wurden erfolgreich gespeichert.', 
 					\TYPO3\CMS\Core\Messaging\FlashMessage::OK);
@@ -174,7 +174,7 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 			
 			$this->objectManager->get('TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface')->persistAll();
 			
-			$this->flashMessageContainer->add(
+			$this->addFlashMessage(
 					'', 
 					'Vorlage wurde gelöscht.', 
 					\TYPO3\CMS\Core\Messaging\FlashMessage::OK);
@@ -196,28 +196,29 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 		
 			$template = $this->templateRepository->findByUid($uid);
 			
-			$data['item']['name'] 		= "Hans Mustermann";
-			$data['item']['email'] 		= "email@example.net";
-			$data['item']['title'] 		= "Dies ist ein Kommentar";
-			$data['item']['comment'] 	= "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.";
+			$data['item']['name'] 				= "Hans Mustermann";
+			$data['item']['email'] 				= "email@example.net";
+			$data['item']['title'] 				= "Dies ist ein Kommentar";
+			$data['item']['comment'] 			= "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.";
+			$data['item']['rating'] 			= "5.3";
 			
-			$data['confirm-url'] 			= "http://example.net/confirm.html";
-			$data['delete-url']	 			= "http://example.net/delete.html";
+			$data['confirm-url'] 				= "http://example.net/confirm.html";
+			$data['delete-url']	 				= "http://example.net/delete.html";
 			
-			$data['target']['type'] 		= "tx_mooxnews_domain_model_news";
-			$data['target']['uid'] 			= "1234";
-			$data['target']['title'] 		= "Eine Kommentarfunktion ist cool";
-			$data['target']['url'] 			= "http://example.net/target.html";
+			$data['target']['type'] 			= "tx_mooxnews_domain_model_news";
+			$data['target']['uid'] 				= "1234";
+			$data['target']['title'] 			= "Eine Kommentarfunktion ist cool";
+			$data['target']['url'] 				= "http://example.net/target.html";
 			
-			$data['user']['gender'] 		= 1;
-			$data['user']['title'] 			= "Dr.";
-			$data['user']['username'] 		= "hans.mustermann";
-			$data['user']['name'] 			= "Hans Mustermann";
+			$data['user']['gender'] 			= 1;
+			$data['user']['title'] 				= "Dr.";
+			$data['user']['username'] 			= "hans.mustermann";
+			$data['user']['name'] 				= "Hans Mustermann";
 			$data['user']['auto_name'] 			= "Hans Mustermann";
-			$data['user']['first_name'] 	= "Hans";
-			$data['user']['middle_name'] 	= "Jürgen";
-			$data['user']['last_name'] 		= "Mustermann";
-			$data['user']['email'] 			= "email@example.net";
+			$data['user']['first_name'] 		= "Hans";
+			$data['user']['middle_name'] 		= "Jürgen";
+			$data['user']['last_name'] 			= "Mustermann";
+			$data['user']['email'] 				= "email@example.net";
 			
 			$data['receiver']['gender'] 		= 1;
 			$data['receiver']['title'] 			= "Dr.";

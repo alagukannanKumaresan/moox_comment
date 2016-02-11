@@ -1,0 +1,21 @@
+<f:if condition="{info.rating.count}>0">
+	<f:then>
+		<f:if condition="{settings.ratingMode}=='like_dislike'">
+			<button class="btn btn-primary" type="button" style="cursor: default">			
+				<span class="badge">{info.rating.count}</span> Bewertung(en), Likes: {info.rating.likes} ({info.rating.likes_percent}%), Diskikes: {info.rating.dislikes} ({info.rating.dislikes_percent}%)
+			</button>				
+		</f:if>
+		<f:if condition="{settings.ratingMode}=='stars'">
+			<button class="btn btn-primary" type="button">			
+				<span class="badge">{info.rating.count}</span> Bewertung(en)<f:if condition="{info.rating.average}>0">, Durchschnitt: {info.rating.average}</f:if>
+			</button>
+		</f:if>
+	</f:then>
+	<f:else>
+		<div class="well well-list center-block">
+			<div class="alert alert-info" role="alert">
+				{f:translate(key: 'pi2.action_list.no_items')}
+			</div>
+		</div>
+	</f:else>
+</f:if>

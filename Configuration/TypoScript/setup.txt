@@ -1,7 +1,8 @@
 plugin.tx_mooxcomment {	
 	view {		
-		partialRootPath = {$plugin.tx_mooxcomment.view.partialRootPath}
-		layoutRootPath = {$plugin.tx_mooxcomment.view.layoutRootPath}
+		partialRootPaths.0 = {$plugin.tx_mooxcomment.view.partialRootPath}
+		layoutRootPaths.0 = {$plugin.tx_mooxcomment.view.layoutRootPath}
+		templateRootPaths.0 = {$plugin.tx_mooxcomment.view.templateRootPath}
 	}
 	persistence {
 		storagePid = {$plugin.tx_mooxcomment.persistence.storagePid}		
@@ -19,10 +20,15 @@ plugin.tx_mooxcomment {
 		autoDetectionOrder = tx_mooxnews_domain_model_news,pages
 	}
 }
+
 [globalVar = GP:type = 985491]
-	plugin.tx_mooxcomment.view.templateRootPath = {$plugin.tx_mooxcomment.view.templateRootPathAjax}
-[else]
-	plugin.tx_mooxcomment.view.templateRootPath = {$plugin.tx_mooxcomment.view.templateRootPath}
+	plugin.tx_mooxcomment.view.templateRootPaths.0 = {$plugin.tx_mooxcomment.view.templateRootPathAjax}
+[global]
+[globalVar = GP:type = 985492]
+	plugin.tx_mooxcomment.view.templateRootPaths.0 = {$plugin.tx_mooxcomment.view.templateRootPathAjax}
+[global]
+[globalVar = GP:type = 985493]
+	plugin.tx_mooxcomment.view.templateRootPaths.0 = {$plugin.tx_mooxcomment.view.templateRootPathAjax}
 [global]
 
 module.tx_mooxcomment {

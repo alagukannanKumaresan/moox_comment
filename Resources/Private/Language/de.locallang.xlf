@@ -2,14 +2,31 @@
 <xliff version="1.0">
 	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2014-02-20T12:22:09Z" product-name="moox_comment">
 		<header/>
-		<body>	
+		<body>
+			<trans-unit id="tx_mooxcomment_domain_model_comment">
+				<source>comment</source>
+				<target>Kommentar</target>
+			</trans-unit>
+			<trans-unit id="tx_mooxcomment_domain_model_rating">
+				<source>rating</source>
+				<target>Bewertung</target>
+			</trans-unit>
+			<trans-unit id="tx_mooxcomment_domain_model_review">
+				<source>review</source>
+				<target>Rezension</target>
+			</trans-unit>
+			
 			<trans-unit id="pi1.action_list">
 				<source>list items</source>
 				<target>Liste anzeigen</target>
 			</trans-unit>	
 			<trans-unit id="pi1.action_list.comment_form_header">
-				<source>send comment</source>
+				<source>post comment</source>
 				<target>Kommentar abgeben</target>
+			</trans-unit>
+			<trans-unit id="pi1.action_list.comments">
+				<source>comments</source>
+				<target>Kommentare</target>
 			</trans-unit>
 			<trans-unit id="pi1.action_list.add_comment">
 				<source>send</source>
@@ -64,8 +81,8 @@
 				<target>Kommentar bestätigen</target>
 			</trans-unit>
 			<trans-unit id="pi1.action_list.confirm.modal.body">
-				<source><![CDATA[Do you really want to confirm the comment <strong>%2$s</strong> by  <strong>%1$s</strong>?]]></source>
-				<target><![CDATA[Wollen Sie den Kommentar <strong>%2$s</strong> von  <strong>%1$s</strong> wirklich bestätigen?]]></target>
+				<source><![CDATA[Do you really want to confirm the comment <strong>%2$s</strong> by <strong>%1$s</strong>?]]></source>
+				<target><![CDATA[Wollen Sie den Kommentar <strong>%2$s</strong> von <strong>%1$s</strong> wirklich bestätigen?]]></target>
 			</trans-unit>
 			<trans-unit id="pi1.action_list.confirm.modal.button">
 				<source>really confirm comment</source>
@@ -84,8 +101,8 @@
 				<target>Kommentar löschen</target>
 			</trans-unit>
 			<trans-unit id="pi1.action_list.delete.modal.body">
-				<source><![CDATA[Do you really want to delete the comment <strong>%2$s</strong> by  <strong>%1$s</strong>?]]></source>
-				<target><![CDATA[Wollen Sie den Kommentar <strong>%2$s</strong> von  <strong>%1$s</strong> wirklich löschen?]]></target>
+				<source><![CDATA[Do you really want to delete the comment <strong>%2$s</strong> by <strong>%1$s</strong>?]]></source>
+				<target><![CDATA[Wollen Sie den Kommentar <strong>%2$s</strong> von <strong>%1$s</strong> wirklich löschen?]]></target>
 			</trans-unit>
 			<trans-unit id="pi1.action_list.delete.modal.button">
 				<source>really delete comment</source>
@@ -158,12 +175,273 @@
 			<trans-unit id="pi1.action_visibility.error.no_access">
 				<source>no access</source>
 				<target>Keine Berechtigung</target>
-			</trans-unit>
-			
+			</trans-unit>			
 			<trans-unit id="pi1.action_all.add">
 				<source>add</source>
 				<target>hinzufügen</target>
+			</trans-unit>		
+			
+			<trans-unit id="pi2.action_list">
+				<source>list items</source>
+				<target>Liste anzeigen</target>
+			</trans-unit>				
+			<trans-unit id="pi2.action_list.ratings">
+				<source>ratings</source>
+				<target>Bewertungen</target>
+			</trans-unit>
+			<trans-unit id="pi2.action_list.add_rating">
+				<source>rate</source>
+				<target>bewerten</target>
+			</trans-unit>
+			<trans-unit id="pi2.action_list.rating_by">
+				<source>rating by</source>
+				<target>Bewertung von</target>
+			</trans-unit>			
+			<trans-unit id="pi2.action_list.own_rating">
+				<source>own rating</source>
+				<target>eigene Bewertung</target>
+			</trans-unit>
+			<trans-unit id="pi2.action_list.confirm">
+				<source>confirm</source>
+				<target>bestätigen</target>
+			</trans-unit>
+			<trans-unit id="pi2.action_list.your_rating">
+				<source>your rating</source>
+				<target>Deine Bewertung</target>
+			</trans-unit>			
+			<trans-unit id="pi2.action_list.unrate">
+				<source>delete rating</source>
+				<target>Bewertung löschen</target>
+			</trans-unit>
+			<trans-unit id="pi2.action_list.unrate.modal.title">
+				<source>delete rating</source>
+				<target>Bewertung löschen</target>
+			</trans-unit>
+			<trans-unit id="pi2.action_list.unrate.modal.body">
+				<source><![CDATA[Do you really want to delete your rating?]]></source>
+				<target><![CDATA[Wollen Sie Ihre Bewertung wirklich löschen?]]></target>
+			</trans-unit>
+			<trans-unit id="pi2.action_list.unrate.modal.button">
+				<source>really delete rating</source>
+				<target>Bewertung wirklich löschen</target>
+			</trans-unit>
+			<trans-unit id="pi2.action_list.unrate.modal.close">
+				<source>abort</source>
+				<target>abbrechen</target>
+			</trans-unit>			
+			<trans-unit id="pi2.action_list.no_items">
+				<source>no ratings found</source>
+				<target>Es wurden noch keine Bewertungen abgegeben</target>				
+			</trans-unit>
+			<trans-unit id="pi2.action_list.error.no_access">
+				<source>no access</source>
+				<target>Keine Berechtigung</target>
+			</trans-unit>	
+			<trans-unit id="pi2.action_rate">
+				<source>add rating</source>
+				<target>Bewertung abgeben</target>
+			</trans-unit>
+			<trans-unit id="pi2.action_rate.success">
+				<source>your rating was added successfully</source>
+				<target>Ihre Bewertung wurde gespeichert</target>
+			</trans-unit>			
+			<trans-unit id="pi2.action_unrate">
+				<source>delete rating</source>
+				<target>Bewertung löschen</target>
+			</trans-unit>
+			<trans-unit id="pi2.action_unrate.tooltip">
+				<source>delete rating</source>
+				<target>Bewertung löschen</target>
+			</trans-unit>
+			<trans-unit id="pi2.action_unrate.success">
+				<source>rating deleted successfully</source>
+				<target>Bewertung wurde erfolgreich gelöscht</target>
+			</trans-unit>
+			<trans-unit id="pi2.action_unrate.error.no_access">
+				<source>no access</source>
+				<target>Keine Berechtigung</target>
 			</trans-unit>						
+			<trans-unit id="pi2.action_all.add">
+				<source>add</source>
+				<target>hinzufügen</target>
+			</trans-unit>
+			
+			<trans-unit id="pi3.action_list">
+				<source>list items</source>
+				<target>Liste anzeigen</target>
+			</trans-unit>	
+			<trans-unit id="pi3.action_list.review_form_header">
+				<source>post comment</source>
+				<target>Rezension schreiben</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.reviews">
+				<source>reviews</source>
+				<target>Rezensionen</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.add_review">
+				<source>send</source>
+				<target>abschicken</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.review_by">
+				<source>review by</source>
+				<target>Rezension von</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.limit.show_all">
+				<source>show all reviews</source>
+				<target>Alle Rezensionen anzeigen</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.limit.show">
+				<source>show %1$s reviews</source>
+				<target>%1$s Rezensionen anzeigen</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.filter.show_all">
+				<source>all reviews</source>
+				<target>Alle Rezensionen </target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.filter.show_own">
+				<source>own reviews only</source>
+				<target>Eigene Rezensionen</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.order.newest_first">
+				<source>newest first</source>
+				<target>Neueste zuerst</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.order.oldest_first">
+				<source>oldest first</source>
+				<target>Älteste zuerst</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.order.best_ratings_first">
+				<source>best ratings first</source>
+				<target>Beste Bewertungen zuerst</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.order.worst_ratings_first">
+				<source>worst ratings first</source>
+				<target>Schlechteste Bewertungen zuerst</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.order.oldest_first">
+				<source>oldest first</source>
+				<target>Älteste zuerst</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.public_user">
+				<source>public user</source>
+				<target>öffentlicher Benutzer</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.registered_user">
+				<source>registered user</source>
+				<target>angemeldeter Benutzer</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.own_review">
+				<source>own review</source>
+				<target>eigene Rezension</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.confirm">
+				<source>confirm</source>
+				<target>bestätigen</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.confirm.modal.title">
+				<source>confirm review</source>
+				<target>Rezension bestätigen</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.confirm.modal.body">
+				<source><![CDATA[Do you really want to confirm the review <strong>%2$s</strong> by  <strong>%1$s</strong>?]]></source>
+				<target><![CDATA[Wollen Sie die Rezension <strong>%2$s</strong> von  <strong>%1$s</strong> wirklich bestätigen?]]></target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.confirm.modal.button">
+				<source>really confirm review</source>
+				<target>Rezension wirklich bestätigen</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.confirm.modal.close">
+				<source>abort</source>
+				<target>abbrechen</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.delete">
+				<source>delete</source>
+				<target>löschen</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.delete.modal.title">
+				<source>delete review</source>
+				<target>Rezension löschen</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.delete.modal.body">
+				<source><![CDATA[Do you really want to delete the review <strong>%2$s</strong> by <strong>%1$s</strong>?]]></source>
+				<target><![CDATA[Wollen Sie die Rezension <strong>%2$s</strong> von <strong>%1$s</strong> wirklich löschen?]]></target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.delete.modal.button">
+				<source>really delete review</source>
+				<target>Rezension wirklich löschen</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.delete.modal.close">
+				<source>abort</source>
+				<target>abbrechen</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.append">
+				<source>show more</source>
+				<target>mehr anzeigen</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_list.no_items">
+				<source>no reviews found</source>
+				<target>Es wurden noch keine Rezensionen geschrieben</target>				
+			</trans-unit>
+			<trans-unit id="pi3.action_list.error.no_access">
+				<source>no access</source>
+				<target>Keine Berechtigung</target>
+			</trans-unit>	
+			<trans-unit id="pi3.action_add">
+				<source>add review</source>
+				<target>Rezension hinzufügen</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_add.success">
+				<source>your review was added successfully</source>
+				<target>Ihre Rezension wurde hinzugefügt</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_add.success_moderated">
+				<source>review added successfully</source>
+				<target>Ihre Rezension wurde hinzugefügt, muss aber noch vom Moderator bestätigt werden. Haben Sie bitte etwas Geduld.</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_confirm">
+				<source>confirm review</source>
+				<target>Rezension bestätigen</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_confirm.success">
+				<source>review confirmed successfully</source>
+				<target>Rezension erfolgreich bestätigt</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_delete">
+				<source>delete review</source>
+				<target>Rezension löschen</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_delete.tooltip">
+				<source>delete review</source>
+				<target>Rezension löschen</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_delete.success">
+				<source>review deleted successfully</source>
+				<target>Rezension wurde erfolgreich gelöscht</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_delete.error.no_access">
+				<source>no access</source>
+				<target>Keine Berechtigung</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_visibility">
+				<source>change visibility of review</source>
+				<target>Sichtbarkeit der Rezension ändern</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_visibility.tooltip">
+				<source>change visibility of review</source>
+				<target>Sichtbarkeit der Rezension ändern</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_visibility.success">
+				<source>review visibility changed successfully</source>
+				<target>Sichtbarkeit der Rezension wurde erfolgreich geändert</target>
+			</trans-unit>
+			<trans-unit id="pi3.action_visibility.error.no_access">
+				<source>no access</source>
+				<target>Keine Berechtigung</target>
+			</trans-unit>			
+			<trans-unit id="pi3.action_all.add">
+				<source>add</source>
+				<target>hinzufügen</target>
+			</trans-unit>
 			
 			<trans-unit id="form.hidden">
 				<source>hidden</source>
@@ -209,10 +487,30 @@
 				<source>rating</source>
 				<target>Bewertung</target>
 			</trans-unit>
+			<trans-unit id="form.rating.none">
+				<source>no rating</source>
+				<target>Keine Bewertung</target>
+			</trans-unit>
+			<trans-unit id="form.rating.like">
+				<source>like</source>
+				<target>mag ich</target>
+			</trans-unit>
+			<trans-unit id="form.rating.dislike">
+				<source>dislike</source>
+				<target>mag ich nicht</target>
+			</trans-unit>
+			<trans-unit id="form.review">
+				<source>review</source>
+				<target>Rezension</target>
+			</trans-unit>
 			<trans-unit id="form.confirmed">
 				<source>confirmed</source>
 				<target>Bestätigt am</target>
 			</trans-unit>	
+			<trans-unit id="form.moderator">
+				<source>moderator entry</source>
+				<target>Moderator-Eintrag</target>
+			</trans-unit>
 			<trans-unit id="form.template">
 				<source>template</source>
 				<target>Vorlage</target>
@@ -233,7 +531,19 @@
 				<source>HTML/FLUID-Template</source>
 				<target>HTML/FLUID-Code der Vorlage</target>
 			</trans-unit>
-			
+			<trans-unit id="form.news.comment_active">
+				<source>comments allowed</source>
+				<target>Kommentieren erlaubt</target>
+			</trans-unit>
+			<trans-unit id="form.news.rating_active">
+				<source>ratings allowed</source>
+				<target>Bewertungen erlaubt</target>
+			</trans-unit>
+			<trans-unit id="form.news.review_active">
+				<source>reviews allowed</source>
+				<target>Rezensionen erlaubt</target>
+			</trans-unit>
+						
 			<trans-unit id="form.activated">
 				<source>activated</source>
 				<target>aktiviert</target>

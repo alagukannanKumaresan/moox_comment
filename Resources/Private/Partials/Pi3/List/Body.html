@@ -1,0 +1,32 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:for each="{orderings}" as="direction" key="by">
+   <v:variable.set name="current-order-direction" value="{direction}" />
+   <v:variable.set name="current-order-by" value="{by}" />
+</f:for>
+<f:if condition="{filter.feUser}">
+	<f:then>
+		<v:variable.set name="current-fe-user" value="{filter.feUser}" />
+	</f:then>
+	<f:else>
+		<v:variable.set name="current-fe-user" value="all" />
+	</f:else>
+</f:if>
+<div class="moox-ajax-body" id="{v:system.uniqId(prefix: 'moox-ajax-body-')}" data-fe-user="{current-fe-user}" data-order-by="{current-order-by}" data-order-direction="{current-order-direction}" data-count="{count}" data-limit="{limit}" data-url="{f:uri.action(action:'list',noCache:1,pageType:985493,arguments:{filter:{uid_foreign:configuration.uid_foreign,tablenames:configuration.tablenames}})}">	
+	<f:if condition="{items->f:count()}>0">
+		<f:for each="{items}" as="item" iteration="iteration">							
+			<f:render partial="Pi3/List/Item" arguments="{item:item,feUser:feUser,isModerator:isModerator,isConfirmable:isConfirmable,isDeleteable:isDeleteable}" />						
+		</f:for>							
+	</f:if>
+	<f:if condition="{items->f:count()}>0">
+		<f:else>
+			<div class="well well-list center-block">
+				<div class="alert alert-info" role="alert">
+					{f:translate(key: 'pi3.action_list.no_items')}
+				</div>
+			</div>
+		</f:else>
+	</f:if>
+</div>
+<div>	
+	<button class="btn btn-default btn-append" data-append="{settings.itemsPerPage}"<f:if condition="{count}<={limit}"> style="display: none"</f:if>>{f:translate(key: 'pi3.action_list.append')}</button>
+</div>

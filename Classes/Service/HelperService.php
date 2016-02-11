@@ -189,7 +189,9 @@ class HelperService implements SingletonInterface {
 		//$this->reviewRepository = $this->objectManager->get('DCNGmbH\MooxComment\Domain\Repository\ReviewRepository');
 		
 		// initialize news repository
-		$this->newsRepository = $this->objectManager->get('DCNGmbH\MooxComment\Domain\Repository\NewsRepository');
+		if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('moox_news')){
+			$this->newsRepository = $this->objectManager->get('DCNGmbH\MooxComment\Domain\Repository\NewsRepository');
+		}
 		
 		// get typoscript configuration
 		$this->configuration = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK,"MooxComment");		
@@ -559,8 +561,8 @@ class HelperService implements SingletonInterface {
 	 * @param \string $mode
 	 * @return	\array configuration
 	 */
-	public function getConfiguration($mode = "auto") {
-				
+	public function getConfiguration($mode = "comment") {
+		
 		// initialize
 		$this->initialize();
 		
@@ -603,15 +605,17 @@ class HelperService implements SingletonInterface {
 		if($this->autoDetectionOrder){
 			foreach(explode(",",$this->autoDetectionOrder) AS $tablenames){
 				
-				if($tablenames=="tx_mooxnews_domain_model_news"){
+				if(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('moox_news') && $tablenames=="tx_mooxnews_domain_model_news"){
 					if(isset($params['tx_mooxnews_pi1']) && $params['tx_mooxnews_pi1']['action']=='detail' && $params['tx_mooxnews_pi1']['news']>0){
 						$target = $this->newsRepository->findByUid($params['tx_mooxnews_pi1']['news']);
 						if(is_object($target)){
-							$configuration= array(
-								"uid_foreign" => $target->getUid(),
-								"title_foreign" => $target->getTitle(),
-								"tablenames" => $tablenames 
-							);	
+							if(($mode=="comment" && $target->getCommentActive()) || ($mode=="rating" && $target->getRatingActive()) || ($mode=="review" && $target->getReviewActive())){
+								$configuration= array(
+									"uid_foreign" => $target->getUid(),
+									"title_foreign" => $target->getTitle(),
+									"tablenames" => $tablenames 
+								);
+							}
 						}
 					} 
 					break;

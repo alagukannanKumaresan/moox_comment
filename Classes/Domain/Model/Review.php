@@ -545,7 +545,7 @@ class Review extends AbstractEntity {
 	/**
      * get confirmed
 	 *
-     * @return \integer $confirmed paid
+     * @return \integer $confirmed
      */
     public function getConfirmed() {
        return $this->confirmed;
@@ -560,14 +560,33 @@ class Review extends AbstractEntity {
     public function setConfirmed($confirmed) {
         $this->confirmed = $confirmed;
     }	
+	
+	/**
+     * get moderator
+	 *
+     * @return \integer $moderator
+     */
+    public function getModerator() {
+       return $this->moderator;
+    }
+     
+    /**
+     * set moderator
+	 *
+     * @param integer $moderator moderator
+	 * @return void
+     */
+    public function setModerator($moderator) {
+        $this->moderator = $moderator;
+    }
 
 	/**
      * get hash
 	 *
-     * @return \integer $confirmed paid
+     * @return \string $hash
      */
     public function getHash() {
-       return md5($this->uid."nNUHEFEXuOyJgvbi".$this->crdate);
+       return md5($this->uid.$GLOBALS['TYPO3_CONF_VARS']['SYS']['encryptionKey'].$this->crdate);
     }
 }
 ?>

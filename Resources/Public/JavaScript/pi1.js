@@ -45,14 +45,16 @@ $(document).ready(function(){
 						//message = mooxCommentLang['de'].messages.comment_saved;
 						//mooxCommentAddMessage('',message,'ok','glyphicon-ok',wrapper)
 						$(form).trigger("reset");
+						$(form).find(".form-control-clear").hide();
 						mooxCommentPi1Refresh(wrapper,1);
 					}
 					
 				},
 				error: function() {
 					message = 'Error';
-					mooxCommentAddMessage('',message,'error','glyphicon-warning-sign',wrapper)
+					mooxCommentAddMessage('',message,'error','glyphicon-warning-sign',wrapper)					
 					$(form).trigger("reset");
+					$(form).find(".form-control-clear").hide();
 				}
 			});
 			
@@ -239,6 +241,8 @@ function mooxCommentPi1Append (wrapper,append) {
 											
 			body.append($(data));
 			count = body.find(".moox-ajax-item").length;
+			
+			$("button span.moox-ajax-limit").text(count);
 			
 			if($(data).filter(".moox-ajax-item").lenght<append || count>=max){
 				$("#"+wrapper+" .btn-append").hide();
