@@ -15,3 +15,12 @@ smtpServer =
 smtpUsername =
 # cat=SMTP/string/304; type=string; label=SMTP password
 smtpPassword =
+
+# SMTP
+###########################
+# cat=Defaults/enable/310; type=boolean; label=[MOOX News] default value for comment active news field
+commentActive = 0
+# cat=Defaults/enable/311; type=boolean; label=[MOOX News] default value for review active news field
+reviewActive = 0
+# cat=Defaults/enable/312; type=boolean; label=[MOOX News] default value for rating active news field
+ratingActive = 0

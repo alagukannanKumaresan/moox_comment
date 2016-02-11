@@ -4,6 +4,9 @@ defined('TYPO3_MODE') or die();
 // set default language file as ll-reference
 $ll = 'LLL:EXT:moox_comment/Resources/Private/Language/locallang.xml:';
 
+// Get the extensions's configuration
+$extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['moox_comment']);
+
 // hide news default fields for new news type 
 //$hideFields = "";
 
@@ -13,7 +16,7 @@ $tx_mooxcomment_domain_model_news = array(
 		'label' => $ll.'form.news.comment_active',
 		'config' => array(
 			'type' => 'check',
-			'default' => 1,				
+			'default' => ($extConf['commentActive'])?1:0,				
 		),
 		// special moox configuration		
 		'moox' => array(
@@ -32,7 +35,7 @@ $tx_mooxcomment_domain_model_news = array(
 		'label' => $ll.'form.news.rating_active',
 		'config' => array(
 			'type' => 'check',
-			'default' => 1,				
+			'default' => ($extConf['ratingActive'])?1:0,			
 		),
 		// special moox configuration		
 		'moox' => array(
@@ -51,7 +54,7 @@ $tx_mooxcomment_domain_model_news = array(
 		'label' => $ll.'form.news.review_active',
 		'config' => array(
 			'type' => 'check',
-			'default' => 1,				
+			'default' => ($extConf['reviewActive'])?1:0,		
 		),
 		// special moox configuration		
 		'moox' => array(
