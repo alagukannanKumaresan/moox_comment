@@ -239,7 +239,7 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 			
 			if($partialRootPath==""){
 				$conf = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
-				$partialRootPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName(str_replace("Backend/","",$conf['view']['partialRootPath'])."Mail");
+				$partialRootPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName(str_replace("Backend/","",$conf['view']['partialRootPaths'][0])."Mail");
 			}
 			
 			$previewView = $this->objectManager->create('TYPO3\\CMS\\Fluid\\View\StandaloneView');

@@ -428,7 +428,7 @@ class HelperService implements SingletonInterface {
 		} 
 			
 		if($partialRootPath==""){
-			$partialRootPath = GeneralUtility::getFileAbsFileName(str_replace("Backend/","",$this->configuration['view']['partialRootPath'])."Mail");
+			$partialRootPath = GeneralUtility::getFileAbsFileName(str_replace("Backend/","",$this->configuration['view']['partialRootPaths'][0])."Mail");
 		}
 				
 		$mailBody = $this->objectManager->create('TYPO3\\CMS\\Fluid\\View\StandaloneView');

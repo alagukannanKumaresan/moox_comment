@@ -110,6 +110,13 @@ class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	protected $storagePids;
 	
 	/**
+	 * fields
+	 *
+	 * @var \array 	
+	 */
+	protected $fields;
+	
+	/**
 	 * pagination
 	 *
 	 * @var \array 	
@@ -134,6 +141,43 @@ class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 		
 		// load extension configuration
 		$this->extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['moox_comment']);		
+		
+		$this->fields['rating'] = array (
+			'key' => 'rating',
+			'extkey' => 'moox_comment',
+			'config' => array (
+				'required' => 1,
+				'validate' => 1,
+				'type' => 'text',				
+				'data' => array (
+					'data-type' => 'text',
+					'data-id' => 'rating',				
+					'data-label' => LocalizationUtility::translate(self::LLPATH.'form.rating',$this->extensionName),
+					'data-required' => 1,
+					'data-name' => "tx_mooxcomment_pi2[rate][rating]"
+				)
+			)
+		);
+		
+		if($this->settings['ratingMode']=="stars"){
+			$this->fields['rating']['config']['stars'] = array();
+			if($this->settings['stars']<5){
+				$this->settings['stars'] = 5;
+			}
+			if($this->settings['allowHalfStars']){
+				$step = 0.5;
+			} else {
+				$step = 1;
+			}			
+			$star = $step;
+			while($star<=$this->settings['stars']){
+				$this->fields['rating']['config']['stars'][] = $star;
+				$star = $star+$step;
+			}
+		}
+		if($this->settings['ratingRequired']){
+						
+		}
 		
 		$this->helperService->setAutoDetectionOrder($this->settings['autoDetectionOrder']);
 		$this->helperService->setForeignType($this->settings['foreignType']?$this->settings['foreignType']:'auto');
@@ -208,7 +252,7 @@ class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 				"tablenames" => $filter['tablenames'] 
 			);
 		} else {
-			$configuration = $this->helperService->getConfiguration("review");
+			$configuration = $this->helperService->getConfiguration("rating");
 		}
 		
 		// check and get logged in user
@@ -274,6 +318,7 @@ class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 			}
 			
 			$this->view->assign('configuration', $configuration);
+			$this->view->assign('fields', $this->fields);
 			$this->view->assign('info', $info);
 			$this->view->assign('rating', $rating);
 			$this->view->assign('uri', $this->uriBuilder->getRequest()->getRequestUri());
