@@ -1,5 +1,3 @@
-{namespace v=FluidTYPO3\Vhs\ViewHelpers}
-
 <tbody>
 	<f:for each="{items}" as="item" iteration="iteration">
 		<tr class="tx-moox-community-admin-table-row tx-moox-community-admin-table-row-{f:if(condition: iteration.isEven, then: 'odd', else: 'even')}{f:if(condition: iteration.isLast, then: ' tx-moox-community-admin-table-row-last')}">

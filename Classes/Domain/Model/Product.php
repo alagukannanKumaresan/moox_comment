@@ -14,33 +14,25 @@ namespace DCNGmbH\MooxComment\Domain\Model;
  * The TYPO3 project - inspiring people to share!
  */
  
-class News extends \DCNGmbH\MooxNews\Domain\Model\News
+class Product extends \DCNGmbH\MooxShop\Domain\Model\Product
 {
 	
 	/**
-	 * comment active
-	 *
 	 * @var int
 	 */
     protected $commentActive;
 	
 	/**
-	 * rating active
-	 *
 	 * @var int
 	 */
     protected $ratingActive;
 	
 	/**
-	 * review active
-	 *
 	 * @var int
 	 */
     protected $reviewActive;
 	
 	/**
-     * get commentActive
-	 *
      * @return int $commentActive commentActive
      */
     public function getCommentActive()
@@ -49,8 +41,6 @@ class News extends \DCNGmbH\MooxNews\Domain\Model\News
     }
      
     /**
-     * set commentActive
-	 *
      * @param int $commentActive commentActive
 	 * @return void
      */
@@ -60,8 +50,6 @@ class News extends \DCNGmbH\MooxNews\Domain\Model\News
     }
 	
 	/**
-     * get ratingActive
-	 *
      * @return int $ratingActive ratingActive
      */
     public function getRatingActive()
@@ -70,8 +58,6 @@ class News extends \DCNGmbH\MooxNews\Domain\Model\News
     }
      
     /**
-     * set ratingActive
-	 *
      * @param int $ratingActive ratingActive
 	 * @return void
      */
@@ -81,8 +67,6 @@ class News extends \DCNGmbH\MooxNews\Domain\Model\News
     }
 	
 	/**
-     * get reviewActive
-	 *
      * @return int $reviewActive reviewActive
      */
     public function getReviewActive()
@@ -91,8 +75,6 @@ class News extends \DCNGmbH\MooxNews\Domain\Model\News
     }
      
     /**
-     * set reviewActive
-	 *
      * @param int $reviewActive reviewActive
 	 * @return void
      */

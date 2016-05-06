@@ -32,18 +32,18 @@ $(document).ready(function(){
 				data: data,
 				success: function(data) {
 					
-					if($(data).find(".message-error").length>0){
+					if($(data).find(".message-error,.alert-danger").length>0){
 					
 						$(data).prependTo("#"+wrapper);
 						
 					} else {
 						
-						if($(data).find(".message-ok").length>0){
+						if($(data).find(".message-ok,.alert-success").length>0){
 							$(data).prependTo("#"+wrapper);
 						}
 						
 						//message = mooxCommentLang['de'].messages.comment_saved;
-						//mooxCommentAddMessage('',message,'ok','glyphicon-ok',wrapper)
+						//mooxCommentAddMessage('',message,'success','glyphicon-ok',wrapper)
 						$(form).trigger("reset");
 						$(form).find(".form-control-clear").hide();
 						mooxCommentPi1Refresh(wrapper,1);
@@ -52,7 +52,7 @@ $(document).ready(function(){
 				},
 				error: function() {
 					message = 'Error';
-					mooxCommentAddMessage('',message,'error','glyphicon-warning-sign',wrapper)					
+					mooxCommentAddMessage('',message,'danger','glyphicon-warning-sign',wrapper)					
 					$(form).trigger("reset");
 					$(form).find(".form-control-clear").hide();
 				}

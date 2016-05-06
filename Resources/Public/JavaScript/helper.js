@@ -48,6 +48,21 @@ function mooxCommentClearErrors(plugin){
 function mooxCommentAddMessage(title,text,type,icon,plugin){
 	if ( !$("#"+plugin+" .typo3-messages").length ) {
 		if(title!=""){
+			$('<div class="typo3-messages"><div class="alert alert-'+type+'"><div class="media"><div class="media-body"><h4 class="alert-title"><span class="glyphicon glyphicon-ok icon-alert" aria-hidden="true"></span>'+title+': </h4><div class="alert-message">'+text+'</div></div></div>').prependTo("#"+plugin);
+		} else {
+			$('<div class="typo3-messages"><div class="alert alert-'+type+'"><div class="media"><div class="media-body"><div class="alert-message">'+text+'</div></div></div>').prependTo("#"+plugin);
+		}
+	} else {
+		if(title!=""){
+			$('<div class="alert alert-'+type+'"><div class="media"><div class="media-body"><h4 class="alert-title"><span class="glyphicon '+icon+' icon-alert" aria-hidden="true"></span>'+title+': </h4><div class="alert-message">'+text+'</div></div>').appendTo("#"+plugin+" .typo3-messages");
+		} else {
+			$('<div class="alert alert-'+type+'"><div class="media"><div class="media-body"><div class="alert-message">'+text+'</div></div>').appendTo("#"+plugin+" .typo3-messages");
+		}
+	}
+}
+function mooxCommentAddMessageNoBootstrap(title,text,type,icon,plugin){
+	if ( !$("#"+plugin+" .typo3-messages").length ) {
+		if(title!=""){
 			$('<div class="typo3-messages"><div class="typo3-message message-'+type+'"><div class="message-header"><span class="glyphicon '+icon+' icon-alert" aria-hidden="true"></span>'+title+':</div><div class="message-body">'+text+'</div></div></div>').prependTo("#"+plugin);
 		} else {
 			$('<div class="typo3-messages"><div class="typo3-message message-'+type+'"><div class="message-header"><span class="glyphicon '+icon+' icon-alert" aria-hidden="true"></span></div><div class="message-body">'+text+'</div></div></div>').prependTo("#"+plugin);
@@ -135,27 +150,27 @@ function mooxCommentValidate(form){
 			if((tagname!='select' && value!='' ) || (tagname=='select' && value!='' && value!='0')){
 				if(!error && minlength && value.length<minlength){										
 					message = mooxCommentLang['de'].errors.too_short.replace("%1",minlength);
-					mooxCommentAddMessage(label,message,'error','glyphicon-warning-sign',plugin)					
+					mooxCommentAddMessage(label,message,'danger','glyphicon-warning-sign',plugin)					
 					error = true;
 				}
 				if(!error && maxlength && value.length>maxlength){										
 					message = mooxCommentLang['de'].errors.too_long.replace("%1",maxlength);
-					mooxCommentAddMessage(label,message,'error','glyphicon-warning-sign',plugin)					
+					mooxCommentAddMessage(label,message,'danger','glyphicon-warning-sign',plugin)					
 					error = true;
 				}
 				if(!error && limitlow && value<limitlow){										
 					message = mooxCommentLang['de'].errors.too_small.replace("%1",limitlow);
-					mooxCommentAddMessage(label,message,'error','glyphicon-warning-sign',plugin)					
+					mooxCommentAddMessage(label,message,'danger','glyphicon-warning-sign',plugin)					
 					error = true;
 				}
 				if(!error && limithigh && value>limithigh){										
 					message = mooxCommentLang['de'].errors.too_large.replace("%1",limithigh);
-					mooxCommentAddMessage(label,message,'error','glyphicon-warning-sign',plugin)					
+					mooxCommentAddMessage(label,message,'danger','glyphicon-warning-sign',plugin)					
 					error = true;
 				}
 				if(!error && validator=='email' && !mooxCommentCheckEmail(value)){
 					message = mooxCommentLang['de'].errors.invalid_email;
-					mooxCommentAddMessage(label,message,'error','glyphicon-warning-sign',plugin)					
+					mooxCommentAddMessage(label,message,'danger','glyphicon-warning-sign',plugin)					
 					error = true;
 				}
 				if(!error && validator=='password'){
@@ -163,7 +178,7 @@ function mooxCommentValidate(form){
 					if($('input[name="'+repetition+'"]').length){
 						if(value!=$('input[name="'+repetition+'"]').val()){
 							message = mooxCommentLang['de'].errors.password_not_equal;
-							mooxCommentAddMessage(label,message,'error','glyphicon-warning-sign',plugin)					
+							mooxCommentAddMessage(label,message,'danger','glyphicon-warning-sign',plugin)					
 							error = true;
 						}
 					}
@@ -172,7 +187,7 @@ function mooxCommentValidate(form){
 					cnt = $("."+id+"_files").length;
 					if(cnt==maxitems){
 						message = mooxCommentLang['de'].errors.too_many.replace("%1",maxitems);
-						mooxCommentAddMessage(label,message,'error','glyphicon-warning-sign',plugin);
+						mooxCommentAddMessage(label,message,'danger','glyphicon-warning-sign',plugin);
 						error = true;
 					}
 				}					
@@ -180,7 +195,7 @@ function mooxCommentValidate(form){
 					cnt = $("."+id+"_files").length;
 					if((cnt+1)<minitems){
 						message = mooxCommentLang['de'].errors.too_few.replace("%1",minitems);
-						mooxCommentAddMessage(label,message,'error','glyphicon-warning-sign',plugin);
+						mooxCommentAddMessage(label,message,'danger','glyphicon-warning-sign',plugin);
 						error = true;
 					}						
 				}					
@@ -189,7 +204,7 @@ function mooxCommentValidate(form){
 					cnt = items.length;
 					if(cnt>maxitems){
 						message = mooxCommentLang['de'].errors.too_many.replace("%1",maxitems);
-						mooxCommentAddMessage(label,message,'error','glyphicon-warning-sign',plugin);
+						mooxCommentAddMessage(label,message,'danger','glyphicon-warning-sign',plugin);
 						error = true;
 					}
 				}					
@@ -198,14 +213,14 @@ function mooxCommentValidate(form){
 					cnt = items.length;
 					if(cnt<minitems){
 						message = mooxCommentLang['de'].errors.too_few.replace("%1",minitems);
-						mooxCommentAddMessage(label,message,'error','glyphicon-warning-sign',plugin);
+						mooxCommentAddMessage(label,message,'danger','glyphicon-warning-sign',plugin);
 						error = true;
 					}						
 				}
 			} else {					
 				if(validator!='file' && validator!='tree' && required){
 					message = mooxCommentLang['de'].errors.empty;
-					mooxCommentAddMessage(label,message,'error','glyphicon-warning-sign',plugin)					
+					mooxCommentAddMessage(label,message,'danger','glyphicon-warning-sign',plugin)					
 					error = true;
 				} else {
 					
@@ -220,7 +235,7 @@ function mooxCommentValidate(form){
 							} else {
 								message = mooxCommentLang['de'].errors.too_few.replace("%1",minitems);
 							}
-							mooxCommentAddMessage(label,message,'error','glyphicon-warning-sign',plugin);
+							mooxCommentAddMessage(label,message,'danger','glyphicon-warning-sign',plugin);
 							error = true;
 						}	
 					}						
@@ -240,7 +255,7 @@ function mooxCommentValidate(form){
 							} else {
 								message = mooxCommentLang['de'].errors.too_few.replace("%1",minitems);
 							}
-							mooxCommentAddMessage(label,message,'error','glyphicon-warning-sign',plugin);
+							mooxCommentAddMessage(label,message,'danger','glyphicon-warning-sign',plugin);
 							error = true;
 						}	
 					}

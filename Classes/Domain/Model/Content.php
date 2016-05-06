@@ -1,51 +1,35 @@
 <?php
 namespace DCNGmbH\MooxComment\Domain\Model;
 
-/***************************************************************
- *  Copyright notice
- *
- *  (c) 2014 Dominic Martin <dm@dcn.de>, DCN GmbH
- *  
- *  All rights reserved
- *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
-
 /**
+ * This file is part of the TYPO3 CMS project.
  *
- * @package moox_comment
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- * @scope prototype
- * @entity
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * The TYPO3 project - inspiring people to share!
  */
-class Content extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+ 
+class Content extends AbstractEntity
+{
 	
 	/**
 	 * uid
 	 *
-	 * @var integer
+	 * @var int
 	 */
     protected $uid;
 	
 	/**
 	 * pid
 	 *
-	 * @var integer
+	 * @var int
 	 */
     protected $pid;
 	
@@ -73,38 +57,42 @@ class Content extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
      * get uid
 	 *
-     * @return integer $uid uid
+     * @return int $uid uid
      */
-    public function getUid() {
-       return $this->uid;
+    public function getUid()
+	{
+		return $this->uid;
     }
      
     /**
      * set uid
 	 *
-     * @param integer $uid uid
+     * @param int $uid uid
 	 * @return void
      */
-    public function setUid($uid) {
+    public function setUid($uid)
+	{
         $this->uid = $uid;
     }
 	
 	/**
      * get pid
 	 *
-     * @return integer $pid pid
+     * @return int $pid pid
      */
-    public function getPid() {
-       return $this->pid;
+    public function getPid()
+	{
+		return $this->pid;
     }
      
     /**
      * set pid
 	 *
-     * @param integer $pid pid
+     * @param int $pid pid
 	 * @return void
      */
-    public function setPid($pid) {
+    public function setPid($pid)
+	{
         $this->pid = $pid;
     }
 	
@@ -113,7 +101,8 @@ class Content extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 *
      * @return string $header header
      */
-    public function getHeader() {
+    public function getHeader()
+	{
        return $this->header;
     }
      
@@ -123,7 +112,8 @@ class Content extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @param string $header header
 	 * @return void
      */
-    public function setHeader($header) {
+    public function setHeader($header)
+	{
         $this->header = $header;
     }
 	
@@ -132,8 +122,9 @@ class Content extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 *
      * @return string $listType list type
      */
-    public function getListType() {
-       return $this->listType;
+    public function getListType()
+	{
+		return $this->listType;
     }
      
     /**
@@ -142,7 +133,8 @@ class Content extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @param string $listType list type
 	 * @return void
      */
-    public function setListType($listType) {
+    public function setListType($listType)
+	{
         $this->listType = $listType;
     }
 	
@@ -151,8 +143,9 @@ class Content extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 *
      * @return string $piFlexform pi flexform
      */
-    public function getPiFlexform() {
-       return $this->piFlexform;
+    public function getPiFlexform()
+	{
+		return $this->piFlexform;
     }
      
     /**
@@ -161,7 +154,8 @@ class Content extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
      * @param string $piFlexform pi flexform
 	 * @return void
      */
-    public function setPiFlexform($piFlexform) {
+    public function setPiFlexform($piFlexform)
+	{
         $this->piFlexform = $piFlexform;
     }
 }

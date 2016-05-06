@@ -1,38 +1,25 @@
 <?php
 namespace DCNGmbH\MooxComment\Controller;
 
-/***************************************************************
- *  Copyright notice
- *
- *  (c) 2014 Dominic Martin <dm@dcn.de>, DCN GmbH
- *  
- *  All rights reserved
- *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
-
 /**
+ * This file is part of the TYPO3 CMS project.
  *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- * @package moox_comment
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
+ * The TYPO3 project - inspiring people to share!
  */
-class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+
+use TYPO3\CMS\Core\Utility\GeneralUtility; 
+use TYPO3\CMS\Core\Messaging\FlashMessage;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+ 
+class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+{
 	
 	/**
 	 * templateRepository
@@ -45,7 +32,7 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	/**
 	 * extConf
 	 *
-	 * @var boolean
+	 * @var bool
 	 */
 	protected $extConf;
 	
@@ -54,7 +41,8 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	 *
 	 * @return void
 	 */
-	protected function initializeAction() {
+	protected function initializeAction()
+	{
 		parent::initializeAction();					
 		$this->extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['moox_comment']);					
 	}
@@ -64,8 +52,8 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	 *
 	 * @return void
 	 */
-	public function indexAction() {			
-		
+	public function indexAction()
+	{					
 		$this->view->assign('items', $this->templateRepository->findAll(false));
 		$this->view->assign('action', 'index');
 	}
@@ -73,11 +61,11 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	/**
 	 * action add
 	 *	
-	 * @param \array $add
+	 * @param array $add
 	 * @return void
 	 */
-	public function addAction($add = array()) {			
-		
+	public function addAction($add = array())
+	{					
 		if(isset($add['save']) || isset($add['saveAndClose']) ||  isset($add['saveAndNew'])){
 			
 			$item = $this->objectManager->get('DCNGmbH\\MooxComment\\Domain\\Model\\Template');
@@ -92,7 +80,8 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 			$this->addFlashMessage(
 				'', 
 				'Vorlage wurde erfolgreich gespeichert.', 
-				\TYPO3\CMS\Core\Messaging\FlashMessage::OK);
+				FlashMessage::OK
+			);
 		}
 		if(isset($add['save'])){
 			$this->redirect("edit",NULL,NULL,array('uid' => $item->getUid()));
@@ -110,22 +99,22 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	/**
 	 * action edit
 	 *
-	 * @param \int $uid
-	 * @param \array $edit
+	 * @param int $uid
+	 * @param array $edit
 	 * @return void
 	 */
-	public function editAction($uid = 0, $edit = array()) {			
-		
+	public function editAction($uid = 0, $edit = array())
+	{					
 		if($uid>0){
 		
 			$item = $this->templateRepository->findByUid($uid);
 			
 			if(!count($edit)){
-				$edit['title'] 		= $item->getTitle();
-				$edit['subject'] 	= $item->getSubject();
-				$edit['category'] 	= $item->getCategory();
-				$edit['template'] 	= $item->getTemplate();				
-				$edit['uid'] 		= $item->getUid();				
+				$edit['title'] = $item->getTitle();
+				$edit['subject'] = $item->getSubject();
+				$edit['category'] = $item->getCategory();
+				$edit['template'] = $item->getTemplate();				
+				$edit['uid'] = $item->getUid();				
 			}
 						
 			if(isset($edit['save']) || isset($edit['saveAndClose']) ||  isset($edit['saveAndNew'])){				
@@ -141,7 +130,8 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 				$this->addFlashMessage(
 					'', 
 					'Änderungen wurden erfolgreich gespeichert.', 
-					\TYPO3\CMS\Core\Messaging\FlashMessage::OK);
+					FlashMessage::OK
+				);
 			}
 			if(isset($edit['saveAndClose'])){
 				$this->redirect("index");
@@ -161,11 +151,11 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	/**
 	 * action delete
 	 *	
-	 * @param \int $uid
+	 * @param int $uid
 	 * @return void
 	 */
-	public function deleteAction($uid = 0) {			
-		
+	public function deleteAction($uid = 0)
+	{					
 		if($uid>0){
 		
 			$item = $this->templateRepository->findByUid($uid);
@@ -175,9 +165,10 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 			$this->objectManager->get('TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface')->persistAll();
 			
 			$this->addFlashMessage(
-					'', 
-					'Vorlage wurde gelöscht.', 
-					\TYPO3\CMS\Core\Messaging\FlashMessage::OK);
+				'', 
+				'Vorlage wurde gelöscht.', 
+				FlashMessage::OK
+			);
 						
 		} 
 		
@@ -187,59 +178,59 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	/**
 	 * action preview iframe
 	 *
-	 * @param \int $uid
+	 * @param int $uid
 	 * @return void
 	 */
-	public function previewIframeAction($uid = 0) {							
-		
+	public function previewIframeAction($uid = 0)
+	{									
 		if($uid>0){
 		
 			$template = $this->templateRepository->findByUid($uid);
 			
-			$data['item']['name'] 				= "Hans Mustermann";
-			$data['item']['email'] 				= "email@example.net";
-			$data['item']['title'] 				= "Dies ist ein Kommentar";
-			$data['item']['comment'] 			= "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.";
-			$data['item']['rating'] 			= "5.3";
+			$data['item']['name'] = "Hans Mustermann";
+			$data['item']['email'] = "email@example.net";
+			$data['item']['title'] = "Dies ist ein Kommentar";
+			$data['item']['comment'] = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.";
+			$data['item']['rating'] = "5.3";
 			
-			$data['confirm-url'] 				= "http://example.net/confirm.html";
-			$data['delete-url']	 				= "http://example.net/delete.html";
+			$data['confirm-url'] = "http://example.net/confirm.html";
+			$data['delete-url']	= "http://example.net/delete.html";
 			
-			$data['target']['type'] 			= "tx_mooxnews_domain_model_news";
-			$data['target']['uid'] 				= "1234";
-			$data['target']['title'] 			= "Eine Kommentarfunktion ist cool";
-			$data['target']['url'] 				= "http://example.net/target.html";
+			$data['target']['type'] = "tx_mooxnews_domain_model_news";
+			$data['target']['uid'] = "1234";
+			$data['target']['title'] = "Eine Kommentarfunktion ist cool";
+			$data['target']['url'] = "http://example.net/target.html";
 			
-			$data['user']['gender'] 			= 1;
-			$data['user']['title'] 				= "Dr.";
-			$data['user']['username'] 			= "hans.mustermann";
-			$data['user']['name'] 				= "Hans Mustermann";
-			$data['user']['auto_name'] 			= "Hans Mustermann";
-			$data['user']['first_name'] 		= "Hans";
-			$data['user']['middle_name'] 		= "Jürgen";
-			$data['user']['last_name'] 			= "Mustermann";
-			$data['user']['email'] 				= "email@example.net";
+			$data['user']['gender'] = 1;
+			$data['user']['title'] = "Dr.";
+			$data['user']['username'] = "hans.mustermann";
+			$data['user']['name'] = "Hans Mustermann";
+			$data['user']['auto_name'] = "Hans Mustermann";
+			$data['user']['first_name'] = "Hans";
+			$data['user']['middle_name'] = "Jürgen";
+			$data['user']['last_name'] = "Mustermann";
+			$data['user']['email'] = "email@example.net";
 			
-			$data['receiver']['gender'] 		= 1;
-			$data['receiver']['title'] 			= "Dr.";
-			$data['receiver']['username'] 		= "hans.mustermann";
-			$data['receiver']['name'] 			= "Hans Mustermann";
-			$data['receiver']['auto_name'] 			= "Hans Mustermann";
-			$data['receiver']['first_name'] 	= "Hans";
-			$data['receiver']['middle_name'] 	= "Jürgen";
-			$data['receiver']['last_name'] 		= "Mustermann";
-			$data['receiver']['email'] 			= "email@example.net";
+			$data['receiver']['gender'] = 1;
+			$data['receiver']['title'] = "Dr.";
+			$data['receiver']['username'] = "hans.mustermann";
+			$data['receiver']['name'] = "Hans Mustermann";
+			$data['receiver']['auto_name'] = "Hans Mustermann";
+			$data['receiver']['first_name'] = "Hans";
+			$data['receiver']['middle_name'] = "Jürgen";
+			$data['receiver']['last_name'] = "Mustermann";
+			$data['receiver']['email'] = "email@example.net";
 			
 			if (!empty($this->extConf['mailRenderingPartialRoot'])){
-				$partialRootPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($this->extConf['mailRenderingPartialRoot']);
+				$partialRootPath = GeneralUtility::getFileAbsFileName($this->extConf['mailRenderingPartialRoot']);
 				if(!is_dir($partialRootPath)){
 					unset($partialRootPath);	
 				} 
 			} 
 			
 			if($partialRootPath==""){
-				$conf = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
-				$partialRootPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName(str_replace("Backend/","",$conf['view']['partialRootPaths'][0])."Mail");
+				$conf = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
+				$partialRootPath = GeneralUtility::getFileAbsFileName(str_replace("Backend/","",$conf['view']['partialRootPaths'][0])."Mail");
 			}
 			
 			$previewView = $this->objectManager->create('TYPO3\\CMS\\Fluid\\View\StandaloneView');
@@ -249,7 +240,7 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 				$previewView->setPartialRootPath($partialRootPath);
 			}
 			$previewView->assignMultiple($data);
-			$preview	 = $previewView->render();
+			$preview = $previewView->render();
 			
 			$this->view->assign('preview', $preview);
 		} else {
@@ -262,11 +253,11 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	 *
 	 * @return array
 	 */
-	public function getTemplateCategories() {
-		
+	public function getTemplateCategories()
+	{		
 		$categories = array();	
 		
-		$categories['newentry'] 			= "Benachrichtiguns/Bestätigungs-Mail";		
+		$categories['newentry'] = "Benachrichtiguns/Bestätigungs-Mail";		
 		
 		return $categories;
 	}		
@@ -276,7 +267,8 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	 *
 	 * @return array
 	 */
-	public function getExtConf() {
+	public function getExtConf()
+	{
 		return $this->extConf;
 	}
 
@@ -286,7 +278,8 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	 * @param array $extConf ext conf
 	 * @return void
 	 */
-	public function setExtConf($extConf) {
+	public function setExtConf($extConf)
+	{
 		$this->extConf = $extConf;
 	}
 }

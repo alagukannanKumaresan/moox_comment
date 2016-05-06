@@ -1,43 +1,27 @@
 <?php
 namespace DCNGmbH\MooxComment\Controller;
 
-/***************************************************************
- *  Copyright notice
- *
- *  (c) 2015 Dominic Martin <dm@dcn.de>, DCN GmbH
- *  
- *  All rights reserved
- *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
-
-use \TYPO3\CMS\Core\Utility\GeneralUtility; 
-use \TYPO3\CMS\Extbase\Utility\LocalizationUtility;
-use \TYPO3\CMS\Core\Messaging\FlashMessage;
-use \DCNGmbH\MooxComment\Domain\Model\Rating;
- 
 /**
+ * This file is part of the TYPO3 CMS project.
  *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- * @package moox_comment
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
+ * The TYPO3 project - inspiring people to share!
  */
-class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {	
+
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Messaging\FlashMessage; 
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use DCNGmbH\MooxComment\Domain\Model\Rating;
+ 
+class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+{	
 	
 	/**
 	 * persistenceManager
@@ -98,28 +82,28 @@ class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	/**
 	 * extConf
 	 *
-	 * @var \boolean
+	 * @var bool
 	 */
 	protected $extConf;
 	
 	/**
 	 * storagePids
 	 *
-	 * @var \array 	
+	 * @var array 	
 	 */
 	protected $storagePids;
 	
 	/**
 	 * fields
 	 *
-	 * @var \array 	
+	 * @var array 	
 	 */
 	protected $fields;
 	
 	/**
 	 * pagination
 	 *
-	 * @var \array 	
+	 * @var array 	
 	 */
 	protected $pagination;
 				
@@ -134,30 +118,30 @@ class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
      *
      * @return void
      */
-    public function initializeAction() {					
-		
+    public function initializeAction()
+	{					
 		// execute parent initialize action
 		parent::initializeAction();
 		
 		// load extension configuration
 		$this->extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['moox_comment']);		
 		
-		$this->fields['rating'] = array (
+		$this->fields['rating'] = [
 			'key' => 'rating',
 			'extkey' => 'moox_comment',
-			'config' => array (
+			'config' => [
 				'required' => 1,
 				'validate' => 1,
 				'type' => 'text',				
-				'data' => array (
+				'data' => [
 					'data-type' => 'text',
 					'data-id' => 'rating',				
 					'data-label' => LocalizationUtility::translate(self::LLPATH.'form.rating',$this->extensionName),
 					'data-required' => 1,
 					'data-name' => "tx_mooxcomment_pi2[rate][rating]"
-				)
-			)
-		);
+				]
+			]
+		];
 		
 		if($this->settings['ratingMode']=="stars"){
 			$this->fields['rating']['config']['stars'] = array();
@@ -199,10 +183,10 @@ class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 *	 
 	 * @return void
 	 */
-	protected function initializeStorageSettings() {
-			
+	protected function initializeStorageSettings()
+	{			
 		// get typoscript configuration
-		$configuration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
+		$configuration = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
 		
 		// set storage pid if set by plugin
 		if($this->settings['storagePid']!=""){
@@ -227,12 +211,12 @@ class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	/**
 	 * action show
 	 *	
-	 * @param \array $filter filter
-	 * @param \string $settings settings
+	 * @param array $filter filter
+	 * @param string $settings settings
 	 * @return void
 	 */
-	public function showAction($filter = array(),$settings = NULL) {
-		
+	public function showAction($filter = array(),$settings = NULL)
+	{		
 		// init action arrays and booleans
 		$messages = array();
 		$errors = array();	
@@ -337,13 +321,13 @@ class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	/**
 	 * action rate
 	 *
-	 * @param \array $rate form data
-	 * @param \boolean $ajax is ajax request?
-	 * @param \string $settings settings
+	 * @param array $rate form data
+	 * @param bool $ajax is ajax request?
+	 * @param string $settings settings
 	 * @return void
 	 */
-	public function rateAction($rate = NULL, $ajax = FALSE, $settings = NULL) {
-		
+	public function rateAction($rate = NULL, $ajax = FALSE, $settings = NULL)
+	{		
 		// init action arrays and booleans
 		$messages = array();
 		$errors = array();			
@@ -386,12 +370,12 @@ class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 			$item->setCrdate($GLOBALS['EXEC_TIME']);
 			
 			// add message
-			$messages[] = array( 
+			$messages[] = [
 				"icon" => '<span class="glyphicon glyphicon-ok icon-alert" aria-hidden="true"></span>',
 				"title" => LocalizationUtility::translate(self::LLPATH.'pi2.action_rate',$this->extensionName),
 				"text" => LocalizationUtility::translate(self::LLPATH.'pi2.action_rate.success',$this->extensionName),
 				"type" => FlashMessage::OK
-			);
+			];
 		}
 						
 		// unset register object
@@ -403,7 +387,7 @@ class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 			if(count($messages)){
 				
 				// set flash messages
-				$this->helperService->setFlashMessages($this->flashMessageContainer,$messages);
+				$this->helperService->setFlashMessages($this,$messages);
 				
 			} else {
 							
@@ -417,7 +401,7 @@ class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 			if(count($messages)){
 				
 				// set flash messages
-				$this->helperService->setFlashMessages($this->flashMessageContainer,$messages);
+				$this->helperService->setFlashMessages($this,$messages);
 				
 			} else {
 							
@@ -430,17 +414,15 @@ class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	/**
 	 * action unrate
 	 *
-	 * @param \int $uid uid
-	 * @param \string $hash hash
-	 * @param \boolean $ajax is ajax request?
-	 * @param \string $settings settings
+	 * @param int $uid uid
+	 * @param string $hash hash
+	 * @param bool $ajax is ajax request?
+	 * @param string $settings settings
 	 * @return void
 	 */
-	public function unrateAction($uid = 0, $hash = "", $ajax = FALSE, $settings = NULL) {		
-		
+	public function unrateAction($uid = 0, $hash = "", $ajax = FALSE, $settings = NULL)
+	{				
 		if($uid>0){
-			
-			echo 
 			
 			$item = $this->ratingRepository->findByUid($uid);
 			
@@ -455,15 +437,15 @@ class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 					$this->persistenceManager->persistAll();
 					
 					// add message
-					$messages[] = array( 
+					$messages[] = [ 
 						"icon" => '<span class="glyphicon glyphicon-ok icon-alert" aria-hidden="true"></span>',
 						"title" => LocalizationUtility::translate(self::LLPATH.'pi2.action_unrate',$this->extensionName),
 						"text" => LocalizationUtility::translate(self::LLPATH.'pi2.action_unrate.success',$this->extensionName),
 						"type" => FlashMessage::OK
-					);
+					];
 					
 					// set flash messages
-					$this->helperService->setFlashMessages($this->flashMessageContainer,$messages);
+					$this->helperService->setFlashMessages($this,$messages);
 					
 					// end request		
 					if(!$ajax){
@@ -486,7 +468,8 @@ class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 *
 	 * @return void
 	 */
-	public function errorAction() {				
+	public function errorAction()
+	{				
 		
 		$this->view->assign('action', 'error');		
 	}		
@@ -494,38 +477,42 @@ class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	/**
 	 * Returns storage pids
 	 *
-	 * @return \array
+	 * @return array
 	 */
-	public function getStoragePids() {
+	public function getStoragePids()
+	{
 		return $this->storagePids;
 	}
 
 	/**
 	 * Set storage pids
 	 *
-	 * @param \array $storagePids storage pids
+	 * @param array $storagePids storage pids
 	 * @return void
 	 */
-	public function setStoragePids($storagePids) {
+	public function setStoragePids($storagePids)
+	{
 		$this->storagePids = $storagePids;
 	}
 		
 	/**
 	 * Returns ext conf
 	 *
-	 * @return \array
+	 * @return array
 	 */
-	public function getExtConf() {
+	public function getExtConf()
+	{
 		return $this->extConf;
 	}
 
 	/**
 	 * Set ext conf
 	 *
-	 * @param \array $extConf ext conf
+	 * @param array $extConf ext conf
 	 * @return void
 	 */
-	public function setExtConf($extConf) {
+	public function setExtConf($extConf)
+	{
 		$this->extConf = $extConf;
 	}
 }

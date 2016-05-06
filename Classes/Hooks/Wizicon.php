@@ -1,37 +1,21 @@
 <?php
 namespace DCNGmbH\MooxComment\Hooks;
 
-/***************************************************************
- *  Copyright notice
- *
- *  (c) 2015 Dominic Martin <dm@dcn.de>, DCN GmbH
- *  
- *  All rights reserved
- *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
-
 /**
+ * This file is part of the TYPO3 CMS project.
  *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- * @package moox_comment
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
+ * The TYPO3 project - inspiring people to share!
  */
+
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+ 
 class Wizicon {
 	
 	/**
@@ -52,11 +36,11 @@ class Wizicon {
 	 * @param array $wizardItems The wizard items
 	 * @return array array with wizard items
 	 */
-	public function proc($wizardItems) {
-		
+	public function proc($wizardItems)
+	{		
 		// set wizard entry for plugin pi1
 		$wizardItems['plugins_tx_' . self::KEY . 'pi1'] = array(
-			'icon'			=> \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath(self::KEY) . 'Resources/Public/Icons/Pi1/wizard.png',
+			'icon'			=> ExtensionManagementUtility::extRelPath(self::KEY) . 'Resources/Public/Icons/Pi1/wizard.png',
 			'title'			=> $GLOBALS['LANG']->sL(self::LLPATH.'pi1.title'),
 			'description'	=> $GLOBALS['LANG']->sL(self::LLPATH.'pi1.description'),
 			'params'		=> '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=mooxcomment_pi1'
@@ -64,7 +48,7 @@ class Wizicon {
 		
 		// set wizard entry for plugin pi2
 		$wizardItems['plugins_tx_' . self::KEY . 'pi2'] = array(
-			'icon'			=> \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath(self::KEY) . 'Resources/Public/Icons/Pi2/wizard.png',
+			'icon'			=> ExtensionManagementUtility::extRelPath(self::KEY) . 'Resources/Public/Icons/Pi2/wizard.png',
 			'title'			=> $GLOBALS['LANG']->sL(self::LLPATH.'pi2.title'),
 			'description'	=> $GLOBALS['LANG']->sL(self::LLPATH.'pi2.description'),
 			'params'		=> '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=mooxcomment_pi2'
@@ -72,7 +56,7 @@ class Wizicon {
 		
 		// set wizard entry for plugin pi3
 		$wizardItems['plugins_tx_' . self::KEY . 'pi3'] = array(
-			'icon'			=> \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath(self::KEY) . 'Resources/Public/Icons/Pi3/wizard.png',
+			'icon'			=> ExtensionManagementUtility::extRelPath(self::KEY) . 'Resources/Public/Icons/Pi3/wizard.png',
 			'title'			=> $GLOBALS['LANG']->sL(self::LLPATH.'pi3.title'),
 			'description'	=> $GLOBALS['LANG']->sL(self::LLPATH.'pi3.description'),
 			'params'		=> '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=mooxcomment_pi3'

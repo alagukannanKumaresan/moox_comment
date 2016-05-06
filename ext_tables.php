@@ -12,15 +12,11 @@ $ll = 'LLL:EXT:moox_comment/Resources/Private/Language/locallang_be.xlf:';
 	'Pi1',
 	$ll.'pi1.title'
 );
-
-// Register Plugins
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'Pi2',
 	$ll.'pi2.title'
 );
-
-// Register Plugins
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'Pi3',
@@ -98,7 +94,7 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/flexform_pi3.xml');
 
 // Add typoscripts
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'MOOX comment');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'MOOX Comment');
 
 // Add Wizard Icons
 if (TYPO3_MODE == 'BE') {

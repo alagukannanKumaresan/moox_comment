@@ -41,4 +41,10 @@ if (!defined('TYPO3_MODE')) {
 		'Pi3' => 'list,add,confirm,delete',
 	)
 );
+
+// extend moox_news model classes
+$GLOBALS['TYPO3_CONF_VARS']['EXT']['moox_news']['classes']['Domain/Model/News'][] = 'moox_comment';
+
+// extend moox_shop model classes
+$GLOBALS['TYPO3_CONF_VARS']['EXT']['moox_shop']['classes']['Domain/Model/Product'][] = 'moox_comment';
 ?>

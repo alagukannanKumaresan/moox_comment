@@ -27,6 +27,9 @@
 			<trans-unit id="pi1.foreign_type.tx_mooxnews_domain_model_news">
 				<source>news</source>				
 			</trans-unit>
+			<trans-unit id="pi1.foreign_type.tx_mooxshop_domain_model_product">
+				<source>product</source>				
+			</trans-unit>
 			<trans-unit id="pi1.foreign_type.pages">
 				<source>page</source>				
 			</trans-unit>

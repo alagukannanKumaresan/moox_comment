@@ -1,43 +1,27 @@
 <?php
 namespace DCNGmbH\MooxComment\Controller;
 
-/***************************************************************
- *  Copyright notice
- *
- *  (c) 2015 Dominic Martin <dm@dcn.de>, DCN GmbH
- *  
- *  All rights reserved
- *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
-
-use \TYPO3\CMS\Core\Utility\GeneralUtility; 
-use \TYPO3\CMS\Extbase\Utility\LocalizationUtility;
-use \TYPO3\CMS\Core\Messaging\FlashMessage;
-use \DCNGmbH\MooxComment\Domain\Model\Review;
- 
 /**
+ * This file is part of the TYPO3 CMS project.
  *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- * @package moox_comment
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
+ * The TYPO3 project - inspiring people to share!
  */
-class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {	
+
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Messaging\FlashMessage; 
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use DCNGmbH\MooxComment\Domain\Model\Review;
+
+class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+{	
 	
 	/**
 	 * persistenceManager
@@ -98,28 +82,28 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	/**
 	 * extConf
 	 *
-	 * @var \boolean
+	 * @var bool
 	 */
 	protected $extConf;
 	
 	/**
 	 * storagePids
 	 *
-	 * @var \array 	
+	 * @var array 	
 	 */
 	protected $storagePids;
 	
 	/**
 	 * fields
 	 *
-	 * @var \array 	
+	 * @var array 	
 	 */
 	protected $fields;
 	
 	/**
 	 * pagination
 	 *
-	 * @var \array 	
+	 * @var array 	
 	 */
 	protected $pagination;
 				
@@ -134,87 +118,87 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
      *
      * @return void
      */
-    public function initializeAction() {					
-		
+    public function initializeAction()
+	{							
 		// execute parent initialize action
 		parent::initializeAction();
 		
 		// load extension configuration
 		$this->extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['moox_comment']);		
 		
-		$this->fields['name'] = array (
+		$this->fields['name'] = [
 			'key' => 'email',
 			'extkey' => 'moox_comment',
-			'config' => array (
+			'config' => [
 				'type' => 'text',
 				'validate' => 1,				
-				'data' => array (
+				'data' => [
 					'data-type' => 'text',
 					'data-id' => 'name',
 					'data-label' => LocalizationUtility::translate(self::LLPATH.'form.name',$this->extensionName),		
-				)
-			)			
-		);
+				],
+			],		
+		];
 		
-		$this->fields['email'] = array (
+		$this->fields['email'] = [
 			'key' => 'email',
 			'extkey' => 'moox_comment',			
-			'config' => array (
+			'config' => [
 				'type' => 'email',
 				'validate' => 1,
 				'validator' => 'email',
-				'data' => array (
+				'data' => [
 					'data-type' => 'email',
 					'data-id' => 'email',
 					'data-validator' => 'email',
 					'data-label' => LocalizationUtility::translate(self::LLPATH.'form.email',$this->extensionName),		
-				)
-			)
-		);
+				],
+			],
+		];
 		
-		$this->fields['title'] = array (
+		$this->fields['title'] = [
 			'key' => 'title',
 			'extkey' => 'moox_comment',			
-			'config' => array (
+			'config' => [
 				'type' => 'text',
 				'validate' => 0,				
-				'data' => array (
+				'data' => [
 					'data-type' => 'text',
 					'data-id' => 'title',				
 					'data-label' => LocalizationUtility::translate(self::LLPATH.'form.title',$this->extensionName),		
-				)
-			)
-		);
+				],
+			],
+		];
 		
-		$this->fields['comment'] = array (
+		$this->fields['comment'] = [
 			'key' => 'comment',
 			'extkey' => 'moox_comment',
-			'config' => array (
+			'config' => [
 				'type' => 'text',
 				'validate' => 0,
 				'rows' => 5,
-				'data' => array (
+				'data' => [
 					'data-type' => 'text',
 					'data-id' => 'comment',				
 					'data-label' => LocalizationUtility::translate(self::LLPATH.'form.comment',$this->extensionName),	
-				)
-			)
-		);
+				],
+			],
+		];
 		
-		$this->fields['rating'] = array (
+		$this->fields['rating'] = [
 			'key' => 'rating',
 			'extkey' => 'moox_comment',
-			'config' => array (
+			'config' => [
 				'validate' => 0,
 				'type' => 'text',				
-				'data' => array (
+				'data' => [
 					'data-type' => 'text',
 					'data-id' => 'rating',				
 					'data-label' => LocalizationUtility::translate(self::LLPATH.'form.rating',$this->extensionName),
 					'data-required' => 1,
-				)
-			)
-		);
+				],
+			],
+		];
 		
 		if($this->settings['nameRequired']){
 			$this->fields['name']['config']['required'] = 1;
@@ -285,10 +269,10 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 *	 
 	 * @return void
 	 */
-	protected function initializeStorageSettings() {
-			
+	protected function initializeStorageSettings()
+	{			
 		// get typoscript configuration
-		$configuration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
+		$configuration = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
 		
 		// set storage pid if set by plugin
 		if($this->settings['storagePid']!=""){
@@ -313,15 +297,15 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	/**
 	 * action list
 	 *
-	 * @param \array $filter filter
-	 * @param \integer $offset filter
-	 * @param \integer $limit filter
-	 * @param \array $orderings orderings
-	 * @param \string $settings settings
+	 * @param array $filter filter
+	 * @param int $offset filter
+	 * @param int $limit filter
+	 * @param array $orderings orderings
+	 * @param string $settings settings
 	 * @return void
 	 */
-	public function listAction($filter = array(),$offset = 0, $limit = NULL, $orderings = NULL, $settings = NULL) {
-		
+	public function listAction($filter = array(),$offset = 0, $limit = NULL, $orderings = NULL, $settings = NULL)
+	{		
 		// init action arrays and booleans
 		$messages = array();
 		$errors = array();	
@@ -396,12 +380,17 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 			$isCreateable = true;
 			if($configuration && $this->settings['allowOnlyOneReviewPerUserIfPossible'] && is_object($feUser)){
 				$items = $this->reviewRepository->findByFilter(
-					array(
+					[
 						'uid_foreign' => $configuration['uid_foreign'],
 						'tablenames' => $configuration['tablenames'],
 						'feUser' => $feUser->getUid(),
 						'isModerator' => true,
-					),NULL,NULL,NULL,"all");
+					],
+					NULL,
+					NULL,
+					NULL,
+					"all"
+				);
 					
 				if($items->count()>0){
 					$isCreateable = false;
@@ -461,13 +450,13 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	/**
 	 * action add
 	 *
-	 * @param \array $add form data
-	 * @param \boolean $ajax is ajax request?
-	 * @param \string $settings settings
+	 * @param array $add form data
+	 * @param bool $ajax is ajax request?
+	 * @param string $settings settings
 	 * @return void
 	 */
-	public function addAction($add = NULL, $ajax = FALSE, $settings = NULL) {
-		
+	public function addAction($add = NULL, $ajax = FALSE, $settings = NULL)
+	{		
 		// init action arrays and booleans
 		$messages = array();
 		$errors = array();	
@@ -574,8 +563,8 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 						$user['email'] = $item->getEmail();
 					}
 					
-					$subject 	= $this->helperService->prepareMailSubject($template->getSubject(),$user);
-					$deleteUrl 	= $this->uriBuilder->reset()->setNoCache(true)->setTargetPageUid($GLOBALS["TSFE"]->id)->setCreateAbsoluteUri(TRUE)->uriFor('delete', array("uid" => $item->getUid(), "hash" => $item->getHash()), 'Pi1', 'MooxComment', 'Pi1');
+					$subject = $this->helperService->prepareMailSubject($template->getSubject(),$user);
+					$deleteUrl = $this->uriBuilder->reset()->setNoCache(true)->setTargetPageUid($GLOBALS["TSFE"]->id)->setCreateAbsoluteUri(TRUE)->uriFor('delete', array("uid" => $item->getUid(), "hash" => $item->getHash()), 'Pi1', 'MooxComment', 'Pi1');
 					if(!$item->getConfirmed()){
 						$confirmUrl = $this->uriBuilder->reset()->setNoCache(true)->setTargetPageUid($GLOBALS["TSFE"]->id)->setCreateAbsoluteUri(TRUE)->uriFor('confirm', array("uid" => $item->getUid(), "hash" => $item->getHash()), 'Pi1', 'MooxComment', 'Pi1');
 					}
@@ -594,7 +583,7 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 							}
 
 							// set info mail array
-							$mail = array(
+							$mail = [
 								'sender_name' => $this->settings['notificationsSenderName'],
 								'sender_address' => $this->settings['notificationsSenderAddress'],
 								'receiver_name' => ($moderator->getFirstName()!="")?$moderator->getFirstName()." ".$moderator->getLastName():$moderator->getLastName(),
@@ -605,20 +594,20 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 								'delete-url' => $deleteUrl,
 								'user' => $user,
 								'receiver' => $receiver,
-								'item' => array(
+								'item' => [
 									'name' => $item->getName(),
 									'email' => $item->getEmail(),
 									'title' => $item->getTitle(),
 									'comment' => $item->getComment(),
 									'rating' => $item->getRating(),
-								),
-								'target' => array(
+								],
+								'target' => [
 									'type' => $item->getTablenames(),
 									'uid' => $item->getUidForeign(),
 									'title' => $item->getTitleForeign(),
 									'url' => $item->getUrlForeign(),
-								)								
-							);
+								]								
+							];
 							
 							// set mail body
 							$mail['body'] = $this->helperService->prepareMailBody($template,$mail);
@@ -631,30 +620,30 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 				} else {
 					
 					// add message
-					$messages[] = array( 
+					$messages[] = [ 
 						"icon" => '<span class="glyphicon glyphicon-warning-sign icon-alert" aria-hidden="true"></span>',
 						"title" => LocalizationUtility::translate(self::LLPATH.'pi3.action_add',$this->extensionName),
 						"text" => LocalizationUtility::translate(self::LLPATH.'pi3.action_add.error.no_template',$this->extensionName),
 						"type" => FlashMessage::ERROR
-					);							
+					];							
 				}
 			}
 			
 			// add message
 			if($confirmed){
-				$messages[] = array( 
+				$messages[] = [ 
 					"icon" => '<span class="glyphicon glyphicon-ok icon-alert" aria-hidden="true"></span>',
 					"title" => LocalizationUtility::translate(self::LLPATH.'pi3.action_add',$this->extensionName),
 					"text" => LocalizationUtility::translate(self::LLPATH.'pi3.action_add.success',$this->extensionName),
 					"type" => FlashMessage::OK
-				);
+				];
 			} else {
-				$messages[] = array( 
+				$messages[] = [ 
 					"icon" => '<span class="glyphicon glyphicon-ok icon-alert" aria-hidden="true"></span>',
 					"title" => LocalizationUtility::translate(self::LLPATH.'pi3.action_add',$this->extensionName),
 					"text" => LocalizationUtility::translate(self::LLPATH.'pi3.action_add.success_moderated',$this->extensionName),
 					"type" => FlashMessage::OK
-				);				
+				];				
 			}
 		}
 						
@@ -667,7 +656,7 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 			if(count($messages)){
 				
 				// set flash messages
-				$this->helperService->setFlashMessages($this->flashMessageContainer,$messages);
+				$this->helperService->setFlashMessages($this,$messages);
 				
 			} else {
 							
@@ -681,7 +670,7 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 			if(count($messages)){
 				
 				// set flash messages
-				$this->helperService->setFlashMessages($this->flashMessageContainer,$messages);
+				$this->helperService->setFlashMessages($this,$messages);
 				
 			} else {
 							
@@ -694,14 +683,14 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	/**
 	 * action confirm
 	 *
-	 * @param \int $uid uid
-	 * @param \string $hash hash
-	 * @param \boolean $ajax is ajax request?
-	 * @param \string $settings settings
+	 * @param int $uid uid
+	 * @param string $hash hash
+	 * @param bool $ajax is ajax request?
+	 * @param string $settings settings
 	 * @return void
 	 */
-	public function confirmAction($uid = 0, $hash = "", $ajax = FALSE, $settings = NULL) {		
-		
+	public function confirmAction($uid = 0, $hash = "", $ajax = FALSE, $settings = NULL)
+	{				
 		if($uid>0){
 			
 			$item = $this->reviewRepository->findByUid($uid);
@@ -717,15 +706,15 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 					$this->persistenceManager->persistAll();
 					
 					// add message
-					$messages[] = array( 
+					$messages[] = [ 
 						"icon" => '<span class="glyphicon glyphicon-ok icon-alert" aria-hidden="true"></span>',
 						"title" => LocalizationUtility::translate(self::LLPATH.'pi3.action_confirm',$this->extensionName),
 						"text" => LocalizationUtility::translate(self::LLPATH.'pi3.action_confirm.success',$this->extensionName),
 						"type" => FlashMessage::OK
-					);
+					];
 					
 					// set flash messages
-					$this->helperService->setFlashMessages($this->flashMessageContainer,$messages);
+					$this->helperService->setFlashMessages($this,$messages);
 					
 					// end request		
 					if(!$ajax){
@@ -746,14 +735,14 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	/**
 	 * action delete
 	 *
-	 * @param \int $uid uid
-	 * @param \string $hash hash
-	 * @param \boolean $ajax is ajax request?
-	 * @param \string $settings settings
+	 * @param int $uid uid
+	 * @param string $hash hash
+	 * @param bool $ajax is ajax request?
+	 * @param string $settings settings
 	 * @return void
 	 */
-	public function deleteAction($uid = 0, $hash = "", $ajax = FALSE, $settings = NULL) {		
-		
+	public function deleteAction($uid = 0, $hash = "", $ajax = FALSE, $settings = NULL)
+	{				
 		if($uid>0){
 			
 			$item = $this->reviewRepository->findByUid($uid);
@@ -769,15 +758,15 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 					$this->persistenceManager->persistAll();
 					
 					// add message
-					$messages[] = array( 
+					$messages[] = [ 
 						"icon" => '<span class="glyphicon glyphicon-ok icon-alert" aria-hidden="true"></span>',
 						"title" => LocalizationUtility::translate(self::LLPATH.'pi3.action_delete',$this->extensionName),
 						"text" => LocalizationUtility::translate(self::LLPATH.'pi3.action_delete.success',$this->extensionName),
 						"type" => FlashMessage::OK
-					);
+					];
 					
 					// set flash messages
-					$this->helperService->setFlashMessages($this->flashMessageContainer,$messages);
+					$this->helperService->setFlashMessages($this,$messages);
 					
 					// end request		
 					if(!$ajax){
@@ -800,46 +789,50 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 *
 	 * @return void
 	 */
-	public function errorAction() {				
-		
+	public function errorAction()
+	{						
 		$this->view->assign('action', 'error');		
 	}		
 	
 	/**
 	 * Returns storage pids
 	 *
-	 * @return \array
+	 * @return array
 	 */
-	public function getStoragePids() {
+	public function getStoragePids()
+	{
 		return $this->storagePids;
 	}
 
 	/**
 	 * Set storage pids
 	 *
-	 * @param \array $storagePids storage pids
+	 * @param array $storagePids storage pids
 	 * @return void
 	 */
-	public function setStoragePids($storagePids) {
+	public function setStoragePids($storagePids)
+	{
 		$this->storagePids = $storagePids;
 	}
 		
 	/**
 	 * Returns ext conf
 	 *
-	 * @return \array
+	 * @return array
 	 */
-	public function getExtConf() {
+	public function getExtConf()
+	{
 		return $this->extConf;
 	}
 
 	/**
 	 * Set ext conf
 	 *
-	 * @param \array $extConf ext conf
+	 * @param array $extConf ext conf
 	 * @return void
 	 */
-	public function setExtConf($extConf) {
+	public function setExtConf($extConf)
+	{
 		$this->extConf = $extConf;
 	}
 }

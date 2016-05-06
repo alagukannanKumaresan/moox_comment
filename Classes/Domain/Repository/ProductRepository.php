@@ -16,8 +16,8 @@ namespace DCNGmbH\MooxComment\Domain\Repository;
 
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
  
-if (ExtensionManagementUtility::isLoaded('moox_news') && class_exists('\DCNGmbH\MooxNews\Domain\Repository\NewsRepository')) {
-	class NewsRepository extends \DCNGmbH\MooxNews\Domain\Repository\NewsRepository 
+if (ExtensionManagementUtility::isLoaded('moox_shop') && class_exists('\DCNGmbH\MooxShop\Domain\Repository\ProductRepository')) {
+	class ProductRepository extends \DCNGmbH\MooxShop\Domain\Repository\ProductRepository 
 	{
 			
 	}

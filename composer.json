@@ -1,0 +1,20 @@
+{
+    "name": "dcngmbh/moox-comment",
+    "type": "typo3-cms-extension",
+    "description": "MOOX Comment & Rating",
+    "homepage": "http://www.moox.org",
+    "license": ["GPL-2.0+"],
+    "keywords": ["TYPO3 CMS", "MOOX"],
+    "support": {
+        "issues": "https://forge.typo3.org/projects/extension-foo"
+    },
+    "version": "7.0.0",
+	"require": {
+		"typo3/cms-core": ">=6.2.2,<8.0"
+	},	
+	"autoload": {
+		"psr-4": {
+		  "DCNGmbH\\MooxComment\\": "Classes"
+		}
+	}
+}

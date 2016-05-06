@@ -1,48 +1,33 @@
 <?php
 namespace DCNGmbH\MooxComment\ViewHelpers;
 
-/***************************************************************
- *  Copyright notice
- *
- *  (c) 2015 Dominic Martin <dm@dcn.de>, DCN GmbH
- *  
- *  All rights reserved
- *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
-
-use \TYPO3\CMS\Core\Utility\GeneralUtility; 
- 
 /**
+ * This file is part of the TYPO3 CMS project.
  *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- * @package moox_comment
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
+ * The TYPO3 project - inspiring people to share!
  */
-class GetValueViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+
+use TYPO3\CMS\Core\Utility\GeneralUtility; 
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;  
+
+class GetValueViewHelper extends AbstractViewHelper
+{
 
 	/**
 	 * @param object $item current classified object
 	 * @param string $field	
-	 * @param boolean $raw
+	 * @param bool $raw
 	 * @return string
 	 */
-	public function render($item, $field, $raw = false) {
+	public function render($item, $field, $raw = false)
+	{
 		$value = "";
 		if($field != ""){
 			$getCall = "get".GeneralUtility::underscoredToUpperCamelCase($field);

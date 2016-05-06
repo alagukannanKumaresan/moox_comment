@@ -1,40 +1,26 @@
 <?php
 namespace DCNGmbH\MooxComment\ViewHelpers\Widget\Controller;
 
-/***************************************************************
- *  Copyright notice
- *
- *  (c) 2015 Dominic Martin <dm@dcn.de>, DCN GmbH
- *  
- *  All rights reserved
- *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
-
-use \TYPO3\CMS\Extbase\Persistence\QueryInterface; 
- 
 /**
+ * This file is part of the TYPO3 CMS project.
  *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- * @package moox_comment
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
+ * The TYPO3 project - inspiring people to share!
  */
-class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetController {
+
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\ArrayUtility;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetController;
+ 
+class PaginateController extends AbstractWidgetController
+{
 
 	/**
 	 * @var array
@@ -47,7 +33,7 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
 	protected $objects;
 
 	/**
-	 * @var integer
+	 * @var int
 	 */
 	protected $currentPage = 1;
 
@@ -57,12 +43,12 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
 	protected $templatePath = '';
 
 	/**
-	 * @var integer
+	 * @var int
 	 */
 	protected $numberOfPages = 1;
 
 	/**
-	 * @var integer
+	 * @var int
 	 */
 	protected $maximumNumberOfLinks = 99;
 	
@@ -71,10 +57,14 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
 	 */
 	protected $order = array();
 
-	/** @var integer */
+	/**
+	 * @var int
+	 */
 	protected $initialOffset = 0;
 	
-	/** @var integer */
+	/**
+	 * @var int
+	 */
 	protected $initialLimit = 0;
 
 	/**
@@ -82,11 +72,14 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
 	 *
 	 * @return void
 	 */
-	public function initializeAction() {
+	public function initializeAction()
+	{
 		$this->objects = $this->widgetConfiguration['objects'];
-		\TYPO3\CMS\Core\Utility\ArrayUtility::mergeRecursiveWithOverrule(
+		ArrayUtility::mergeRecursiveWithOverrule(
 			$this->configuration,
-			(array)$this->widgetConfiguration['configuration'], TRUE);
+			(array)$this->widgetConfiguration['configuration'],
+			TRUE
+		);
 
 		$itemsPerPage = (integer)$this->configuration['itemsPerPage'];
 		if ($itemsPerPage === 0) {
@@ -96,7 +89,7 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
 		$this->numberOfPages = intval(ceil(count($this->objects) / $itemsPerPage));
 		$this->maximumNumberOfLinks = (integer)$this->configuration['maximumNumberOfLinks'];
 		$this->order = $this->configuration['order'];
-		$this->templatePath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($this->configuration['templatePath']);
+		$this->templatePath = GeneralUtility::getFileAbsFileName($this->configuration['templatePath']);
 
 		if (isset($this->widgetConfiguration['initial']['offset'])) {
 			$this->initialOffset = (int)$this->widgetConfiguration['initial']['offset'];
@@ -109,11 +102,12 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
 	/**
 	 * Main action
 	 *
-	 * @param integer $currentPage
+	 * @param int $currentPage
 	 * @param array $order
 	 * @return void
 	 */
-	public function indexAction($currentPage = 1, $order = NULL) {
+	public function indexAction($currentPage = 1, $order = NULL)
+	{
 		// set current page
 		$this->currentPage = (integer)$currentPage;
 		if ($this->currentPage < 1) {
@@ -166,9 +160,9 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
 					$dir = QueryInterface::ORDER_ASCENDING;
 				}
 				$query->setOrderings(
-						array(
-							$this->order['by'] => $dir,							
-						)
+					[
+						$this->order['by'] => $dir,							
+					]
 				);
 			}			
 			if($this->currentPage === $this->numberOfPages && $this->initialLimit > 0) {
@@ -209,13 +203,14 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
 	 * @param array $order
 	 * @return array
 	 */
-	protected function buildPagination($order = array()) {
+	protected function buildPagination($order = array())
+	{
 		$this->calculateDisplayRange();
 		$pages = array();
 		for ($i = $this->displayRangeStart; $i <= $this->displayRangeEnd; $i++) {
 			$pages[] = array('number' => $i, 'isCurrent' => $i === $this->currentPage);
 		}
-		$pagination = array(
+		$pagination = [
 			'order' => $order,
 			'pages' => $pages,
 			'current' => $this->currentPage,
@@ -224,7 +219,7 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
 			'displayRangeEnd' => $this->displayRangeEnd,
 			'hasLessPages' => $this->displayRangeStart > 2,
 			'hasMorePages' => $this->displayRangeEnd + 1 < $this->numberOfPages
-		);
+		];
 		if ($this->currentPage < $this->numberOfPages) {
 			$pagination['nextPage'] = $this->currentPage + 1;
 		}
@@ -240,7 +235,8 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
 	 *
 	 * @return void
 	 */
-	protected function calculateDisplayRange() {
+	protected function calculateDisplayRange()
+	{
 		$maximumNumberOfLinks = $this->maximumNumberOfLinks;
 		if ($maximumNumberOfLinks > $this->numberOfPages) {
 			$maximumNumberOfLinks = $this->numberOfPages;

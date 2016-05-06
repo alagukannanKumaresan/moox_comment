@@ -409,6 +409,15 @@
 			<trans-unit id="form.news.review_active">
 				<source>reviews allowed</source>				
 			</trans-unit>
+			<trans-unit id="form.product.comment_active">
+				<source>comments allowed</source>				
+			</trans-unit>
+			<trans-unit id="form.product.rating_active">
+				<source>ratings allowed</source>				
+			</trans-unit>
+			<trans-unit id="form.product.review_active">
+				<source>reviews allowed</source>				
+			</trans-unit>
 						
 			<trans-unit id="form.activated">
 				<source>activated</source>				

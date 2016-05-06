@@ -17,7 +17,7 @@ plugin.tx_mooxcomment {
 			pi2 = {$plugin.tx_mooxcomment.settings.cssfiles.pi2}
 			pi3 = {$plugin.tx_mooxcomment.settings.cssfiles.pi3}
 		}
-		autoDetectionOrder = tx_mooxnews_domain_model_news,pages
+		autoDetectionOrder = tx_mooxnews_domain_model_news,tx_mooxshop_domain_model_product,pages
 	}
 }
 

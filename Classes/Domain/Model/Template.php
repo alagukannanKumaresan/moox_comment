@@ -1,43 +1,28 @@
 <?php
 namespace DCNGmbH\MooxComment\Domain\Model;
 
-/***************************************************************
- *  Copyright notice
- *
- *  (c) 2014 Dominic Martin <dm@dcn.de>, DCN GmbH
- *  
- *  All rights reserved
- *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
-
 /**
+ * This file is part of the TYPO3 CMS project.
  *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- * @package moox_comment
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
+ * The TYPO3 project - inspiring people to share!
  */
-class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+ 
+class Template extends AbstractEntity
+{
 	
 	/**
 	 * Titel
 	 *
-	 * @var \string
+	 * @var string
 	 * @validate NotEmpty
 	 */
 	protected $title;
@@ -45,7 +30,7 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Mail-Betreff
 	 *
-	 * @var \string
+	 * @var string
 	 * @validate NotEmpty
 	 */
 	protected $subject;
@@ -53,90 +38,98 @@ class Template extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Kategorie
 	 *
-	 * @var \string
+	 * @var string
 	 */
 	protected $category;
 	
 	/**
 	 * Vorlage
 	 *
-	 * @var \string
+	 * @var string
 	 */
 	protected $template;	
 	
 	/**
 	 * Returns the title
 	 *
-	 * @return \string $title
+	 * @return string $title
 	 */
-	public function getTitle() {
+	public function getTitle()
+	{
 		return $this->title;
 	}
 
 	/**
 	 * Sets the title
 	 *
-	 * @param \string $title
+	 * @param string $title
 	 * @return void
 	 */
-	public function setTitle($title) {
+	public function setTitle($title)
+	{
 		$this->title = $title;
 	}
 	
 	/**
 	 * Returns the subject
 	 *
-	 * @return \string $subject
+	 * @return string $subject
 	 */
-	public function getSubject() {
+	public function getSubject()
+	{
 		return $this->subject;
 	}
 
 	/**
 	 * Sets the subject
 	 *
-	 * @param \string $subject
+	 * @param string $subject
 	 * @return void
 	 */
-	public function setSubject($subject) {
+	public function setSubject($subject)
+	{
 		$this->subject = $subject;
 	}
 	
 	/**
 	 * Returns the category
 	 *
-	 * @return \string $category
+	 * @return string $category
 	 */
-	public function getCategory() {
+	public function getCategory()
+	{
 		return $this->category;
 	}
 
 	/**
 	 * Sets the category
 	 *
-	 * @param \string $category
+	 * @param string $category
 	 * @return void
 	 */
-	public function setCategory($category) {
+	public function setCategory($category)
+	{
 		$this->category = $category;
 	}
 	
 	/**
 	 * Returns the template
 	 *
-	 * @return \string $template
+	 * @return string $template
 	 */
-	public function getTemplate() {
+	public function getTemplate()
+	{
 		return $this->template;
 	}
 
 	/**
 	 * Sets the template
 	 *
-	 * @param \string $template
+	 * @param string $template
 	 * @return void
 	 */
-	public function setTemplate($template) {
+	public function setTemplate($template)
+	{
 		$this->template = $template;
 	}
 }

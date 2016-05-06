@@ -33,6 +33,11 @@ config.tx_extbase {
                     tableName = tx_mooxnews_domain_model_news
                 }
             }
+			DCNGmbH\MooxComment\Domain\Model\Product {
+                mapping {
+                    tableName = tx_mooxshop_domain_model_product
+                }
+            }
 		}
         
 		# make sure ref_index is updated
@@ -48,50 +53,91 @@ module.tx_mooxcomment {
 	}
 }
 
+# plugin 1 ajax request
+[globalVar = TSFE:type = 985491]
+config {
+    disableAllHeaderCode = 1
+	additionalHeaders = Content-type:text/html
+    xhtml_cleaning = 0
+    admPanel = 0
+    metaCharset = utf-8
+    debug = 0
+	no_cache = 1
+}
+
 mooxCommentAjaxRequestPi1 = PAGE
 mooxCommentAjaxRequestPi1 {
-	typeNum = 985491
-	config {
-		disableAllHeaderCode = 1
-		additionalHeaders = Content-type:text/html
-		xhtml_cleaning = 0
-		metaCharset = UTF-8
-		admPanel = 0
-		debug = 0
-        no_cache = 1
-	}
-	10 = COA
-	10 < tt_content.list.20.mooxcomment_pi1
+    typeNum = 985491
+    10 < tt_content.list.20.mooxcomment_pi1
+    10 {
+		switchableControllerActions {
+			Pi1 {
+				1 = list
+				2 = add
+				3 = confirm
+				4 = delete				
+			}
+		}
+		settings < plugin.tx_mooxcomment.settings            
+    }
+}
+[global]
+
+# plugin 2 ajax request
+[globalVar = TSFE:type = 985492]
+config {
+    disableAllHeaderCode = 1
+	additionalHeaders = Content-type:text/html
+    xhtml_cleaning = 0
+    admPanel = 0
+    metaCharset = utf-8
+    debug = 0
+	no_cache = 1
 }
 
 mooxCommentAjaxRequestPi2 = PAGE
 mooxCommentAjaxRequestPi2 {
-	typeNum = 985492
-	config {
-		disableAllHeaderCode = 1
-		additionalHeaders = Content-type:text/html
-		xhtml_cleaning = 0
-		metaCharset = UTF-8
-		admPanel = 0
-		debug = 0
-        no_cache = 1
-	}
-	10 = COA
-	10 < tt_content.list.20.mooxcomment_pi2
+    typeNum = 985492
+    10 < tt_content.list.20.mooxcomment_pi2
+    10 {
+		switchableControllerActions {
+			Pi2 {
+				1 = show
+				2 = rate
+				3 = unrate				
+			}
+		}
+		settings < plugin.tx_mooxcomment.settings            
+    }
+}
+[global]
+
+# plugin 3 ajax request
+[globalVar = TSFE:type = 985493]
+config {
+    disableAllHeaderCode = 1
+	additionalHeaders = Content-type:text/html
+    xhtml_cleaning = 0
+    admPanel = 0
+    metaCharset = utf-8
+    debug = 0
+	no_cache = 1
 }
 
 mooxCommentAjaxRequestPi3 = PAGE
 mooxCommentAjaxRequestPi3 {
-	typeNum = 985493
-	config {
-		disableAllHeaderCode = 1
-		additionalHeaders = Content-type:text/html
-		xhtml_cleaning = 0
-		metaCharset = UTF-8
-		admPanel = 0
-		debug = 0
-        no_cache = 1
-	}
-	10 = COA
-	10 < tt_content.list.20.mooxcomment_pi3
+    typeNum = 985493
+    10 < tt_content.list.20.mooxcomment_pi3
+    10 {
+		switchableControllerActions {
+			Pi3 {
+				1 = list
+				2 = add
+				3 = confirm
+				4 = delete						
+			}
+		}
+		settings < plugin.tx_mooxcomment.settings            
+    }
 }
+[global]

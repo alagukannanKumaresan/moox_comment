@@ -195,3 +195,12 @@ CREATE TABLE tx_mooxnews_domain_model_news (
 	rating_active tinyint(4) DEFAULT '1' NOT NULL,
 	review_active tinyint(4) DEFAULT '1' NOT NULL,
 );
+
+#
+# Extend table structure of table 'tx_mooxshop_domain_model_product'
+#
+CREATE TABLE tx_mooxshop_domain_model_product (
+	comment_active tinyint(4) DEFAULT '1' NOT NULL,
+	rating_active tinyint(4) DEFAULT '1' NOT NULL,
+	review_active tinyint(4) DEFAULT '1' NOT NULL,
+);

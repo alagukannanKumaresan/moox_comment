@@ -57,7 +57,7 @@ $(document).ready(function(){
 				},
 				error: function() {
 					message = 'Error';
-					mooxCommentAddMessage('',message,'error','glyphicon-warning-sign',wrapper)
+					mooxCommentAddMessage('',message,'danger','glyphicon-warning-sign',wrapper)
 					$(form).trigger("reset");
 				}
 			});

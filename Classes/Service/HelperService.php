@@ -1,153 +1,99 @@
 <?php
 namespace DCNGmbH\MooxComment\Service;
 
-/***************************************************************
- *  Copyright notice
- *
- *  (c) 2014 Dominic Martin <dm@dcn.de>, DCN GmbH
- *  
- *  All rights reserved
- *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
-
-use \TYPO3\CMS\Core\SingletonInterface;
-use \TYPO3\CMS\Core\Utility\GeneralUtility;
-use \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
-use \TYPO3\CMS\Core\Messaging\FlashMessage;
-use \TYPO3\CMS\Extbase\Utility\LocalizationUtility; 
- 
 /**
+ * This file is part of the TYPO3 CMS project.
  *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- * @package moox_comment
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
+ * The TYPO3 project - inspiring people to share!
  */
-class HelperService implements SingletonInterface {
-	
+
+use TYPO3\CMS\Core\SingletonInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Messaging\FlashMessage;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility; 
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+
+class HelperService implements SingletonInterface
+{	
 	/**
-	 * objectManager
-	 *
-	 * @var \TYPO3\CMS\Extbase\Object\ObjectManager	
+	 * @var \TYPO3\CMS\Extbase\Object\ObjectManager
+	 * @inject
 	 */
 	protected $objectManager;
 	
 	/**
-	 * configurationManager
-	 *
-	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface	
+	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
+	 * @inject
 	 */
 	protected $configurationManager;
 	
 	/**
-	 * flexFormService
-	 *
 	 * @var \TYPO3\CMS\Extbase\Object\ObjectManager	
+	 * @inject
 	 */
 	protected $flexFormService;
 	
 	/**
-	 * pageRepository
-	 *
-	 * @var \TYPO3\CMS\Frontend\Page\PageRepository	
+	 * @var \TYPO3\CMS\Frontend\Page\PageRepository
+	 * @inject
 	 */
 	protected $pageRepository;
 	
 	/**
-	 * contentRepository
-	 *
-	 * @var \DCNGmbH\MooxComment\Domain\Repository\ContentRepository	 
+	 * @var \DCNGmbH\MooxComment\Domain\Repository\ContentRepository
+	 * @inject	 
 	 */
 	protected $contentRepository;
-	
+		
 	/**
-	 * commentRepository
-	 *
-	 * @var \DCNGmbH\MooxComment\Domain\Repository\CommentRepository	
-	 */
-	//protected $commentRepository;
-	
-	/**
-	 * ratingRepository
-	 *
-	 * @var \DCNGmbH\MooxComment\Domain\Repository\RatingRepository	
-	 */
-	//protected $ratingRepository;
-	
-	/**
-	 * reviewRepository
-	 *
-	 * @var \DCNGmbH\MooxComment\Domain\Repository\ReviewRepository	
-	 */
-	//protected $reviewRepository;
-	
-	/**
-	 * newsRepository
-	 *
-	 * @var \DCNGmbH\MooxComment\Domain\Repository\CommentRepository	
+	 * @var \DCNGmbH\MooxComment\Domain\Repository\NewsRepository	 	 
 	 */
 	protected $newsRepository;
 	
 	/**
-	 * configuration
-	 *
-	 * @var \array	
+	 * @var \DCNGmbH\MooxComment\Domain\Repository\NewsRepository	 	 
+	 */
+	protected $productRepository;
+	
+	/**
+	 * @var array	
 	 */
 	protected $configuration;
 	
 	/**
-	 * extConf
-	 *
-	 * @var boolean
+	 * @var bool
 	 */
 	protected $extConf;
 	
 	/**
-	 * storagePids
-	 *
 	 * @var array 	
 	 */
 	protected $storagePids;
 	
 	/**
-	 * autoDetectionOrder
-	 *
 	 * @var string 	
 	 */
 	protected $autoDetectionOrder;
 	
 	/**
-	 * foreignType
-	 *
 	 * @var string 	
 	 */
 	protected $foreignType;
 	
 	/**
-	 * pageUid
-	 *
 	 * @var int 	
 	 */
 	protected $pageUid;
 	
 	/**
-	 * contentUid
-	 *
 	 * @var int 	
 	 */
 	protected $contentUid;
@@ -162,39 +108,23 @@ class HelperService implements SingletonInterface {
      *
      * @return void
      */
-    public function initialize() {								
-		
-		// initialize object manager
-		$this->objectManager = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');		
-		
-		// initialize configuration manager
-		$this->configurationManager = $this->objectManager->get('TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface');
-		
-		// initialize flex form service
-		$this->flexFormService = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Service\\FlexFormService');
-		
-		// initialize page repository
-		$this->pageRepository = $this->objectManager->get('TYPO3\CMS\Frontend\Page\PageRepository');
-		
-		// initialize content repository
-		$this->contentRepository = $this->objectManager->get('DCNGmbH\MooxComment\Domain\Repository\ContentRepository');
-		
-		// initialize comment repository
-		//$this->commentRepository = $this->objectManager->get('DCNGmbH\MooxComment\Domain\Repository\CommentRepository');
-		
-		// initialize rating repository
-		//$this->ratingRepository = $this->objectManager->get('DCNGmbH\MooxComment\Domain\Repository\RatingRepository');
-		
-		// initialize review repository
-		//$this->reviewRepository = $this->objectManager->get('DCNGmbH\MooxComment\Domain\Repository\ReviewRepository');
-		
+    public function initialize() 
+	{										
 		// initialize news repository
-		if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('moox_news')){
+		if (ExtensionManagementUtility::isLoaded('moox_news')){
 			$this->newsRepository = $this->objectManager->get('DCNGmbH\MooxComment\Domain\Repository\NewsRepository');
 		}
 		
+		// initialize product repository
+		if (ExtensionManagementUtility::isLoaded('moox_shop')){
+			$this->productRepository = $this->objectManager->get('DCNGmbH\MooxComment\Domain\Repository\ProductRepository');
+		}
+		
 		// get typoscript configuration
-		$this->configuration = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK,"MooxComment");		
+		$this->configuration = $this->configurationManager->getConfiguration(
+			ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK,
+			"MooxComment"
+		);		
 		
 		// get extensions's configuration
 		$this->extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['moox_comment']);
@@ -204,13 +134,13 @@ class HelperService implements SingletonInterface {
 	/**
 	 * set flash messages
 	 *
-	 * @param \mixed &$flashMessageContainer
-	 * @param \array $messages
+	 * @param mixed &$parent
+	 * @param array $messages
 	 * @return void
 	 */
-	public function setFlashMessages(&$flashMessageContainer = NULL, $messages = array()) {				
-		
-		if($flashMessageContainer){
+	public function setFlashMessages(&$parent = NULL, $messages = array())
+	{						
+		if($parent){
 		
 			// set flash messages
 			foreach($messages AS $message){
@@ -223,7 +153,12 @@ class HelperService implements SingletonInterface {
 				if($message['icon']!="" && $message['title']!=""){
 					$message['title'] = $message['icon'].$message['title'];
 				}
-				$flashMessageContainer->add($message['text'],($message['title']!="")?$message['title'].": ":"",$message['type'],true);				
+				$parent->addFlashMessage(
+					$message['text'],
+					($message['title']!="")?$message['title'].": ":"",
+					$message['type'],
+					true
+				);				
 			}
 		}
 	}
@@ -231,17 +166,14 @@ class HelperService implements SingletonInterface {
 	/**
 	 * check dynamic form fields
 	 *
-	 * @param \array $fields fields
-	 * @param \array $item item
-	 * @param \array &$messages messages
-	 * @param \array &$errors errors
+	 * @param array $fields fields
+	 * @param array $item item
+	 * @param array &$messages messages
+	 * @param array &$errors errors
 	 * @return void
 	 */
-	public function checkFields($fields = array(), $item = array(), &$messages, &$errors){
-		
-		// initialize
-		$this->initialize();
-				
+	public function checkFields($fields = array(), $item = array(), &$messages, &$errors)
+	{		
 		// check fields
 		foreach($fields AS $field){
 			
@@ -250,8 +182,7 @@ class HelperService implements SingletonInterface {
 			if(!$msgtitle){
 				$msgtitle = LocalizationUtility::translate(str_replace("moox_comment",$field['extkey'],self::LLPATH).'form.'.$field['key'],$field['extkey']);
 			}
-				
-			
+							
 			// check required fields only		
 			if(!in_array($field['config']['type'],array("file")) && ($field['config']['required'] || isset($field['config']['maxlength']) || isset($field['config']['minlength']) || isset($field['config']['limit-low']) || isset($field['config']['limit-high']) || (!$field['config']['required'] && in_array($field['config']['validator'],array("email"))))){
 				
@@ -263,19 +194,19 @@ class HelperService implements SingletonInterface {
 					
 					// set fallback message
 					if(!$message){
-						$message = LocalizationUtility::translate(str_replace("moox_news_frontend",$field['extkey'],self::LLPATH).'form.'.$field['key'].'.error.empty',$field['extkey']);									
+						$message = LocalizationUtility::translate(str_replace("moox_comment",$field['extkey'],self::LLPATH).'form.'.$field['key'].'.error.empty',$field['extkey']);									
 					}
 					if(!$message){
 						$message = LocalizationUtility::translate(self::LLPATH.'form.error.empty',$this->extensionName);
 					}
 					
 					// add message
-					$messages[] = array( 
+					$messages[] =[ 
 						"icon" => '<span class="glyphicon glyphicon-warning-sign icon-alert" aria-hidden="true"></span>',
 						"title" => $msgtitle,
 						"text" => $message,
 						"type" => FlashMessage::ERROR
-					);	
+					];	
 
 					// set error
 					$errors[$field['key']] = true;	
@@ -294,12 +225,12 @@ class HelperService implements SingletonInterface {
 					}
 					
 					// add message
-					$messages[] = array( 
+					$messages[] = [ 
 						"icon" => '<span class="glyphicon glyphicon-warning-sign icon-alert" aria-hidden="true"></span>',
 						"title" => $msgtitle,
 						"text" => $message,
 						"type" => FlashMessage::ERROR
-					);	
+					];	
 
 					// set error
 					$errors[$field['key']] = true;
@@ -319,12 +250,12 @@ class HelperService implements SingletonInterface {
 					}
 					
 					// add message
-					$messages[] = array( 
+					$messages[] = [
 						"icon" => '<span class="glyphicon glyphicon-warning-sign icon-alert" aria-hidden="true"></span>',
 						"title" => $msgtitle,
 						"text" => $message,
 						"type" => FlashMessage::ERROR
-					);	
+					];	
 
 					// set error
 					$errors[$field['key']] = true;
@@ -344,12 +275,12 @@ class HelperService implements SingletonInterface {
 					}
 					
 					// add message
-					$messages[] = array( 
+					$messages[] = [ 
 						"icon" => '<span class="glyphicon glyphicon-warning-sign icon-alert" aria-hidden="true"></span>',
 						"title" => $msgtitle,
 						"text" => $message,
 						"type" => FlashMessage::ERROR
-					);	
+					];	
 
 					// set error
 					$errors[$field['key']] = true;
@@ -369,12 +300,12 @@ class HelperService implements SingletonInterface {
 					}
 					
 					// add message
-					$messages[] = array( 
+					$messages[] = [ 
 						"icon" => '<span class="glyphicon glyphicon-warning-sign icon-alert" aria-hidden="true"></span>',
 						"title" => $msgtitle,
 						"text" => $message,
 						"type" => FlashMessage::ERROR
-					);	
+					];	
 
 					// set error
 					$errors[$field['key']] = true;
@@ -394,12 +325,12 @@ class HelperService implements SingletonInterface {
 					}
 					
 					// add message
-					$messages[] = array( 
+					$messages[] = [ 
 						"icon" => '<span class="glyphicon glyphicon-warning-sign icon-alert" aria-hidden="true"></span>',
 						"title" => $msgtitle,
 						"text" => $message,
 						"type" => FlashMessage::ERROR
-					);	
+					];	
 
 					// set error
 					$errors[$field['key']] = true;							
@@ -415,8 +346,8 @@ class HelperService implements SingletonInterface {
 	 * @param array $variables variables
 	 * @return string $emailBody email body
 	 */
-	public function prepareMailBody($template, $variables) {
-		
+	public function prepareMailBody($template, $variables)
+	{		
 		// initialize
 		$this->initialize();
 		
@@ -426,12 +357,12 @@ class HelperService implements SingletonInterface {
 				unset($partialRootPath);	
 			} 
 		} 
-			
+		
 		if($partialRootPath==""){
 			$partialRootPath = GeneralUtility::getFileAbsFileName(str_replace("Backend/","",$this->configuration['view']['partialRootPaths'][0])."Mail");
 		}
 				
-		$mailBody = $this->objectManager->create('TYPO3\\CMS\\Fluid\\View\StandaloneView');
+		$mailBody = $this->objectManager->get('TYPO3\\CMS\\Fluid\\View\StandaloneView');
         $mailBody->setFormat('html');
         $mailBody->setTemplateSource($template->getTemplate());
 		if($partialRootPath!=""){
@@ -450,8 +381,8 @@ class HelperService implements SingletonInterface {
 	 * @param array $variables $variables
 	 * @return string $subject
 	 */
-	public function prepareMailSubject($subject, $variables = NULL) {
-        
+	public function prepareMailSubject($subject, $variables = NULL)
+	{        
 		$subject = str_replace("#KW#",date("W"),$subject);
 		$subject = str_replace("#YEAR#",date("Y"),$subject);
 		$subject = str_replace("#MONTH#",date("m"),$subject);
@@ -473,8 +404,8 @@ class HelperService implements SingletonInterface {
 	 * @param array $mail mail
 	 * @return void
 	 */
-	public function sendMail($mail) {
-		
+	public function sendMail($mail)
+	{		
 		// initialize
 		$this->initialize();
 		
@@ -508,12 +439,12 @@ class HelperService implements SingletonInterface {
 	/**
 	 * overwrite settings
 	 *
-	 * @param \array $settings
-	 * @param \string $overwriteSettings
-	 * @return	\array folders
+	 * @param array $settings
+	 * @param string $overwriteSettings
+	 * @return	array folders
 	 */
-	public function overwriteSettings($settings,$overwriteSettings) {
-		
+	public function overwriteSettings($settings,$overwriteSettings)
+	{		
 		if($overwriteSettings){
 			$overwriteSettings = $this->decrypt($overwriteSettings);
 			$overwriteSettings = trim($overwriteSettings);			
@@ -529,11 +460,11 @@ class HelperService implements SingletonInterface {
 	/**
 	 * Get array of folders with special module
 	 *
-	 * @param \string $module
-	 * @return	\array folders
+	 * @param string $module
+	 * @return	array folders
 	 */
-	public function getFolders($module = "") {
-		
+	public function getFolders($module = "")
+	{		
 		global $BE_USER;
 		
 		$folders = array();
@@ -558,17 +489,16 @@ class HelperService implements SingletonInterface {
 	/**
 	 * Get configuration
 	 *
-	 * @param \string $mode
-	 * @return	\array configuration
+	 * @param string $mode
+	 * @return	array configuration
 	 */
-	public function getConfiguration($mode = "comment") {
-		
-		// initialize
+	public function getConfiguration($mode = "comment")
+	{		
 		$this->initialize();
 		
 		$configuration = NULL;
 		
-		$params = \TYPO3\CMS\Core\Utility\GeneralUtility::_GET();
+		$params = GeneralUtility::_GET();
 		
 		if($this->foreignType=="pages" && $this->pageUid>0){
 			$pageUid = $this->pageUid;
@@ -596,43 +526,59 @@ class HelperService implements SingletonInterface {
 				);
 				$this->autoDetectionOrder = NULL;
 			}
-		} elseif(in_array($this->foreignType,array("tx_mooxnews_domain_model_news","pages"))){
+		} elseif(in_array($this->foreignType,array("tx_mooxnews_domain_model_news","tx_mooxshop_domain_model_product","pages"))){
 			$this->autoDetectionOrder = $this->foreignType;
 		} elseif($this->autoDetectionOrder==""){
 			$this->autoDetectionOrder = "pages";
-		}
+		}				
 		
 		if($this->autoDetectionOrder){
 			foreach(explode(",",$this->autoDetectionOrder) AS $tablenames){
-				
-				if(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('moox_news') && $tablenames=="tx_mooxnews_domain_model_news"){
+				if(ExtensionManagementUtility::isLoaded('moox_news') && $tablenames=="tx_mooxnews_domain_model_news"){
 					if(isset($params['tx_mooxnews_pi1']) && $params['tx_mooxnews_pi1']['action']=='detail' && $params['tx_mooxnews_pi1']['news']>0){
 						$target = $this->newsRepository->findByUid($params['tx_mooxnews_pi1']['news']);
 						if(is_object($target)){
 							if(($mode=="comment" && $target->getCommentActive()) || ($mode=="rating" && $target->getRatingActive()) || ($mode=="review" && $target->getReviewActive())){
-								$configuration= array(
+								$configuration = [
 									"uid_foreign" => $target->getUid(),
 									"title_foreign" => $target->getTitle(),
 									"tablenames" => $tablenames 
-								);
+								];
 							}
 						}
+						break;
 					} 
-					break;
+									
+				}
+				if(ExtensionManagementUtility::isLoaded('moox_shop') && $tablenames=="tx_mooxshop_domain_model_product"){
+					if(isset($params['tx_mooxshop_pi2']) && $params['tx_mooxshop_pi2']['action']=='detail' && $params['tx_mooxshop_pi2']['item']>0){
+						$target = $this->productRepository->findByUid($params['tx_mooxshop_pi2']['item']);
+						if(is_object($target)){
+							if(($mode=="comment" && $target->getCommentActive()) || ($mode=="rating" && $target->getRatingActive()) || ($mode=="review" && $target->getReviewActive())){
+								$configuration = [
+									"uid_foreign" => $target->getUid(),
+									"title_foreign" => $target->getTitle(),
+									"tablenames" => $tablenames 
+								];
+							}
+						}
+						break;
+					} 
+									
 				}
 				if($tablenames=="pages"){
 					if($GLOBALS["TSFE"]->id>0){
 						$page = $this->pageRepository->getPage($pageUid);
 						if($page['uid']>0){
-							$configuration= array(
+							$configuration = [
 								"uid_foreign" => $page['uid'],
 								"title_foreign" => $page['title'],
 								"tablenames" => $tablenames 
-							);	
+							];	
 						}
-					} 
-					break;
-				}			
+						break;
+					} 					
+				}				
 			}
 		}
 
@@ -642,11 +588,11 @@ class HelperService implements SingletonInterface {
 	/**
 	 * encrypt
 	 *
-	 * @param \string $text
-	 * @return	\array settings
+	 * @param string $text
+	 * @return	array settings
 	 */
-	public function encrypt($text) {
-		
+	public function encrypt($text)
+	{	
 		//Verschlüsseln
 		$text = utf8_encode(trim($text));
 		$iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB); 
@@ -660,11 +606,11 @@ class HelperService implements SingletonInterface {
 	/**
 	 * decrypt
 	 *
-	 * @param \string $text
-	 * @return	\array settings
+	 * @param string $text
+	 * @return	array settings
 	 */
-	public function decrypt($text) {
-		
+	public function decrypt($text)
+	{		
 		//Entschlüsseln	
 		$decrypted = base64_decode($text);
 		$decrypted = mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5($GLOBALS['TYPO3_CONF_VARS']['SYS']['encryptionKey']), $decrypted, MCRYPT_MODE_ECB, $iv);
@@ -675,95 +621,105 @@ class HelperService implements SingletonInterface {
 	/**
 	 * Returns storage pids
 	 *
-	 * @return \array
+	 * @return array
 	 */
-	public function getStoragePids() {
+	public function getStoragePids()
+	{
 		return $this->storagePids;
 	}
 
 	/**
 	 * Set storage pids
 	 *
-	 * @param \array $storagePids storage pids
+	 * @param array $storagePids storage pids
 	 * @return void
 	 */
-	public function setStoragePids($storagePids) {
+	public function setStoragePids($storagePids)
+	{
 		$this->storagePids = $storagePids;
 	}
 	
 	/**
 	 * Returns auto detection order
 	 *
-	 * @return \string
+	 * @return string
 	 */
-	public function getAutoDetectionOrder() {
+	public function getAutoDetectionOrder()
+	{
 		return $this->autoDetectionOrder;
 	}
 
 	/**
 	 * Set auto detection order
 	 *
-	 * @param \array $autoDetectionOrder auto detection order
+	 * @param array $autoDetectionOrder auto detection order
 	 * @return void
 	 */
-	public function setAutoDetectionOrder($autoDetectionOrder) {
+	public function setAutoDetectionOrder($autoDetectionOrder)
+	{
 		$this->autoDetectionOrder = $autoDetectionOrder;
 	}
 	
 	/**
 	 * Returns foreign type
 	 *
-	 * @return \string
+	 * @return string
 	 */
-	public function getForeignType() {
+	public function getForeignType()
+	{
 		return $this->foreignType;
 	}
 
 	/**
 	 * Set foreign type
 	 *
-	 * @param \array $foreignType foreign type
+	 * @param array $foreignType foreign type
 	 * @return void
 	 */
-	public function setForeignType($foreignType) {
+	public function setForeignType($foreignType)
+	{
 		$this->foreignType = $foreignType;
 	}
 	
 	/**
 	 * Returns page uid
 	 *
-	 * @return \string
+	 * @return string
 	 */
-	public function getPageUid() {
+	public function getPageUid()
+	{
 		return $this->pageUid;
 	}
 
 	/**
 	 * Set page uid
 	 *
-	 * @param \array $pageUid page uid
+	 * @param array $pageUid page uid
 	 * @return void
 	 */
-	public function setPageUid($pageUid) {
+	public function setPageUid($pageUid)
+	{
 		$this->pageUid = $pageUid;
 	}
 	
 	/**
 	 * Returns content uid
 	 *
-	 * @return \string
+	 * @return string
 	 */
-	public function getContentUid() {
+	public function getContentUid()
+	{
 		return $this->contentUid;
 	}
 
 	/**
 	 * Set content uid
 	 *
-	 * @param \array $contentUid content uid
+	 * @param array $contentUid content uid
 	 * @return void
 	 */
-	public function setContentUid($contentUid) {
+	public function setContentUid($contentUid)
+	{
 		$this->contentUid = $contentUid;
 	}
 }
