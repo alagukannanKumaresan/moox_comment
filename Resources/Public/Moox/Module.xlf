@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T09:11:39Z" product-name="moox_core">
+        <header/>
+        <body>
+
+            <trans-unit id="moox_main_module_tab">
+                <source>MOOX</source>
+            </trans-unit>
+            <trans-unit id="moox_dashboard_module_tab">
+                <source>Dashboard</source>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>
