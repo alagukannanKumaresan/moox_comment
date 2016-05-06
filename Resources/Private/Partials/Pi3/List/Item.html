@@ -1,5 +1,74 @@
 {namespace v=FluidTYPO3\Vhs\ViewHelpers}
-<div class="panel panel-default moox-ajax-item">
+<v:variable.set name="startDate" value="{item.crdate}" />
+<v:variable.set name="endDate" value="{v:system.timestamp()}" />
+<v:variable.set name="yearAgo" value="{v:format.dateRange(start: startDate, end: endDate, return: 'y')}" />
+<v:variable.set name="dayAgo" value="{v:format.dateRange(start: startDate, end: endDate, return: 'd')}" />
+<v:variable.set name="hourAgo" value="{v:format.dateRange(start: startDate, end: endDate, return: 'h')}" />
+<v:variable.set name="minuteAgo" value="{v:format.dateRange(start: startDate, end: endDate, return: 'i')}" />
+<v:variable.set name="crdateTitle" value="{startDate -> f:format.date(format:'%A, %d. %B')} {f:translate(key: 'LLL:EXT:moox_comment/Resources/Private/Language/locallang.xlf:date.at')} {startDate -> f:format.date(format:'%H:%M')}" />
+<v:variable.set name="itemDateRange">
+	<f:if condition="{yearAgo} == '0'">
+		<f:then>
+			<f:if condition="{dayAgo} == '0'">
+				<f:then>
+					<f:if condition="{hourAgo} == '0'">
+						<f:then>
+							<f:if condition="{minuteAgo} == '1'">
+								<f:then>
+									{minuteAgo} <f:translate key="LLL:EXT:moox_comment/Resources/Private/Language/locallang.xlf:date.minute" />
+								</f:then>
+								<f:else>
+									{minuteAgo} <f:translate key="LLL:EXT:moox_comment/Resources/Private/Language/locallang.xlf:date.minutes" />
+								</f:else>
+							</f:if>
+						</f:then>
+						<f:else>
+							<f:if condition="{hourAgo} == '1'">
+								<f:then>
+									{hourAgo} <f:translate key="LLL:EXT:moox_comment/Resources/Private/Language/locallang.xlf:date.hour" />
+								</f:then>
+								<f:else>
+									{hourAgo} <f:translate key="LLL:EXT:moox_comment/Resources/Private/Language/locallang.xlf:date.hours" />
+								</f:else>
+							</f:if>
+						</f:else>
+					</f:if>
+				</f:then>
+				<f:else>
+					<f:if condition="{dayAgo} == '1'">
+						<f:then>
+							<f:translate key="LLL:EXT:moox_comment/Resources/Private/Language/locallang.xlf:date.yesterday.at" /> {startDate -> f:format.date(format:'%H:%M')}
+						</f:then>
+						<f:else>
+							{startDate -> f:format.date(format:'%d. %B')} <f:translate key="LLL:EXT:moox_comment/Resources/Private/Language/locallang.xlf:date.at" /> {startDate -> f:format.date(format:'%H:%M')}
+						</f:else>
+					</f:if>
+				</f:else>
+			</f:if>
+		</f:then>
+		<f:else>
+			{startDate -> f:format.date(format:'%d. %B %Y')}
+		</f:else>
+	</f:if>
+</v:variable.set>
+
+<f:if condition="{item.feUser}">
+	<f:then>
+		<f:if condition="{item.feUser.uid}=={feUser.uid}">
+			<f:then>
+				<v:variable.set name="commentTypeClass" value="own" />
+			</f:then>
+			<f:else>
+				<v:variable.set name="commentTypeClass" value="registered-user" />
+			</f:else>
+		</f:if>
+	</f:then>
+	<f:else>
+		<v:variable.set name="commentTypeClass" value="public-user" />
+	</f:else>
+</f:if>
+
+<div class="panel panel-default panel-{commentTypeClass} moox-ajax-item">
 	<div class="panel-heading clearfix">
 		<div class="pull-left">						
 			{f:translate(key: 'pi3.action_list.review_by')} {item.name}: {item.title}
@@ -20,7 +89,7 @@
 			</f:if>					
 		</div>
 		<div class="pull-right text-right">
-			{f:format.date(date:item.crdate,format:'d.m.Y H:i')}<br />
+			<span title="{crdateTitle}">{itemDateRange}</span><br />
 			<f:if condition="{isConfirmable}">				
 				<f:if condition="{item.confirmed}>0">
 					<f:then>

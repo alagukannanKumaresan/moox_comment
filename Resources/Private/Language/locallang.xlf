@@ -468,6 +468,28 @@
 			<trans-unit id="widget.paginate.overall" xml:space="preserve">
 				<source>Page %s of %s.</source>				
 			</trans-unit>
+
+			<trans-unit id="date.now" xml:space="preserve">
+				<source>just now</source>
+			</trans-unit>
+			<trans-unit id="date.minute" xml:space="preserve">
+				<source>minute</source>
+			</trans-unit>
+			<trans-unit id="date.minutes" xml:space="preserve">
+				<source>minutes</source>
+			</trans-unit>
+			<trans-unit id="date.hour" xml:space="preserve">
+				<source>hour</source>
+			</trans-unit>
+			<trans-unit id="date.hours" xml:space="preserve">
+				<source>hours</source>
+			</trans-unit>
+			<trans-unit id="date.at" xml:space="preserve">
+				<source>at</source>
+			</trans-unit>
+			<trans-unit id="date.yesterday.at" xml:space="preserve">
+				<source>yesterday at</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

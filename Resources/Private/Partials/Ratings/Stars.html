@@ -1,3 +1,4 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
 <f:if condition="{fields.rating.config.required}">
 	<f:else>
 		<div class="checkbox">
@@ -8,6 +9,8 @@
 		</div>
 	</f:else>
 </f:if>
+
+<f:comment>
 <f:for each="{fields.rating.config.stars}" as="star" iteration="iteration">
 	<div class="checkbox">
 		<label>
@@ -16,3 +19,16 @@
 		</label>
 	</div>
 </f:for>
+</f:comment>
+
+<f:if condition="{settings.allowHalfStars} == '1'">
+	<f:then>
+		<v:variable.set name="ratingStep" value="0.5" />
+	</f:then>
+	<f:else>
+		<v:variable.set name="ratingStep" value="1" />
+	</f:else>
+</f:if>
+
+<f:form.radio checked="1" value="" additionalAttributes="{data-type: fields.rating.config.data.data-type, data-id: fields.rating.config.data.data-id, data-label: fields.rating.config.data.data-label, data-required: fields.rating.config.data.data-required, data-name: 'tx_mooxcomment_pi2[rate][rating]', data-min:'0', data-max: settings.stars, data-step: ratingStep, data-stars: settings.stars, data-size: 'md', data-language: 'de'}" id="rating-input" class="rating" name="{action}[rating]" />
+

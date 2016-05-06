@@ -620,7 +620,36 @@
 			<trans-unit id="widget.paginate.overall" xml:space="preserve">
 				<source>Page %s of %s.</source>
 				<target>Seite %s von %s.</target>
-			</trans-unit>			
+			</trans-unit>
+
+			<trans-unit id="date.now" xml:space="preserve">
+				<source>just now</source>
+				<target>Gerade eben</target>
+			</trans-unit>
+			<trans-unit id="date.minute" xml:space="preserve">
+				<source>minute</source>
+				<target>Minuten</target>
+			</trans-unit>
+			<trans-unit id="date.minutes" xml:space="preserve">
+				<source>minutes</source>
+				<target>Minuten</target>
+			</trans-unit>
+			<trans-unit id="date.hour" xml:space="preserve">
+				<source>hour</source>
+				<target>Stunde</target>
+			</trans-unit>
+			<trans-unit id="date.hours" xml:space="preserve">
+				<source>hours</source>
+				<target>Stunden</target>
+			</trans-unit>
+			<trans-unit id="date.at" xml:space="preserve">
+				<source>at</source>
+				<target>um</target>
+			</trans-unit>
+			<trans-unit id="date.yesterday.at" xml:space="preserve">
+				<source>yesterday at</source>
+				<target>Gestern um</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

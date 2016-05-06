@@ -1,9 +1,10 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
 <div class="tx-moox-comment-filter">
-	<div class="btn-group clearfix">
+	<div class="btn-group pull-right clearfix">
 		<div class="btn-group">
-			<button class="btn btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<button class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				<span class="glyphicon glyphicon-comment icon-button"></span>
-				<strong><span class="moox-ajax-count">{count}</span></strong> {f:translate(key: 'pi3.action_list.comments')}<f:if condition="{count}>0"> <small>(<span class="moox-ajax-limit"><f:if condition="{count}<{limit}"><f:then>{count}</f:then><f:else>{limit}</f:else></f:if></span> angezeigt)</small></f:if>
+				<strong><span class="moox-ajax-count">{count}</span></strong><f:comment> {f:translate(key: 'pi3.action_list.comments')}<f:if condition="{count}>0"> <small>(<span class="moox-ajax-limit"><f:if condition="{count}<{limit}"><f:then>{count}</f:then><f:else>{limit}</f:else></f:if></span> angezeigt)</small></f:if></f:comment>
 			</button>
 			<f:if condition="{count}>{limit}">
 				<ul class="dropdown-menu limit-selector">
@@ -20,9 +21,10 @@
 		</div>
 		<f:if condition="{feUser}">
 			<div class="btn-group">
-				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<span class="glyphicon glyphicon-filter icon-button"></span>		
-					<span class="current-fe-user">{f:translate(key: 'pi1.action_list.filter.show_all')}</span>
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<span class="sr-only">{f:translate(key: 'pi1.action_list.filter.show_all')}</span>
+					<span class="glyphicon glyphicon-filter icon-button"></span>
+					<f:comment><span class="current-fe-user">{f:translate(key: 'pi1.action_list.filter.show_all')}</span></f:comment>
 				</button>
 				<ul class="dropdown-menu fe-user-selector">
 					<li><a data-fe-user="all" href="#">{f:translate(key: 'pi1.action_list.filter.show_all')}</a></li>
@@ -31,14 +33,16 @@
 			</div>
 		</f:if>
 		<div class="btn-group">
-			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				<span class="glyphicon glyphicon-sort-by-attributes icon-button"></span>		
-				Sortieren nach: <span class="current-order">{f:translate(key: 'pi1.action_list.order.newest_first')}</span>
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<span class="sr-only">Sortieren nach: <span class="current-order">{f:translate(key: 'pi1.action_list.order.newest_first')}</span></span>
+				<span class="glyphicon glyphicon-sort-by-attributes icon-button"></span>
+				<f:comment>Sortieren nach: <span class="current-order">{f:translate(key: 'pi1.action_list.order.newest_first')}</span></f:comment>
 			</button>
 			<ul class="dropdown-menu order-selector">
 				<li><a data-order-by="crdate" data-order-direction="DESC" href="#">{f:translate(key: 'pi1.action_list.order.newest_first')}</a></li>
 				<li><a data-order-by="crdate" data-order-direction="ASC" href="#">{f:translate(key: 'pi1.action_list.order.oldest_first')}</a></li>		
 			 </ul>
 		</div>
-	</div>	
+	</div>
+	<div class="clearfix"></div>
 </div>

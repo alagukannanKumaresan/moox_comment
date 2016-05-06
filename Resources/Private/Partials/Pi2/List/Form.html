@@ -14,7 +14,7 @@
 				</f:if>
 			</v:tag>
 			
-			<f:form.button type="submit" class="btn btn-primary btn-block" title="{f:translate(key: 'pi2.action_list.add_rating')}	">		
+			<f:form.button type="submit" class="btn btn-primary btn-block" title="{f:translate(key: 'pi2.action_list.add_rating')}	">
 				<span class="glyphicon glyphicon-floppy-saved icon-button"></span>
 				{f:translate(key: 'pi2.action_list.add_rating')}						
 			</f:form.button>																	
@@ -42,7 +42,7 @@
 				{rating.rating}
 			</f:if>
 		</div>		
-		<a class="btn btn-primary btn-block btn-modal" href="{f:uri.action(action:'unrate',noCache:1,pageType:985492,arguments:{uid:rating.uid,hash:rating.hash})}" id="moox-ajax-unrate-{rating.uid}" title="{f:translate(key: 'pi2.action_list.unrate')}" data-css="btn-unrate ajax" data-title="{f:translate(key: 'pi2.action_list.unrate.modal.title')}" data-body="{f:translate(key: 'pi2.action_list.unrate.modal.body')}" data-button="{f:translate(key: 'pi2.action_list.unrate.modal.button')}" data-close="{f:translate(key: 'pi2.action_list.unrate.modal.close')}">			
+		<a class="btn btn-primary btn-block btn-modal" href="{f:uri.action(action:'unrate',noCache:1,pageType:985492,arguments:{uid:rating.uid,hash:rating.hash})}" id="moox-ajax-unrate-{rating.uid}" title="{f:translate(key: 'pi2.action_list.unrate')}" data-css="btn-unrate ajax" data-title="{f:translate(key: 'pi2.action_list.unrate.modal.title')}" data-body="{f:translate(key: 'pi2.action_list.unrate.modal.body')}" data-button="{f:translate(key: 'pi2.action_list.unrate.modal.button')}" data-close="{f:translate(key: 'pi2.action_list.unrate.modal.close')}">
 			<span class="glyphicon glyphicon-remove icon-button" aria-hidden="true"></span>
 			{f:translate(key: 'pi2.action_list.unrate')}
 		</a>	

@@ -8,7 +8,16 @@
 				</button>				
 			</f:if>
 			<f:if condition="{settings.ratingMode}=='stars'">
-				<button class="btn btn-primary" type="button">			
+				<f:if condition="{settings.allowHalfStars} == '1'">
+					<f:then>
+						<v:variable.set name="ratingStep" value="0.5" />
+					</f:then>
+					<f:else>
+						<v:variable.set name="ratingStep" value="1" />
+					</f:else>
+				</f:if>
+				<input type="number" value="{info.rating.average}" id="result-stars" data-min="0" data-max="{settings.stars}" data-stars="{settings.stars}" data-step="{ratingStep}" data-size="xs" data-readonly="true" data-hover-enabled="false" data-show-clear="false" data-show-caption="false" data-language="de" class="rating" />
+				<button class="btn btn-primary" type="button">
 					<span class="badge">{info.rating.count}</span> Bewertung(en)<f:if condition="{info.rating.average}>0">, Durchschnitt: {info.rating.average}</f:if>
 				</button>
 			</f:if>

@@ -23,29 +23,29 @@
 			<div class="typo3-docheader-buttons">
 				<div class="buttongroup">
 					<div class="left">
-						<v:switch value="{action}">
-							<v:case case="add" break="TRUE">
+						<f:switch expression="{action}">
+							<f:case value="add">
 								<f:link.action action="index" title="Abbrechen">
 									<span class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-document-close">&nbsp;</span>
 								</f:link.action>
 								<f:form.submit property="save" class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-document-save" title="speichern" value="" />														
 								<f:form.submit property="saveAndClose" class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-document-save-close" title="speichern und zur Liste" value="" />
 								<f:form.submit property="saveAndNew" class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-document-save-new" title="speichern und danach neue Vorlage anlegen" value="" />
-							</v:case>
-							<v:case case="edit" break="TRUE">
+							</f:case>
+							<f:case value="edit">
 								<f:link.action action="index" title="Abbrechen">
 									<span class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-document-close">&nbsp;</span>
 								</f:link.action>
 								<f:form.submit property="save" class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-document-save" title="speichern" value="" />														
 								<f:form.submit property="saveAndClose" class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-document-save-close" title="speichern und zur Liste" value="" />
 								<f:form.submit property="saveAndNew" class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-document-save-new" title="speichern und danach neue Vorlage anlegen" value="" />
-							</v:case>
-							<v:case case="default">
+							</f:case>
+							<f:case default="TRUE">
 								<f:link.action action="add" title="Neue Vorlage">
 									<span class="t3-icon t3-icon-actions t3-icon-actions-document t3-icon-document-new">&nbsp;</span>
 								</f:link.action>
-							</v:case>
-						</v:switch>
+							</f:case>
+						</f:switch>
 					</div>
 				</div>
 			</div>
