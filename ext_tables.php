@@ -76,7 +76,7 @@ if (TYPO3_MODE === 'BE') {
 		),
 		array(
 			'access' => 'user,group',
-			'icon'   => 'EXT:' . $_EXTKEY . '/Resources/Public/Icons/moox_comment_icon.svg',
+			'icon'   => 'EXT:' . $_EXTKEY . '/Resources/Public/Icons/module-mooxcomment.svg',
 			'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_init.xlf',
 		)
 	);
@@ -103,6 +103,6 @@ if (TYPO3_MODE == 'BE') {
 }
 
 // Icon in page tree
-$TCA['pages']['columns']['module']['config']['items'][] = array('MOOX-Comments', 'mxcomment', 'EXT:moox_comment/Resources/Public/Icons/moox_comment_icon.svg');
-\TYPO3\CMS\Backend\Sprite\SpriteManager::addTcaTypeIcon('pages', 'contains-mxcomment', '../typo3conf/ext/moox_comment/Resources/Public/Icons/moox_comment_icon.svg');
+$TCA['pages']['columns']['module']['config']['items'][] = array('MOOX-Comments', 'mxcomment', 'EXT:moox_comment/ext_icon.svg');
+\TYPO3\CMS\Backend\Sprite\SpriteManager::addTcaTypeIcon('pages', 'contains-mxcomment', '../typo3conf/ext/moox_comment/ext_icon.svg');
 ?>
