@@ -20,7 +20,7 @@ use DCNGmbH\MooxComment\Domain\Repository\MooxRepository;
 class CommentRepository extends MooxRepository 
 {
 	
-	protected $defaultOrderings = array ('tstamp' => QueryInterface::ORDER_DESCENDING);
+	protected $defaultOrderings = ['tstamp' => QueryInterface::ORDER_DESCENDING];
 	
 	/**
 	 * Returns a constraint array created by a given filter array
@@ -33,7 +33,7 @@ class CommentRepository extends MooxRepository
 	protected function createFilterConstraints(\TYPO3\CMS\Extbase\Persistence\QueryInterface $query,$filter = NULL,$constraints = NULL)
 	{			
 		if(is_null($constraints)){			
-			$constraints = array();			
+			$constraints = [];			
 		}
 		
 		if(isset($filter['uid_foreign']) && is_numeric($filter['uid_foreign']) && $filter['uid_foreign']>0 && isset($filter['tablenames']) && $filter['tablenames']!=""){			
@@ -90,7 +90,8 @@ class CommentRepository extends MooxRepository
 			$query->logicalAnd(
 				$query->equals('uid', $uid),
 				$query->equals('deleted', 0)
-			))->execute()->getFirst();
+			)
+		)->execute()->getFirst();
 	}	
 }
 ?>

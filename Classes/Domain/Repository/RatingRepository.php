@@ -20,7 +20,7 @@ use DCNGmbH\MooxComment\Domain\Repository\MooxRepository;
 class RatingRepository extends MooxRepository
 {
 	
-	protected $defaultOrderings = array ('tstamp' => QueryInterface::ORDER_DESCENDING);
+	protected $defaultOrderings = ['tstamp' => QueryInterface::ORDER_DESCENDING];
 	
 	/**
 	 * Returns a constraint array created by a given filter array
@@ -34,7 +34,7 @@ class RatingRepository extends MooxRepository
 	{				
 		if(is_null($constraints)){
 			
-			$constraints = array();
+			$constraints = [];
 			
 		}
 		
@@ -82,7 +82,8 @@ class RatingRepository extends MooxRepository
 			$query->logicalAnd(
 				$query->equals('uid', $uid),
 				$query->equals('deleted', 0)
-			))->execute()->getFirst();
+			)
+		)->execute()->getFirst();
 	}	
 	
 	/**
@@ -92,7 +93,7 @@ class RatingRepository extends MooxRepository
 	 * @param string $ratingMode
 	 * @return array
 	 */
-	public function findRatingInfos($filter = array(), $ratingMode = "like_dislike")
+	public function findRatingInfos($filter = [], $ratingMode = "like_dislike")
 	{		
 		$query = $this->createQuery();
 		
@@ -166,7 +167,7 @@ class RatingRepository extends MooxRepository
 	 * @param string $ratingMode
 	 * @return array
 	 */
-	public function findInfosPerRating($filter = array(), $ratingMode = "like_dislike")
+	public function findInfosPerRating($filter = [], $ratingMode = "like_dislike")
 	{		
 		$query = $this->createQuery();
 		

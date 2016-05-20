@@ -19,7 +19,7 @@ use TYPO3\CMS\Extbase\Persistence\QueryInterface;
  
 class TemplateRepository extends Repository {
 	
-	protected $defaultOrderings = array ('title' => QueryInterface::ORDER_ASCENDING);	
+	protected $defaultOrderings = ['title' => QueryInterface::ORDER_ASCENDING];	
 	
 	/**
 	 * Finds all templates (overwrite)

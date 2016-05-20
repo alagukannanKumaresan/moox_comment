@@ -19,16 +19,12 @@ use TYPO3\CMS\Core\SingletonInterface;
 class AccessControlService implements SingletonInterface
 {	
 	/**
-	 * objectManager
-	 *
 	 * @var \TYPO3\CMS\Extbase\Object\ObjectManager
 	 * @inject
 	 */
 	protected $objectManager;	
 	
 	/**
-	 * frontendUserRepository
-	 *
 	 * @var \DCNGmbH\MooxComment\Domain\Repository\FrontendUserRepository
 	 * @inject
 	 */

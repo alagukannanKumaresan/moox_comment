@@ -20,7 +20,7 @@ use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 class ContentRepository extends Repository
 {
 	
-	protected $defaultOrderings = array ('sorting' => QueryInterface::ORDER_ASCENDING);	
+	protected $defaultOrderings = ['sorting' => QueryInterface::ORDER_ASCENDING];	
 	
 	/**
 	 * Find by list type
@@ -42,7 +42,8 @@ class ContentRepository extends Repository
 				$query->logicalAnd(				
 					$query->equals('listType', $listType),
 					$query->equals('deleted', 0)
-				))->execute();
+				)
+			)->execute();
 		} else {
 			return NULL;
 		}

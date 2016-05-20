@@ -15,8 +15,7 @@ namespace DCNGmbH\MooxComment\Domain\Repository;
  */
  
 class FrontendUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository
-{
-	
+{	
 	/**
 	 * Override default findByUid function to enable also the option to turn of
 	 * the enableField setting
@@ -53,7 +52,7 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Fronte
 			$query = $this->createQuery();
 			$query->getQuerySettings()->setRespectStoragePage(FALSE);
 			
-			$constraints = array();
+			$constraints = [];
 			foreach($usergroups AS $usergroup){
 				$constraints[] = $query->contains('usergroup', $usergroup);
 			}
@@ -62,7 +61,7 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Fronte
 				$query->logicalOr($constraints)
 			)->execute();
 		} else {
-			return array();
+			return [];
 		}
 	}	
 }

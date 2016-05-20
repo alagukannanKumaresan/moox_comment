@@ -22,16 +22,12 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 {
 	
 	/**
-	 * templateRepository
-	 *
 	 * @var \DCNGmbH\MooxComment\Domain\Repository\TemplateRepository
 	 * @inject
 	 */
 	protected $templateRepository;		
 	
 	/**
-	 * extConf
-	 *
 	 * @var bool
 	 */
 	protected $extConf;
@@ -64,7 +60,7 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	 * @param array $add
 	 * @return void
 	 */
-	public function addAction($add = array())
+	public function addAction($add = [])
 	{					
 		if(isset($add['save']) || isset($add['saveAndClose']) ||  isset($add['saveAndNew'])){
 			
@@ -84,7 +80,7 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 			);
 		}
 		if(isset($add['save'])){
-			$this->redirect("edit",NULL,NULL,array('uid' => $item->getUid()));
+			$this->redirect("edit",NULL,NULL,['uid' => $item->getUid()]);
 		} elseif(isset($add['saveAndClose'])){
 			$this->redirect("index");
 		} elseif(isset($add['saveAndNew'])){			
@@ -103,7 +99,7 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	 * @param array $edit
 	 * @return void
 	 */
-	public function editAction($uid = 0, $edit = array())
+	public function editAction($uid = 0, $edit = [])
 	{					
 		if($uid>0){
 		
@@ -233,7 +229,7 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 				$partialRootPath = GeneralUtility::getFileAbsFileName(str_replace("Backend/","",$conf['view']['partialRootPaths'][0])."Mail");
 			}
 			
-			$previewView = $this->objectManager->create('TYPO3\\CMS\\Fluid\\View\StandaloneView');
+			$previewView = $this->objectManager->get('TYPO3\\CMS\\Fluid\\View\StandaloneView');
 			$previewView->setFormat('html');     
 			$previewView->setTemplateSource($template->getTemplate());
 			if($partialRootPath!=""){
@@ -255,7 +251,7 @@ class TemplateController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	 */
 	public function getTemplateCategories()
 	{		
-		$categories = array();	
+		$categories = [];	
 		
 		$categories['newentry'] = "Benachrichtiguns/Bestätigungs-Mail";		
 		

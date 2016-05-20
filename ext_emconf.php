@@ -1,5 +1,5 @@
 <?php
-$EM_CONF[$_EXTKEY] = array(
+$EM_CONF[$_EXTKEY] = [
 	'title' => 'MOOX Comment & Rating',
 	'description' => 'Kommentare, Bewertungen und Rezensionen für TYPO3- und MOOX-Elemente (z.B. pages, tt_content, moox_news, moox_shop)',
 	'category' => 'plugin',
@@ -17,17 +17,16 @@ $EM_CONF[$_EXTKEY] = array(
 	'clearCacheOnLoad' => 1,
 	'lockType' => '',
 	'version' => '7.0.0',
-	'constraints' => array(
-		'depends' => array(
+	'constraints' => [
+		'depends' => [
 			'typo3' => '6.2.0-7.9.99',
-			'moox_core' => '0.9.9-7.9.99'
-		),
-		'conflicts' => array(
-		),
-		'suggests' => array(
-			'moox_news' => ''
-		),
-	),
-);
-
+			'moox_core' => '7.0.0-7.9.99'
+		],
+		'conflicts' => [],
+		'suggests' => [
+			'moox_news' => '',
+			'moox_shop' => ''
+		],
+	],
+];
 ?>

@@ -79,22 +79,22 @@
 	<div class="panel-heading clearfix">
 		<div class="pull-left">						
 			<f:comment>
-			{f:translate(key: 'pi1.action_list.comment_by')} {item.name}: {item.title}
-			<f:if condition="{item.feUser}">
-				<f:then>
-					<f:if condition="{item.feUser.uid}=={feUser.uid}">
-						<f:then>
-							<br /><small>({f:translate(key: 'pi1.action_list.own_comment')})</small>				
-						</f:then>
-						<f:else>
-							<br /><small>({f:translate(key: 'pi1.action_list.registered_user')}: {item.feUser.username})</small>				
-						</f:else>
-					</f:if>								
-				</f:then>
-				<f:else>
-					<br /><small>({f:translate(key: 'pi1.action_list.public_user')})</small>				
-				</f:else>
-			</f:if>
+				{f:translate(key: 'pi1.action_list.comment_by')} {item.name}: {item.title}
+				<f:if condition="{item.feUser}">
+					<f:then>
+						<f:if condition="{item.feUser.uid}=={feUser.uid}">
+							<f:then>
+								<br /><small>({f:translate(key: 'pi1.action_list.own_comment')})</small>				
+							</f:then>
+							<f:else>
+								<br /><small>({f:translate(key: 'pi1.action_list.registered_user')}: {item.feUser.username})</small>				
+							</f:else>
+						</f:if>								
+					</f:then>
+					<f:else>
+						<br /><small>({f:translate(key: 'pi1.action_list.public_user')})</small>				
+					</f:else>
+				</f:if>
 			</f:comment>
 			<strong>{item.title}</strong><br />
 			<small>{item.name}</small>

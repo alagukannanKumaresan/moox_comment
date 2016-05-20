@@ -20,8 +20,6 @@ class GetRatingsInfoViewHelper extends AbstractViewHelper
 {
 	
 	/**
-	 * ratingRepository
-	 *
 	 * @var \DCNGmbH\MooxComment\Domain\Repository\RatingRepository
 	 * @inject	 
 	 */
@@ -39,8 +37,8 @@ class GetRatingsInfoViewHelper extends AbstractViewHelper
 	 */
 	public function render($uid,$tablenames,$ratingmode = "like_dislike", $extended = FALSE, $as = NULL)
 	{		
-		$info = array();
-		$extendedInfo = array();
+		$info = [];
+		$extendedInfo = [];
 
 		$filter['uid_foreign'] = $uid;
 		$filter['tablenames'] = $tablenames;

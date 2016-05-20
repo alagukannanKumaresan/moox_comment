@@ -22,135 +22,97 @@ class Comment extends AbstractEntity
 {
 	
 	/**
-	 * uid
-	 *
-	 * @var int
+	* @var int
 	 */
     protected $uid;
 	
 	/**
-	 * pid
-	 *
 	 * @var int
 	 */
     protected $pid;
 	
 	/**
-	 * tstamp
-	 *
 	 * @var int
 	 */
     protected $tstamp;		
 	
 	/**
-	 * starttime
-	 *
 	 * @var int
 	 */
     protected $starttime;
 	
 	/**
-	 * endtime
-	 *
 	 * @var int
 	 */
     protected $endtime;
 	
 	/**
-	 * crdate
-	 *
 	 * @var int
 	 */
     protected $crdate;
 	
 	/**
-	 * hidden
-	 *
 	 * @var int
 	 */
     protected $hidden;
 	
 	/**
-	 * parent
-	 *
 	 * @var int
 	 */
     protected $parent;
 	
 	/**
-	 * uid foreign
-	 *
 	 * @var int
 	 */
     protected $uidForeign;
 	
 	/**
-	 * url foreign 
-	 *
 	 * @var string
 	 */
     protected $urlForeign;
 	
 	/**
-	 * title foreign 
-	 *
 	 * @var string
 	 */
     protected $titleForeign;
 	
 	/**
-	 * tablenames
-	 *
 	 * @var string
 	 */
     protected $tablenames;		
 	
 	/**
-	 * fe user
-	 *
 	 * @var \DCNGmbH\MooxComment\Domain\Model\FrontendUser
 	 */
 	protected $feUser = NULL;
 		
 	/**
-	 * title
-	 *	
 	 * @var string
 	 * @validate NotEmpty
 	 */
 	protected $title;
 	
 	/**
-	 * name
-	 *
 	 * @var string	
 	 */
 	protected $name;
 	
 	/**
-	 * email
-	 *
 	 * @var string	
 	 */
 	protected $email;
 	
 	/**
-	 * comment
-	 *
 	 * @var string	
 	 */
 	protected $comment;
 	
 	/**
-	 * confirmed
-	 *
-	 * @var integer
+	 * @var int
 	 */
     protected $confirmed;
 	
 	/**
-	 * hash
-	 *
 	 * @var string	
 	 */
 	protected $hash;
@@ -356,7 +318,7 @@ class Comment extends AbstractEntity
 	/**
      * get uid foreign
 	 *
-     * @return integer $uidForeign uid foreign
+     * @return int $uidForeign uid foreign
      */
     public function getUidForeign()
 	{

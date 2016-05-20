@@ -39,28 +39,28 @@ class Wizicon {
 	public function proc($wizardItems)
 	{		
 		// set wizard entry for plugin pi1
-		$wizardItems['plugins_tx_' . self::KEY . 'pi1'] = array(
+		$wizardItems['plugins_tx_' . self::KEY . 'pi1'] = [
 			'icon'			=> ExtensionManagementUtility::extRelPath(self::KEY) . 'ext_icon.svg',
 			'title'			=> $GLOBALS['LANG']->sL(self::LLPATH.'pi1.title'),
 			'description'	=> $GLOBALS['LANG']->sL(self::LLPATH.'pi1.description'),
 			'params'		=> '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=mooxcomment_pi1'
-		);		
+		];		
 		
 		// set wizard entry for plugin pi2
-		$wizardItems['plugins_tx_' . self::KEY . 'pi2'] = array(
+		$wizardItems['plugins_tx_' . self::KEY . 'pi2'] = [
 			'icon'			=> ExtensionManagementUtility::extRelPath(self::KEY) . 'ext_icon.svg',
 			'title'			=> $GLOBALS['LANG']->sL(self::LLPATH.'pi2.title'),
 			'description'	=> $GLOBALS['LANG']->sL(self::LLPATH.'pi2.description'),
 			'params'		=> '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=mooxcomment_pi2'
-		);	
+		];	
 		
 		// set wizard entry for plugin pi3
-		$wizardItems['plugins_tx_' . self::KEY . 'pi3'] = array(
+		$wizardItems['plugins_tx_' . self::KEY . 'pi3'] = [
 			'icon'			=> ExtensionManagementUtility::extRelPath(self::KEY) . 'ext_icon.svg',
 			'title'			=> $GLOBALS['LANG']->sL(self::LLPATH.'pi3.title'),
 			'description'	=> $GLOBALS['LANG']->sL(self::LLPATH.'pi3.description'),
 			'params'		=> '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=mooxcomment_pi3'
-		);	
+		];	
 
 		return $wizardItems;
 	}

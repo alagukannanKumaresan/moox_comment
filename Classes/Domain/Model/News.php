@@ -18,22 +18,16 @@ class News extends \DCNGmbH\MooxNews\Domain\Model\News
 {
 	
 	/**
-	 * comment active
-	 *
 	 * @var int
 	 */
     protected $commentActive;
 	
 	/**
-	 * rating active
-	 *
 	 * @var int
 	 */
     protected $ratingActive;
 	
 	/**
-	 * review active
-	 *
 	 * @var int
 	 */
     protected $reviewActive;

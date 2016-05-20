@@ -138,14 +138,14 @@ class HelperService implements SingletonInterface
 	 * @param array $messages
 	 * @return void
 	 */
-	public function setFlashMessages(&$parent = NULL, $messages = array())
+	public function setFlashMessages(&$parent = NULL, $messages = [])
 	{						
 		if($parent){
 		
 			// set flash messages
 			foreach($messages AS $message){
 				if(!is_array($message)){
-					$message = array();
+					$message = [];
 				}
 				if($message['text']==""){
 					$message['text'] = "Unbekannter Fehler / Unknown error";
@@ -172,7 +172,7 @@ class HelperService implements SingletonInterface
 	 * @param array &$errors errors
 	 * @return void
 	 */
-	public function checkFields($fields = array(), $item = array(), &$messages, &$errors)
+	public function checkFields($fields = [], $item = [], &$messages, &$errors)
 	{		
 		// check fields
 		foreach($fields AS $field){
@@ -184,7 +184,7 @@ class HelperService implements SingletonInterface
 			}
 							
 			// check required fields only		
-			if(!in_array($field['config']['type'],array("file")) && ($field['config']['required'] || isset($field['config']['maxlength']) || isset($field['config']['minlength']) || isset($field['config']['limit-low']) || isset($field['config']['limit-high']) || (!$field['config']['required'] && in_array($field['config']['validator'],array("email"))))){
+			if(!in_array($field['config']['type'],["file"]) && ($field['config']['required'] || isset($field['config']['maxlength']) || isset($field['config']['minlength']) || isset($field['config']['limit-low']) || isset($field['config']['limit-high']) || (!$field['config']['required'] && in_array($field['config']['validator'],["email"])))){
 				
 				// check if field has a value
 				if($field['config']['required'] && (trim($item[$field['key']])=="" || ($field['key']=="gender" && trim($item[$field['key']])==0))){
@@ -201,7 +201,7 @@ class HelperService implements SingletonInterface
 					}
 					
 					// add message
-					$messages[] =[ 
+					$messages[] = [ 
 						"icon" => '<span class="glyphicon glyphicon-warning-sign icon-alert" aria-hidden="true"></span>',
 						"title" => $msgtitle,
 						"text" => $message,
@@ -214,14 +214,14 @@ class HelperService implements SingletonInterface
 				} elseif(trim($item[$field['key']])!="" && isset($field['config']['maxlength']) && strlen(trim($item[$field['key']]))>$field['config']['maxlength']){
 					
 					// prepare message
-					$message = LocalizationUtility::translate(self::LLPATH.'form.'.$field['key'].'.error.too_long',$this->extensionName,array($field['config']['maxlength']));
+					$message = LocalizationUtility::translate(self::LLPATH.'form.'.$field['key'].'.error.too_long',$this->extensionName,[$field['config']['maxlength']]);
 					
 					// set fallback message
 					if(!$message){
-						$message = LocalizationUtility::translate(str_replace("moox_comment",$field['extkey'],self::LLPATH).'form.'.$field['key'].'.error.too_long',$field['extkey'],array($field['config']['maxlength']));									
+						$message = LocalizationUtility::translate(str_replace("moox_comment",$field['extkey'],self::LLPATH).'form.'.$field['key'].'.error.too_long',$field['extkey'],[$field['config']['maxlength']]);									
 					}
 					if(!$message){
-						$message = LocalizationUtility::translate(self::LLPATH.'form.error.too_long',$this->extensionName,array($field['config']['maxlength']));
+						$message = LocalizationUtility::translate(self::LLPATH.'form.error.too_long',$this->extensionName,[$field['config']['maxlength']]);
 					}
 					
 					// add message
@@ -239,14 +239,14 @@ class HelperService implements SingletonInterface
 				} elseif(trim($item[$field['key']])!="" && isset($field['config']['minlength']) && strlen(trim($item[$field['key']]))<$field['config']['minlength']){
 					
 					// prepare message
-					$message = LocalizationUtility::translate(self::LLPATH.'form.'.$field['key'].'.error.too_short',$this->extensionName,array($field['config']['minlength']));
+					$message = LocalizationUtility::translate(self::LLPATH.'form.'.$field['key'].'.error.too_short',$this->extensionName,[$field['config']['minlength']]);
 					
 					// set fallback message
 					if(!$message){
-						$message = LocalizationUtility::translate(str_replace("moox_comment",$field['extkey'],self::LLPATH).'form.'.$field['key'].'.error.too_short',$field['extkey'],array($field['config']['minlength']));									
+						$message = LocalizationUtility::translate(str_replace("moox_comment",$field['extkey'],self::LLPATH).'form.'.$field['key'].'.error.too_short',$field['extkey'],[$field['config']['minlength']]);									
 					}
 					if(!$message){
-						$message = LocalizationUtility::translate(self::LLPATH.'form.error.too_short',$this->extensionName,array($field['config']['minlength']));
+						$message = LocalizationUtility::translate(self::LLPATH.'form.error.too_short',$this->extensionName,[$field['config']['minlength']]);
 					}
 					
 					// add message
@@ -264,14 +264,14 @@ class HelperService implements SingletonInterface
 				} elseif(trim($item[$field['key']])!="" && isset($field['config']['limit-low']) && trim($item[$field['key']])<$field['config']['limit-low']){
 					
 					// prepare message
-					$message = LocalizationUtility::translate(self::LLPATH.'form.'.$field['key'].'.error.too_small',$this->extensionName,array($field['config']['limit-low']));
+					$message = LocalizationUtility::translate(self::LLPATH.'form.'.$field['key'].'.error.too_small',$this->extensionName,[$field['config']['limit-low']]);
 					
 					// set fallback message
 					if(!$message){
-						$message = LocalizationUtility::translate(str_replace("moox_comment",$field['extkey'],self::LLPATH).'form.'.$field['key'].'.error.too_small',$field['extkey'],array($field['config']['limit-low']));									
+						$message = LocalizationUtility::translate(str_replace("moox_comment",$field['extkey'],self::LLPATH).'form.'.$field['key'].'.error.too_small',$field['extkey'],[$field['config']['limit-low']]);									
 					}
 					if(!$message){
-						$message = LocalizationUtility::translate(self::LLPATH.'form.error.too_small',$this->extensionName,array($field['config']['limit-low']));
+						$message = LocalizationUtility::translate(self::LLPATH.'form.error.too_small',$this->extensionName,[$field['config']['limit-low']]);
 					}
 					
 					// add message
@@ -289,14 +289,14 @@ class HelperService implements SingletonInterface
 				} elseif(trim($item[$field['key']])!="" && isset($field['config']['limit-high']) && trim($item[$field['key']])>$field['config']['limit-high']){
 					
 					// prepare message
-					$message = LocalizationUtility::translate(self::LLPATH.'form.'.$field['key'].'.error.too_large',$this->extensionName,array($field['config']['limit-high']));
+					$message = LocalizationUtility::translate(self::LLPATH.'form.'.$field['key'].'.error.too_large',$this->extensionName,[$field['config']['limit-high']]);
 					
 					// set fallback message
 					if(!$message){
-						$message = LocalizationUtility::translate(str_replace("moox_comment",$field['extkey'],self::LLPATH).'form.'.$field['key'].'.error.too_large',$field['extkey'],array($field['config']['limit-high']));									
+						$message = LocalizationUtility::translate(str_replace("moox_comment",$field['extkey'],self::LLPATH).'form.'.$field['key'].'.error.too_large',$field['extkey'],[$field['config']['limit-high']]);									
 					}
 					if(!$message){
-						$message = LocalizationUtility::translate(self::LLPATH.'form.error.too_large',$this->extensionName,array($field['config']['limit-high']));
+						$message = LocalizationUtility::translate(self::LLPATH.'form.error.too_large',$this->extensionName,[$field['config']['limit-high']]);
 					}
 					
 					// add message
@@ -428,8 +428,8 @@ class HelperService implements SingletonInterface
 		}
 		
 		$sendMail = GeneralUtility::makeInstance('TYPO3\CMS\Core\Mail\MailMessage');				
-		$sendMail->setFrom(array($mail['sender_address'] => $mail['sender_name']));
-		$sendMail->setTo(array($mail['receiver_address'] => $mail['receiver_name']));						
+		$sendMail->setFrom([$mail['sender_address'] => $mail['sender_name']]);
+		$sendMail->setTo([$mail['receiver_address'] => $mail['receiver_name']]);						
 		$sendMail->setSubject($mail['subject']);
 		$sendMail->setBody(strip_tags($mail['body']));
 		$sendMail->addPart($mail['body'], 'text/html');
@@ -467,15 +467,15 @@ class HelperService implements SingletonInterface
 	{		
 		global $BE_USER;
 		
-		$folders = array();
+		$folders = [];
 		
 		if($module!=""){
 		
-			$query = array(
+			$query = [
 				'SELECT' => '*',
 				'FROM' => 'pages',
 				'WHERE' => $BE_USER->getPagePermsClause(1).' AND deleted=0 AND doktype=254 AND module="'.$module.'"',
-			);
+			];
 			$pages = $GLOBALS['TYPO3_DB']->exec_SELECT_queryArray($query);
 			
 			while($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($pages)) {
@@ -509,24 +509,24 @@ class HelperService implements SingletonInterface
 		if($this->foreignType=="self"){
 			$target = $this->contentRepository->findByUid($this->contentUid);
 			if(is_object($target)){
-				$configuration= array(
+				$configuration= [
 					"uid_foreign" => $target->getUid(),
 					"title_foreign" => $target->getHeader(),
 					"tablenames" => 'tt_content' 
-				);
+				];
 				$this->autoDetectionOrder = NULL;
 			}
 		} elseif($this->foreignType=="tt_content"){
 			$target = $this->contentRepository->findByUid($this->contentUid);
 			if(is_object($target)){
-				$configuration= array(
+				$configuration= [
 					"uid_foreign" => $target->getUid(),
 					"title_foreign" => $target->getHeader(),
 					"tablenames" => 'tt_content' 
-				);
+				];
 				$this->autoDetectionOrder = NULL;
 			}
-		} elseif(in_array($this->foreignType,array("tx_mooxnews_domain_model_news","tx_mooxshop_domain_model_product","pages"))){
+		} elseif(in_array($this->foreignType,["tx_mooxnews_domain_model_news","tx_mooxshop_domain_model_product","pages"])){
 			$this->autoDetectionOrder = $this->foreignType;
 		} elseif($this->autoDetectionOrder==""){
 			$this->autoDetectionOrder = "pages";

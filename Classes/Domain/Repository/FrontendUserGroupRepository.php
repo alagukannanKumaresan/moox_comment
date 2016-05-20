@@ -19,7 +19,7 @@ use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 class FrontendUserGroupRepository extends \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserGroupRepository
 {
 	
-	protected $defaultOrderings = array ('title' => QueryInterface::ORDER_ASCENDING);
+	protected $defaultOrderings = ['title' => QueryInterface::ORDER_ASCENDING];
 		
 	/**
 	 * Find user groups by uid(list)
@@ -27,15 +27,15 @@ class FrontendUserGroupRepository extends \TYPO3\CMS\Extbase\Domain\Repository\F
 	 * @param array $uids uids	
 	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
-	public function findByUidList($uids = array())
+	public function findByUidList($uids = [])
 	{		
-		$uids 	= (is_array($uids))?$uids:array($uids);		
+		$uids 	= (is_array($uids))?$uids:[$uids];		
 		
 		$query = $this->createQuery();
 				
 		$query->getQuerySettings()->setRespectStoragePage(FALSE);
 		
-		$constraints = array();
+		$constraints = [];
 		foreach($uids AS $uid){
 			$constraints[] = $query->equals('uid', $uid);
 		}

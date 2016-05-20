@@ -22,108 +22,78 @@ class Rating extends AbstractEntity
 {
 	
 	/**
-	 * uid
-	 *
 	 * @var int
 	 */
     protected $uid;
 	
 	/**
-	 * pid
-	 *
 	 * @var int
 	 */
     protected $pid;
 	
 	/**
-	 * tstamp
-	 *
 	 * @var int
 	 */
     protected $tstamp;		
 	
 	/**
-	 * starttime
-	 *
-	 * @var int
+	* @var int
 	 */
     protected $starttime;
 	
 	/**
-	 * endtime
-	 *
-	 * @var int
+	* @var int
 	 */
     protected $endtime;
 	
 	/**
-	 * crdate
-	 *
 	 * @var int
 	 */
     protected $crdate;
 	
 	/**
-	 * hidden
-	 *
 	 * @var int
 	 */
     protected $hidden;
 	
 	/**
-	 * uid foreign
-	 *
 	 * @var int
 	 */
     protected $uidForeign;
 	
 	/**
-	 * url foreign 
-	 *
 	 * @var string
 	 */
     protected $urlForeign;
 	
 	/**
-	 * title foreign 
-	 *
 	 * @var string
 	 */
     protected $titleForeign;
 	
 	/**
-	 * tablenames
-	 *
 	 * @var string
 	 */
     protected $tablenames;
 	
 	/**
-	 * fe user
-	 *
 	 * @var \DCNGmbH\MooxComment\Domain\Model\FrontendUser
 	 */
 	protected $feUser = NULL;
 		
 	/**
-	 * title
-	 *	
 	 * @var string
 	 * @validate NotEmpty
 	 */
 	protected $title;
 	
 	/**
-	 * rating
-	 *
 	 * @var string	
 	 */
 	protected $rating;
 	
 	
 	/**
-	 * confirmed
-	 *
 	 * @var int
 	 */
     protected $confirmed;	

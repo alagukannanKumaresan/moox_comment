@@ -22,136 +22,98 @@ class Review extends AbstractEntity
 {
 	
 	/**
-	 * uid
-	 *
 	 * @var int
 	 */
     protected $uid;
 	
 	/**
-	 * pid
-	 *
 	 * @var int
 	 */
     protected $pid;
 	
 	/**
-	 * tstamp
-	 *
 	 * @var int
 	 */
     protected $tstamp;		
 	
 	/**
-	 * starttime
-	 *
 	 * @var int
 	 */
     protected $starttime;
 	
 	/**
-	 * endtime
-	 *
 	 * @var int
 	 */
     protected $endtime;
 	
 	/**
-	 * crdate
-	 *
 	 * @var int
 	 */
     protected $crdate;
 	
 	/**
-	 * hidden
-	 *
 	 * @var int
 	 */
     protected $hidden;
 	
 	/**
-	 * parent
-	 *
 	 * @var int
 	 */
     protected $parent;
 	
 	/**
-	 * uid foreign
-	 *
 	 * @var int
 	 */
     protected $uidForeign;
 	
 	/**
-	 * url foreign 
-	 *
 	 * @var string
 	 */
     protected $urlForeign;
 	
 	/**
-	 * title foreign 
-	 *
 	 * @var string
 	 */
     protected $titleForeign;
 	
 	/**
-	 * tablenames
-	 *
 	 * @var string
 	 */
     protected $tablenames;
 	
 	/**
-	 * fe user
-	 *
 	 * @var \DCNGmbH\MooxComment\Domain\Model\FrontendUser
 	 */
 	protected $feUser = NULL;
 		
 	/**
-	 * title
-	 *	
 	 * @var string
 	 * @validate NotEmpty
 	 */
 	protected $title;
 	
 	/**
-	 * name
-	 *
 	 * @var string	
 	 */
 	protected $name;
 	
 	/**
-	 * email
-	 *
 	 * @var string	
 	 */
 	protected $email;
 	
 	/**
-	 * comment
-	 *
 	 * @var string	
 	 */
 	protected $comment;
 	
 	/**
-	 * rating
-	 *
 	 * @var string	
 	 */
 	protected $rating;
 	
 	
 	/**
-	 * confirmed
-	 *
 	 * @var int
 	 */
     protected $confirmed;	

@@ -18,15 +18,11 @@ class FrontendUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
 {
 	
 	/**
-	 * gender
-	 *
 	 * @var int
 	 */
     protected $gender;
 	
 	/**
-	 * auto name
-	 *
 	 * @var string
 	 */
     protected $autoName;

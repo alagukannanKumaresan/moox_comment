@@ -25,7 +25,7 @@ class PaginateController extends AbstractWidgetController
 	/**
 	 * @var array
 	 */
-	protected $configuration = array('itemsPerPage' => 10, 'insertAbove' => FALSE, 'insertBelow' => TRUE, 'maximumNumberOfLinks' => 99, 'templatePath' => '');
+	protected $configuration = ['itemsPerPage' => 10, 'insertAbove' => FALSE, 'insertBelow' => TRUE, 'maximumNumberOfLinks' => 99, 'templatePath' => ''];
 
 	/**
 	 * @var \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
@@ -55,7 +55,7 @@ class PaginateController extends AbstractWidgetController
 	/**
 	 * @var array
 	 */
-	protected $order = array();
+	protected $order = [];
 
 	/**
 	 * @var int
@@ -186,9 +186,9 @@ class PaginateController extends AbstractWidgetController
 			$modifiedObjects = $query->execute();
 		}
 
-		$this->view->assign('contentArguments', array(
+		$this->view->assign('contentArguments', [
 			$this->widgetConfiguration['as'] => $modifiedObjects
-		));
+		]);
 		$this->view->assign('configuration', $this->configuration);
 		$this->view->assign('pagination', $this->buildPagination($this->order));
 		
@@ -203,12 +203,12 @@ class PaginateController extends AbstractWidgetController
 	 * @param array $order
 	 * @return array
 	 */
-	protected function buildPagination($order = array())
+	protected function buildPagination($order = [])
 	{
 		$this->calculateDisplayRange();
-		$pages = array();
+		$pages = [];
 		for ($i = $this->displayRangeStart; $i <= $this->displayRangeEnd; $i++) {
-			$pages[] = array('number' => $i, 'isCurrent' => $i === $this->currentPage);
+			$pages[] = ['number' => $i, 'isCurrent' => $i === $this->currentPage];
 		}
 		$pagination = [
 			'order' => $order,

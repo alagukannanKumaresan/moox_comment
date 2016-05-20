@@ -20,8 +20,6 @@ class GetCommentsInfoViewHelper extends AbstractViewHelper
 {
 	
 	/**
-	 * commentRepository
-	 *
 	 * @var \DCNGmbH\MooxComment\Domain\Repository\CommentRepository
 	 * @inject	 
 	 */
@@ -37,7 +35,7 @@ class GetCommentsInfoViewHelper extends AbstractViewHelper
 	 */
 	public function render($uid,$tablenames,$as = NULL)
 	{		
-		$info = array();
+		$info = [];
 
 		$filter['uid_foreign'] 	= $uid;
 		$filter['tablenames'] 	= $tablenames;

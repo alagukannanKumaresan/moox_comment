@@ -2,10 +2,10 @@
 <!-- Pi3 -->		
 <f:if condition="{settings.cssfiles.pi3}">
 	<f:then>
-		<v:asset.style name="moox-comment-pi3-css" group="moox-comment" path="{settings.cssfiles.pi3}" standalone="TRUE" movable="FALSE" external="1" />
+		<v:asset.style name="moox-comment-pi3-css" group="moox-comment" path="{settings.cssfiles.pi3}" standalone="TRUE" external="1" />
 	</f:then>
 	<f:else>
-		<v:asset.style name="moox-comment-pi3-css" group="moox-comment" path="{f:uri.resource(path:'Css/pi3.css')}" standalone="TRUE" movable="FALSE" external="1" />
+		<v:asset.style name="moox-comment-pi3-css" group="moox-comment" path="{f:uri.resource(path:'Css/pi3.css')}" standalone="TRUE" external="1" />
 	</f:else>
 </f:if>
 <!-- Helper -->

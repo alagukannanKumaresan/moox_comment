@@ -19,8 +19,6 @@ use TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetViewHelper;
 class PaginateViewHelper extends AbstractWidgetViewHelper
 {
 	/**
-	 * controller
-	 *
 	 * @var DCNGmbH\MooxComment\ViewHelpers\Widget\Controller\PaginateController
 	 * @inject
 	 */
@@ -36,7 +34,7 @@ class PaginateViewHelper extends AbstractWidgetViewHelper
 	 * @internal param array $initial
 	 * @return string
 	 */
-	public function render(\TYPO3\CMS\Extbase\Persistence\QueryResultInterface $objects, $as, $configuration = array('itemsPerPage' => 10, 'insertAbove' => FALSE, 'insertBelow' => TRUE), $initial = array())
+	public function render(\TYPO3\CMS\Extbase\Persistence\QueryResultInterface $objects, $as, $configuration = ['itemsPerPage' => 10, 'insertAbove' => FALSE, 'insertBelow' => TRUE], $initial = [])
 	{
 		return $this->initiateSubRequest();
 	}

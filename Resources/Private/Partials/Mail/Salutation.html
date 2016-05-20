@@ -7,17 +7,17 @@
 		<v:variable.set name="gender" value="0" />
 	</f:else>
 </f:if>
-<v:switch value="{gender}">
-    <v:case case="1" break="TRUE">
+<f:switch expression="{gender}">
+    <f:case value="1">
         <v:variable.set name="salutation" value="Sehr geehrter Herr" />
-    </v:case>
-	<v:case case="2" break="TRUE">
+    </f:case>
+	<f:case value="2">
         <v:variable.set name="salutation" value="Sehr geehrte Frau" />
-    </v:case>
-    <v:case case="default">
+    </f:case>
+    <f:case value="default" default="1">
          <v:variable.set name="salutation" value="Guten Tag" />
-    </v:case>
-</v:switch>
+    </f:case>
+</f:switch>
 <f:if condition="{user.last_name} != ''">
 	<f:then>
 		<h2>{salutation} <f:if condition="{user.title}!=">{user.title} </f:if><f:if condition="{user.first_name}!=">{user.first_name} </f:if>{user.last_name} ({user.username}),</h2>																	

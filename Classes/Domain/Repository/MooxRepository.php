@@ -18,8 +18,7 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
  
 class MooxRepository extends Repository
-{
-	
+{	
 	/**
 	 * sets query orderings from given array/string
 	 *
@@ -29,11 +28,11 @@ class MooxRepository extends Repository
 	 */
 	protected function setQueryOrderings(QueryInterface &$query, $orderings = NULL)
 	{		
-		$setOrderings = array();
+		$setOrderings = [];
 		
 		if(!is_null($orderings) && is_string($orderings)){
 			
-			$orderings = array($orderings => QueryInterface::ORDER_ASCENDING);
+			$orderings = [$orderings => QueryInterface::ORDER_ASCENDING];
 			
 		}
 		
@@ -101,7 +100,7 @@ class MooxRepository extends Repository
 			}
 		} elseif(is_array($storagePages)){
 			
-			$setStoragePages = array();
+			$setStoragePages = [];
 			
 			foreach($storagePages AS $storagePage){
 				

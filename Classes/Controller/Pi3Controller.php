@@ -24,85 +24,63 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {	
 	
 	/**
-	 * persistenceManager
-	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface
 	 * @inject
 	 */
 	protected $persistenceManager;
 	
 	/**
-	 * frontendUserRepository
-	 *
 	 * @var \DCNGmbH\MooxComment\Domain\Repository\FrontendUserRepository
 	 * @inject
 	 */
 	protected $frontendUserRepository;	
 
 	/**
-	 * frontendUserGroupRepository
-	 *
 	 * @var \DCNGmbH\MooxComment\Domain\Repository\FrontendUserGroupRepository
 	 * @inject
 	 */
 	protected $frontendUserGroupRepository;
 	
 	/**
-	 * templateRepository
-	 *
 	 * @var \DCNGmbH\MooxComment\Domain\Repository\TemplateRepository
 	 * @inject
 	 */
 	protected $templateRepository;
 	
 	/**
-	 * reviewRepository
-	 *
 	 * @var \DCNGmbH\MooxComment\Domain\Repository\ReviewRepository
 	 * @inject
 	 */
 	protected $reviewRepository;
 		
 	/**
-	 * accessControllService
-	 *
 	 * @var \DCNGmbH\MooxComment\Service\AccessControlService
 	 * @inject
 	 */
 	protected $accessControllService;
 	
 	/**
-	 * helperService
-	 *
 	 * @var \DCNGmbH\MooxComment\Service\HelperService
 	 * @inject
 	 */
 	protected $helperService;
 	
 	/**
-	 * extConf
-	 *
 	 * @var bool
 	 */
 	protected $extConf;
 	
 	/**
-	 * storagePids
-	 *
 	 * @var array 	
 	 */
 	protected $storagePids;
 	
 	/**
-	 * fields
-	 *
 	 * @var array 	
 	 */
 	protected $fields;
 	
 	/**
-	 * pagination
-	 *
 	 * @var array 	
 	 */
 	protected $pagination;
@@ -225,7 +203,7 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 		}
 		
 		if($this->settings['ratingMode']=="stars"){
-			$this->fields['rating']['config']['stars'] = array();
+			$this->fields['rating']['config']['stars'] = [];
 			if($this->settings['stars']<5){
 				$this->settings['stars'] = 5;
 			}
@@ -247,7 +225,7 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 			$this->fields['rating']['config']['data']['data-name'] = "tx_mooxcomment_pi3[add][rating]";			
 		}
 		
-		$this->pagination['pages'] = array(10,25,50,100,250,500);
+		$this->pagination['pages'] = [10,25,50,100,250,500];
 		
 		$this->helperService->setAutoDetectionOrder($this->settings['autoDetectionOrder']);
 		$this->helperService->setForeignType($this->settings['foreignType']?$this->settings['foreignType']:'auto');
@@ -276,9 +254,9 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 		
 		// set storage pid if set by plugin
 		if($this->settings['storagePid']!=""){
-			$this->setStoragePids(array($this->settings['storagePid']));
+			$this->setStoragePids([$this->settings['storagePid']]);
 		} else {
-			$this->setStoragePids(array());
+			$this->setStoragePids([]);
 		}
 		$this->helperService->setStoragePids($this->getStoragePids());
 		
@@ -304,12 +282,12 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	 * @param string $settings settings
 	 * @return void
 	 */
-	public function listAction($filter = array(),$offset = 0, $limit = NULL, $orderings = NULL, $settings = NULL)
+	public function listAction($filter = [],$offset = 0, $limit = NULL, $orderings = NULL, $settings = NULL)
 	{		
 		// init action arrays and booleans
-		$messages = array();
-		$errors = array();	
-		$moderators = array();
+		$messages = [];
+		$errors = [];	
+		$moderators = [];
 		$isModerator = false;
 		$isViewable = false;
 		$isCreateable = false;
@@ -321,7 +299,7 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 		
 		// set orderings
 		if(!$orderings){
-			$orderings = array("crdate"=>"DESC");
+			$orderings = ["crdate"=>"DESC"];
 		}
 		
 		// set limit
@@ -335,10 +313,10 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 		
 		// get configuration
 		if(isset($filter['uid_foreign']) && is_numeric($filter['uid_foreign']) && $filter['uid_foreign']>0 && isset($filter['tablenames']) && $filter['tablenames']!=""){			
-			$configuration= array(
+			$configuration= [
 				"uid_foreign" => $filter['uid_foreign'],
 				"tablenames" => $filter['tablenames'] 
-			);
+			];
 		} else {
 			$configuration = $this->helperService->getConfiguration("review");
 		}
@@ -351,7 +329,7 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 				if($this->settings['feGroupsAdmin']){
 					$feGroupsAdmin = explode(",",$this->settings['feGroupsAdmin']);
 					if(count($feGroupsAdmin)){
-						$usergroups = array();
+						$usergroups = [];
 						foreach($this->frontendUserGroupRepository->findByUidList($feGroupsAdmin) AS $usergroup){
 							$usergroups[] = $usergroup;
 						}
@@ -458,9 +436,9 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	public function addAction($add = NULL, $ajax = FALSE, $settings = NULL)
 	{		
 		// init action arrays and booleans
-		$messages = array();
-		$errors = array();	
-		$moderators = array();
+		$messages = [];
+		$errors = [];	
+		$moderators = [];
 		$confirmed = false;
 		$isModerator = false;
 		$isConfirmable = false;
@@ -472,7 +450,7 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 		if($this->settings['feGroupsAdmin']){
 			$feGroupsAdmin = explode(",",$this->settings['feGroupsAdmin']);
 			if(count($feGroupsAdmin)){
-				$usergroups = array();
+				$usergroups = [];
 				foreach($this->frontendUserGroupRepository->findByUidList($feGroupsAdmin) AS $usergroup){
 					$usergroups[] = $usergroup;
 				}
@@ -551,8 +529,8 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 					
 					// set user mail field
 					if($feUser){
-						$user = array();
-						foreach(array("username","first_name","last_name","auto_name","email","gender") AS $fieldname){
+						$user = [];
+						foreach(["username","first_name","last_name","auto_name","email","gender"] AS $fieldname){
 							$getMethod = "get".GeneralUtility::underscoredToUpperCamelCase($fieldname);
 							if(method_exists($feUser,$getMethod)){
 								$user[$fieldname] = $feUser->$getMethod();
@@ -564,9 +542,9 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 					}
 					
 					$subject = $this->helperService->prepareMailSubject($template->getSubject(),$user);
-					$deleteUrl = $this->uriBuilder->reset()->setNoCache(true)->setTargetPageUid($GLOBALS["TSFE"]->id)->setCreateAbsoluteUri(TRUE)->uriFor('delete', array("uid" => $item->getUid(), "hash" => $item->getHash()), 'Pi1', 'MooxComment', 'Pi1');
+					$deleteUrl = $this->uriBuilder->reset()->setNoCache(true)->setTargetPageUid($GLOBALS["TSFE"]->id)->setCreateAbsoluteUri(TRUE)->uriFor('delete', ["uid" => $item->getUid(), "hash" => $item->getHash()], 'Pi1', 'MooxComment', 'Pi1');
 					if(!$item->getConfirmed()){
-						$confirmUrl = $this->uriBuilder->reset()->setNoCache(true)->setTargetPageUid($GLOBALS["TSFE"]->id)->setCreateAbsoluteUri(TRUE)->uriFor('confirm', array("uid" => $item->getUid(), "hash" => $item->getHash()), 'Pi1', 'MooxComment', 'Pi1');
+						$confirmUrl = $this->uriBuilder->reset()->setNoCache(true)->setTargetPageUid($GLOBALS["TSFE"]->id)->setCreateAbsoluteUri(TRUE)->uriFor('confirm', ["uid" => $item->getUid(), "hash" => $item->getHash()], 'Pi1', 'MooxComment', 'Pi1');
 					}
 					
 					foreach($moderators AS $moderator){
@@ -574,8 +552,8 @@ class Pi3Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 						if($moderator->getEmail()!=""){
 							
 							// set user mail field
-							$receiver = array();
-							foreach(array("username","first_name","last_name","auto_name","email","gender") AS $fieldname){
+							$receiver = [];
+							foreach(["username","first_name","last_name","auto_name","email","gender"] AS $fieldname){
 								$getMethod = "get".GeneralUtility::underscoredToUpperCamelCase($fieldname);
 								if(method_exists($moderator,$getMethod)){
 									$receiver[$fieldname] = $moderator->$getMethod();

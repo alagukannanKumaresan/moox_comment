@@ -30,7 +30,7 @@ if (TYPO3_MODE === 'BE') {
      */
 	$mainModuleName = "moox";
 	if (!isset($TBE_MODULES[$mainModuleName])) {
-        $temp_TBE_MODULES = array();
+        $temp_TBE_MODULES = [];
         foreach ($TBE_MODULES as $key => $val) {
             if ($key == 'web') {
                 $temp_TBE_MODULES[$key] = $val;
@@ -54,12 +54,12 @@ if (TYPO3_MODE === 'BE') {
 			$mainModuleName,
 			'',
 			'',
-			array(),
-			array(
+			[],
+			[
 				'access' => 'user,group',
 				'icon'   => $mainModuleIcon,
 				'labels' => $mainModuleLabels,
-			)
+			]
 		);
     } 
 
@@ -71,14 +71,14 @@ if (TYPO3_MODE === 'BE') {
 		$mainModuleName,	// Make module a submodule of 'moox'
 		'administration',	// Submodule key
 		'',	// Position
-		array(
+		[
 			'Template' => 'index,add,edit,delete,previewIframe',			
-		),
-		array(
+		],
+		[
 			'access' => 'user,group',
 			'icon'   => 'EXT:' . $_EXTKEY . '/Resources/Public/Icons/module-mooxcomment.svg',
 			'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_init.xlf',
-		)
+		]
 	);
 }
 
@@ -103,6 +103,6 @@ if (TYPO3_MODE == 'BE') {
 }
 
 // Icon in page tree
-$TCA['pages']['columns']['module']['config']['items'][] = array('MOOX-Comments', 'mxcomment', 'EXT:moox_comment/ext_icon.svg');
+$TCA['pages']['columns']['module']['config']['items'][] = ['MOOX-Comments', 'mxcomment', 'EXT:moox_comment/ext_icon.svg'];
 \TYPO3\CMS\Backend\Sprite\SpriteManager::addTcaTypeIcon('pages', 'contains-mxcomment', '../typo3conf/ext/moox_comment/ext_icon.svg');
 ?>

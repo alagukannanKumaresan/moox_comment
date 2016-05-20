@@ -24,85 +24,57 @@ class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {	
 	
 	/**
-	 * persistenceManager
-	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface
 	 * @inject
 	 */
 	protected $persistenceManager;
 	
 	/**
-	 * frontendUserRepository
-	 *
 	 * @var \DCNGmbH\MooxComment\Domain\Repository\FrontendUserRepository
 	 * @inject
 	 */
 	protected $frontendUserRepository;	
 
 	/**
-	 * frontendUserGroupRepository
-	 *
-	 * @var \DCNGmbH\MooxComment\Domain\Repository\FrontendUserGroupRepository
-	 * @inject
-	 */
-	protected $frontendUserGroupRepository;
-	
-	/**
-	 * templateRepository
-	 *
 	 * @var \DCNGmbH\MooxComment\Domain\Repository\TemplateRepository
 	 * @inject
 	 */
 	protected $templateRepository;
 	
 	/**
-	 * ratingRepository
-	 *
 	 * @var \DCNGmbH\MooxComment\Domain\Repository\RatingRepository
 	 * @inject
 	 */
 	protected $ratingRepository;
 		
 	/**
-	 * accessControllService
-	 *
 	 * @var \DCNGmbH\MooxComment\Service\AccessControlService
 	 * @inject
 	 */
 	protected $accessControllService;
 	
 	/**
-	 * helperService
-	 *
 	 * @var \DCNGmbH\MooxComment\Service\HelperService
 	 * @inject
 	 */
 	protected $helperService;
 	
 	/**
-	 * extConf
-	 *
 	 * @var bool
 	 */
 	protected $extConf;
 	
 	/**
-	 * storagePids
-	 *
 	 * @var array 	
 	 */
 	protected $storagePids;
 	
 	/**
-	 * fields
-	 *
 	 * @var array 	
 	 */
 	protected $fields;
 	
 	/**
-	 * pagination
-	 *
 	 * @var array 	
 	 */
 	protected $pagination;
@@ -144,7 +116,7 @@ class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 		];
 		
 		if($this->settings['ratingMode']=="stars"){
-			$this->fields['rating']['config']['stars'] = array();
+			$this->fields['rating']['config']['stars'] = [];
 			if($this->settings['stars']<5){
 				$this->settings['stars'] = 5;
 			}
@@ -190,9 +162,9 @@ class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 		
 		// set storage pid if set by plugin
 		if($this->settings['storagePid']!=""){
-			$this->setStoragePids(array($this->settings['storagePid']));
+			$this->setStoragePids([$this->settings['storagePid']]);
 		} else {
-			$this->setStoragePids(array());
+			$this->setStoragePids([]);
 		}
 		$this->helperService->setStoragePids($this->getStoragePids());
 		
@@ -215,12 +187,12 @@ class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	 * @param string $settings settings
 	 * @return void
 	 */
-	public function showAction($filter = array(),$settings = NULL)
+	public function showAction($filter = [],$settings = NULL)
 	{		
 		// init action arrays and booleans
-		$messages = array();
-		$errors = array();	
-		$info = array();		
+		$messages = [];
+		$errors = [];	
+		$info = [];		
 		$isModerator = false;
 		$isViewable = false;
 		$isRateable = false;
@@ -231,10 +203,10 @@ class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 		
 		// get configuration
 		if(isset($filter['uid_foreign']) && is_numeric($filter['uid_foreign']) && $filter['uid_foreign']>0 && isset($filter['tablenames']) && $filter['tablenames']!=""){			
-			$configuration= array(
+			$configuration= [
 				"uid_foreign" => $filter['uid_foreign'],
 				"tablenames" => $filter['tablenames'] 
-			);
+			];
 		} else {
 			$configuration = $this->helperService->getConfiguration("rating");
 		}
@@ -250,11 +222,11 @@ class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 			$isRateable = true;
 			if($configuration && $this->settings['allowOnlyOneRatingPerUserIfPossible'] && is_object($feUser)){
 				$items = $this->ratingRepository->findByFilter(
-					array(
+					[
 						'uid_foreign' => $configuration['uid_foreign'],
 						'tablenames' => $configuration['tablenames'],
 						'feUser' => $feUser->getUid(),						
-					),NULL,NULL,NULL,"all");
+					],NULL,NULL,NULL,"all");
 				if($items->count()>0){
 					$isRateable = false;
 					$rating = $items->getFirst();
@@ -283,11 +255,11 @@ class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 			//$count = $this->ratingRepository->findByFilter($filter,$orderings,NULL,NULL,"all")->count();
 			
 			// get rating info
-			if(in_array($this->settings['ratingMode'],array("like_dislike","stars"))){
-				$info['rating'] = $this->ratingRepository->findRatingInfos(array(
+			if(in_array($this->settings['ratingMode'],["like_dislike","stars"])){
+				$info['rating'] = $this->ratingRepository->findRatingInfos([
 					"uid_foreign" => $configuration['uid_foreign'],
 					"tablenames" => $configuration['tablenames'],
-				),$this->settings['ratingMode'])[0];			
+				],$this->settings['ratingMode'])[0];			
 				if($this->settings['ratingMode']=="like_dislike"){
 					if($info['rating']['likes']>0){
 						$info['rating']['likes_percent'] = round(($info['rating']['likes']/$info['rating']['count'])*100);
@@ -329,8 +301,8 @@ class Pi2Controller extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	public function rateAction($rate = NULL, $ajax = FALSE, $settings = NULL)
 	{		
 		// init action arrays and booleans
-		$messages = array();
-		$errors = array();			
+		$messages = [];
+		$errors = [];			
 		
 		// overwrite settings
 		$this->settings = $this->helperService->overwriteSettings($this->settings,$settings);

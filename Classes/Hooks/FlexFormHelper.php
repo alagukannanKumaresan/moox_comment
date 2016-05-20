@@ -28,50 +28,36 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 class FlexFormHelper {
 	
 	/**
-	 * objectManager
-	 *
 	 * @var \TYPO3\CMS\Extbase\Object\ObjectManager	
 	 */
 	protected $objectManager;
 	
 	/**
-	 * configurationManager
-	 *
 	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface	
 	 */
 	protected $configurationManager;
 		
 	/**
-	 * helperService
-	 *
 	 * @var \DCNGmbH\MooxComment\Service\HelperService	
 	 */
 	protected $helperService;
 	
 	/**
-	 * pageRepository
-	 *
 	 * @var \TYPO3\CMS\Frontend\Page\PageRepository	
 	 */
 	protected $pageRepository;
 	
 	/**
-	 * templateRepository
-	 *
 	 * @var \DCNGmbH\MooxComment\Domain\Repository\RemplateRepository
 	 */
 	protected $templateRepository;
 	
 	/**
-	 * configuration
-	 *
 	 * @var array	
 	 */
 	protected $configuration;
 	
 	/**
-	 * extConf
-	 *
 	 * @var array	
 	 */
 	protected $extConf;
@@ -124,14 +110,14 @@ class FlexFormHelper {
 		$this->initialize();
 		
 		// init items array
-		$config['items'] = array();
+		$config['items'] = [];
 		
 		// get allowed types
-		$types = array();
+		$types = [];
 		if($this->configuration['autoDetectionOrder']!=""){
 			$autoDetectionOrder = explode(",",$this->configuration['autoDetectionOrder']);
 			foreach($autoDetectionOrder AS $type){
-				if(in_array($type, array("tx_mooxnews_domain_model_news","tx_mooxshop_domain_model_product","pages"))){
+				if(in_array($type, ["tx_mooxnews_domain_model_news","tx_mooxshop_domain_model_product","pages"])){
 					$types[] = $type;
 				}
 			}
@@ -139,17 +125,17 @@ class FlexFormHelper {
 		
 		// set items
 		if(count($types)){
-			$config['items'][] = array($GLOBALS['LANG']->sL(self::LLPATH.'pi1.foreign_type.auto'),'auto');
+			$config['items'][] = [$GLOBALS['LANG']->sL(self::LLPATH.'pi1.foreign_type.auto'),'auto'];
 		}
-		$config['items'][] = array($GLOBALS['LANG']->sL(self::LLPATH.'pi1.foreign_type.self'),'self');
+		$config['items'][] = [$GLOBALS['LANG']->sL(self::LLPATH.'pi1.foreign_type.self'),'self'];
 		foreach($types AS $type){
 			if($type!="tx_mooxnews_domain_model_news" || ExtensionManagementUtility::isLoaded('moox_news')){
-				$config['items'][] = array($GLOBALS['LANG']->sL(self::LLPATH.'pi1.foreign_type.'.$type),$type);
+				$config['items'][] = [$GLOBALS['LANG']->sL(self::LLPATH.'pi1.foreign_type.'.$type),$type];
 			} elseif($type!="tx_mooxshop_domain_model_product" || ExtensionManagementUtility::isLoaded('moox_shop')){
-				$config['items'][] = array($GLOBALS['LANG']->sL(self::LLPATH.'pi1.foreign_type.'.$type),$type);
+				$config['items'][] = [$GLOBALS['LANG']->sL(self::LLPATH.'pi1.foreign_type.'.$type),$type];
 			}
 		}
-		$config['items'][] = array($GLOBALS['LANG']->sL(self::LLPATH.'pi1.foreign_type.tt_content'),'tt_content');		
+		$config['items'][] = [$GLOBALS['LANG']->sL(self::LLPATH.'pi1.foreign_type.tt_content'),'tt_content'];		
 	}
 	
 	/**
@@ -169,7 +155,7 @@ class FlexFormHelper {
 			
 			// get page info for storage pid set by typoscript
 			$page = $this->pageRepository->getPage($configuration['persistence']['storagePid']);
-			$definedByTs = array(array("[Defined by TS]: ".$page['title']." [PID: ".$this->configuration['persistence']['storagePid']."]","TS"));
+			$definedByTs = [["[Defined by TS]: ".$page['title']." [PID: ".$this->configuration['persistence']['storagePid']."]","TS"]];
 		} 
 		
 		// add pid postfix to item array element and remove invalid pids from array
@@ -216,7 +202,7 @@ class FlexFormHelper {
 		$this->initialize();
 		
 		// init items array
-		$items = array();
+		$items = [];
 		
 		// if category is given
 		if($category!=""){
@@ -227,7 +213,7 @@ class FlexFormHelper {
 			// add templates with matching keys to item array
 			foreach($templates AS $template){
 				if($template->getCategory()==$category){
-					$items[] = array(0 => $template->getTitle(), 1 => $template->getUid());
+					$items[] = [0 => $template->getTitle(), 1 => $template->getUid()];
 				}
 			}
 		}
@@ -245,14 +231,14 @@ class FlexFormHelper {
 	public function newEntryEmailTemplate(array &$config, &$pObj)
 	{		
 		// init items array
-		$config['items'] = array();
+		$config['items'] = [];
 		
 		// set empty item
-		$config['items'][] = array($GLOBALS['LANG']->sL(self::LLPATH.'pi1.new_entry_email_template.none'),0);
+		$config['items'][] = [$GLOBALS['LANG']->sL(self::LLPATH.'pi1.new_entry_email_template.none'),0];
 		
 		// get items for category "commentnotifications"
 		foreach($this->getTemplateItems($config,$pObj,"newentry") AS $template){
-			$config['items'][] = array($template[0],$template[1]);
+			$config['items'][] = [$template[0],$template[1]];
 		}
 	}
 }

@@ -20,31 +20,23 @@ class Template extends AbstractEntity
 {
 	
 	/**
-	 * Titel
-	 *
 	 * @var string
 	 * @validate NotEmpty
 	 */
 	protected $title;
 	
 	/**
-	 * Mail-Betreff
-	 *
 	 * @var string
 	 * @validate NotEmpty
 	 */
 	protected $subject;
 	
 	/**
-	 * Kategorie
-	 *
 	 * @var string
 	 */
 	protected $category;
 	
 	/**
-	 * Vorlage
-	 *
 	 * @var string
 	 */
 	protected $template;	

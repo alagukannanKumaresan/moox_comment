@@ -20,36 +20,26 @@ class Content extends AbstractEntity
 {
 	
 	/**
-	 * uid
-	 *
 	 * @var int
 	 */
     protected $uid;
 	
 	/**
-	 * pid
-	 *
-	 * @var int
+	* @var int
 	 */
     protected $pid;
 	
 	/**
-	 * header
-	 *
 	 * @var string
 	 */
     protected $header;
 	
 	/**
-	 * list type
-	 *
 	 * @var string
 	 */
     protected $listType;
 	
 	/**
-	 * pi flexform
-	 *
 	 * @var string
 	 */
     protected $piFlexform;

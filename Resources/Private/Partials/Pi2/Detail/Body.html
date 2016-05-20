@@ -1,5 +1,4 @@
 {namespace v=FluidTYPO3\Vhs\ViewHelpers}
-{namespace m=DCNGmbH\MooxComment\ViewHelpers}
 <div class="well well-sm well-buttons clearfix">
 	<f:if condition="{returnUrl}==''">
 		<v:variable.set name="returnUrl" value="{f:uri.action(action:'list')}" />
@@ -13,39 +12,39 @@
 </div>
 <div class="well well-detail center-block">
 	<f:for each="{fields}" as="field" iteration="iteration">	
-		<v:switch value="{field.key}">
-			<v:case case="images" break="TRUE">
+		<f:switch expression="{field.key}">
+			<f:case value="images">
 				<f:render partial="Detail/Images" arguments="{field:field,item:item}" />
-			</v:case>
-			<v:case case="categories" break="TRUE">					
+			</f:case>
+			<f:case value="categories">					
 				<f:render partial="Detail/Categories" arguments="{field:field,item:item}" />
-			</v:case>			
-			<v:case case="default">	
-				<v:switch value="{field.config.format}">
-					<v:case case="date" break="TRUE">					
+			</f:case>			
+			<f:case value="default" default="1">	
+				<f:switch expression="{field.config.format}">
+					<f:case value="date">					
 						<f:render partial="Detail/Date" arguments="{field:field,item:item,format:'d.m.Y'}" />
-					</v:case>
-					<v:case case="checked" break="TRUE">											
+					</f:case>
+					<f:case value="checked">											
 						<f:render partial="Detail/Checked" arguments="{field:field,item:item}" />
-					</v:case>
-					<v:case case="selected" break="TRUE">											
+					</f:case>
+					<f:case value="selected">											
 						<f:render partial="Detail/Selected" arguments="{field:field,item:item}" />
-					</v:case>
-					<v:case case="file" break="TRUE">
-						<v:switch value="{field.config.reference-type}">
-							<v:case case="image" break="TRUE">					
+					</f:case>
+					<f:case value="file">
+						<f:switch expression="{field.config.reference-type}">
+							<f:case value="image">					
 								<f:render partial="Detail/Images" arguments="{field:field,item:item}" />
-							</v:case>
-							<v:case case="file" break="TRUE">					
+							</f:case>
+							<f:case value="file">					
 								<f:render partial="Detail/Files" arguments="{field:field,item:item}" />
-							</v:case>
-						</v:switch>
-					</v:case>
-					<v:case case="default">
+							</f:case>
+						</f:switch>
+					</f:case>
+					<f:case value="default" default="1">
 						<f:render partial="Detail/Text" arguments="{field:field,item:item}" />
-					</v:case>
-				</v:switch>	
-			</v:case>
-		</v:switch>			
+					</f:case>
+				</f:switch>	
+			</f:case>
+		</f:switch>			
 	</f:for>
 </div>

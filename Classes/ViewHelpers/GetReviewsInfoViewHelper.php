@@ -20,8 +20,6 @@ class GetReviewsInfoViewHelper extends AbstractViewHelper
 {
 	
 	/**
-	 * reviewRepository
-	 *
 	 * @var \DCNGmbH\MooxComment\Domain\Repository\ReviewRepository
 	 * @inject	 
 	 */
@@ -39,8 +37,8 @@ class GetReviewsInfoViewHelper extends AbstractViewHelper
 	 */
 	public function render($uid,$tablenames,$ratingmode = "like_dislike", $extended = FALSE, $as = NULL)
 	{		
-		$info = array();
-		$extendedInfo = array();
+		$info = [];
+		$extendedInfo = [];
 
 		$filter['uid_foreign'] = $uid;
 		$filter['tablenames'] = $tablenames;
@@ -49,7 +47,7 @@ class GetReviewsInfoViewHelper extends AbstractViewHelper
 		// get items			
 		$items = $this->reviewRepository->findByFilter($filter,NULL,NULL,NULL,"all");
 		
-		if(in_array($ratingmode,array("like_dislike","stars"))){
+		if(in_array($ratingmode,["like_dislike","stars"])){
 			$info['rating'] = $this->reviewRepository->findRatingInfos($filter,$ratingmode)[0];	
 			if($ratingmode=="like_dislike"){
 				if($info['rating']['likes']>0){
